@@ -1,0 +1,26 @@
+bookdown::gitbook:
+  toc_depth: 3
+  css: style.css
+  config:
+    toc:
+      before: |
+        <li><a href="./">Fish Passage in the Peace Region</a></li>
+      after: |
+        <li><a href="https://github.com/NewGraphEnvironment/fish_passage_peace_2022_reporting" target="blank">Scripts and Data</a></li>
+    download: ["Peace2022.pdf", "Peace.html"]
+    fontsettings:
+      theme: night
+      family: sans
+pagedown::html_paged:
+  front_cover: "fig/logo_newgraph/BLACK/PNG/nge-full_black.png"
+  css: ["style-pagedown.css", "default-page-custom.css", "default"] #
+  toc: true
+  toc_depth: 3
+bookdown::pdf_book:
+  includes:
+    in_header: preamble.tex
+  latex_engine: xelatex
+  citation_package: natbib
+  keep_tex: yes
+
+bookdown::epub_book: default
