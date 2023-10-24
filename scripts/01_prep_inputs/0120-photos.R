@@ -12,6 +12,113 @@
 # feed list (or lists) of modelled and pscis ids to folderstocreate %>% purrr::map(fpr::fpr_photo_folders)
 
 
+# 2023 - rename the photos
+# read in the forms and join
+dir_project <- 'sern_peace_fwcp_2023'
+
+form_pscis1 <- sf::st_read(dsn= paste0('../../gis/', dir_project, '/form_pscis.gpkg'))
+
+form_pscis2 <- sf::st_read(dsn= paste0('../../gis/', dir_project, '/form_pscis_20230825_resaved.gpkg'))
+
+
+# check to see that column names are equiv (must be if number is the same but still)
+
+identical(names(form_pscis1), names(form_pscis2))
+
+# join and give a site_id
+form_pscis <- bind_rows(
+  form_pscis1,
+  form_pscis2
+) %>%
+  mutate(
+    site_id = case_when(is.na(pscis_crossing_id) ~ my_crossing_reference,
+                        T ~ pscis_crossing_id)
+  ) %>%
+  # remove the bute events as they are duplicates and just for training in 2023
+  # sometimes the camera is not defined (noticed this in the field) - think that was why redid form (can't remember though)
+  filter(camera_id != 'newgraph_bute' | is.na(camera_id)) %>%
+  # remove the form making site
+  filter(site_id != '12345') %>%
+  arrange(site_id)
+
+# check for duplicates
+form_pscis %>%
+  filter(!is.na(site_id)) %>%
+  group_by(site_id) %>%
+  filter(n()>1)
+
+# resize the photos and change the extension to JPG for consistency and unforseen issues
+# sync to mergin after copying to new dir (resized) and removing originals
+# record version number of mergin project in issue for now to track
+fpr_photo_resize_batch(
+  dir_source = '/Users/airvine/Projects/gis/sern_peace_fwcp_2023/ignore_mobile/photos/',
+  dir_target = '/Users/airvine/Projects/gis/sern_peace_fwcp_2023/ignore_mobile/photos_resized/')
+
+
+# function to rename the photos
+
+dff_photo_rename <- function(dat = df_test,
+                             col_pull = site_id,
+                             dir_from_stub = '/Users/airvine/Projects/gis/sern_peace_fwcp_2023/ignore_mobile/photos_resized/',
+                             dir_to_stub = '/Users/airvine/Library/CloudStorage/OneDrive-Personal/Projects/repo/fish_passage_peace_2023_reporting/data/photos/sorted/'){
+  # create new photo directories
+  dat %>%
+    pull({{ col_pull }}) %>%
+    map(fpr::fpr_photo_folders, path = dir_to_stub)
+
+  # make a dataframe ready to rename your photos with
+  dat2 <- dat %>%
+    # don't pivot the photo tag names though
+    tidyr::pivot_longer(
+      cols = starts_with('photo_') & !contains('tag'),
+      values_to = 'photo_og',
+      names_to = 'photo_renamed',
+      cols_vary = 'slowest') %>%
+    dplyr::mutate(photo_renamed = case_when(stringr::str_detect(photo_renamed, 'photo_extra1') ~
+                                       janitor::make_clean_names(photo_extra1_tag, allow_dupes = T),
+                                     stringr::str_detect(photo_renamed, 'photo_extra2') ~
+                                       janitor::make_clean_names(photo_extra2_tag, allow_dupes = T),
+                                     # is.na(photo_renamed) ~ 'untagged',
+                                     T ~ photo_renamed),
+           photo_renamed = stringr::str_replace_all(photo_renamed, 'photo', ''),
+           photo_renamed = stringr::str_replace_all(photo_renamed, '_', '')) %>%
+    # remove rows with no photo
+    dplyr::filter(!is.na(photo_og)) %>%
+    dplyr::mutate(photo_renamed = paste0(dir_to_stub,
+                                  site_id,
+                                  '/',
+                                  tools::file_path_sans_ext(basename(photo_og)),
+                                  '_',
+                                  str_extract(photo_renamed, '.*$'),
+                                  '.JPG'),
+           photo_og = paste0(dir_from_stub, basename(photo_og))
+    )
+  mapply(file.copy,
+         from =  dat2 %>% pull(photo_og),
+         to = dat2 %>% pull(photo_renamed),
+         overwrite = T,
+         copy.mode = TRUE)
+}
+
+
+dff_photo_rename(dat = form_pscis)
+
+# t1 <- form_pscis %>%
+#   # don't pivot the photo tag names though
+#   tidyr::pivot_longer(
+#     cols = starts_with('photo_') & !contains('tag'),
+#     values_to = 'photo_og',
+#     names_to = 'photo_renamed',
+#     cols_vary = 'slowest') %>%
+#   select(site_id, mergin_user, contains('photo'))
+#
+# t2 <- t %>%
+#   filter(stringr::str_detect(photo_renamed,'photo_extra')) %>%
+#   filter(!is.na(photo_og))
+
+
+#-----------------------------------old-----------------------
+
 
 pscis_all <- fpr::fpr_import_pscis_all() %>%
   bind_rows()
