@@ -32,11 +32,11 @@ dat <- pscis_all %>%
 #  connect to the database - this can be the remote database by changing the calls
 conn <- DBI::dbConnect(
   RPostgres::Postgres(),
-  dbname = Sys.getenv('PG_DB_BCBARRIERS'),
-  host = Sys.getenv('PG_HOST_BCBARRIERS'),
-  port = Sys.getenv('PG_PORT_BCBARRIERS'),
-  user = Sys.getenv('PG_USER_BCBARRIERS'),
-  password = Sys.getenv('PG_PASS_BCBARRIERS')
+  dbname = Sys.getenv('PG_DB_SHARE'),
+  host = Sys.getenv('PG_HOST_SHARE'),
+  port = Sys.getenv('PG_PORT_SHARE'),
+  user = Sys.getenv('PG_USER_SHARE'),
+  password = Sys.getenv('PG_PASS_SHARE')
 )
 #
 # ##listthe schemas in the database
@@ -172,11 +172,11 @@ pscis_all_sf <- dat
 ##get the road info from the database
 conn <- DBI::dbConnect(
   RPostgres::Postgres(),
-  dbname = Sys.getenv('PG_DB_BCBARRIERS'),
-  host = Sys.getenv('PG_HOST_BCBARRIERS'),
-  port = Sys.getenv('PG_PORT_BCBARRIERS'),
-  user = Sys.getenv('PG_USER_BCBARRIERS'),
-  password = Sys.getenv('PG_PASS_BCBARRIERS')
+  dbname = Sys.getenv('PG_DB_SHARE'),
+  host = Sys.getenv('PG_HOST_SHARE'),
+  port = Sys.getenv('PG_PORT_SHARE'),
+  user = Sys.getenv('PG_USER_SHARE'),
+  password = Sys.getenv('PG_PASS_SHARE')
 )
 #
 # ##listthe schemas in the database
