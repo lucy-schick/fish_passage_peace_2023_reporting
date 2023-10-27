@@ -17,29 +17,34 @@ form_pscis2 <- sf::st_read(dsn= paste0('../../gis/', dir_project, '/form_pscis_2
 # check to see that column names are equiv (must be if number is the same but still)
 identical(names(form_pscis1), names(form_pscis2))
 
-# join and give a site_id
+# bind rows and burn as csv to back up folder with coords added
+utm <- 10
+
 form_prep <- bind_rows(
   form_pscis1,
   form_pscis2
 ) %>%
-  mutate(
-    site_id = case_when(is.na(pscis_crossing_id) ~ my_crossing_reference,
-                        T ~ pscis_crossing_id)
+  st_transform(crs = 26910) %>%
+  poisspatial::ps_sfc_to_coords(X = 'easting', Y = 'northing') %>%
+  # add in utm zone of study area
+  mutate(utm_zone = utm) %>%
+  readr::write_csv(paste0('data/inputs_extracted/mergin_backups/form_pscis_raw_',
+                   format(lubridate::now(), "%Y%m%d"),
+                   '.csv'))
+
+# burn amalgamated form to backup folder as gpckg, use latest synced version number on mergin
+form_amalg <- bind_rows(
+  form_pscis1,
+  form_pscis2
   ) %>%
-  # remove the bute events as they are duplicates and just for training in 2023, and sometimes the camera is not defined
-  filter(camera_id != 'newgraph_bute'| is.na(camera_id)) %>%
-  # remove the form making site
-  filter(site_id != '12345')
+  sf::st_write('data/inputs_extracted/mergin_backups/form_pscis_v70.gpkg', append=FALSE)
 
-# pull out utm coordinates, set utm zone but check to make sure all data falls in one zone
-utm <- 10
-
-form_pscis <- form_prep %>%
+# read in cleaned amalgamated pscis form
+form_pscis <- sf::st_read(dsn= paste0('../../gis/', dir_project, '/form_pscis_v70.gpkg')) %>%
   st_transform(crs = 26910) %>%
   poisspatial::ps_sfc_to_coords(X = 'easting', Y = 'northing') %>%
   # add in utm zone of study area
   mutate(utm_zone = utm)
-
 
 # check for duplicates
 form_pscis %>%
@@ -53,7 +58,7 @@ xref_names_pscis <- fpr::fpr_xref_pscis
 # get order of columns as per the excel template spreadsheet
 # this can be used as a select(all_of(name_pscis_sprd_ordered)) later
 # to order columns for the field form and/or put the field entered table in order
-name_pscis_sprd_ordered <- fpr::xref_names_pscis %>%
+name_pscis_sprd_ordered <- fpr::fpr_xref_pscis %>%
   filter(!is.na(spdsht)) %>%
   select(spdsht) %>%
   pull(spdsht)
@@ -73,20 +78,31 @@ form_prep1 <- form_pscis %>%
                 date = lubridate::date(date_time_start),
                 time = hms::as_hms(date_time_start)) %>%
   # filter out to get only the records newly created
-  filter(!is.na(date_time_start))
+  filter(!is.na(date_time_start)) %>%
+  # create a site_id
+  mutate(
+    site_id = case_when(is.na(pscis_crossing_id) ~ my_crossing_reference,
+                        T ~ pscis_crossing_id)
+  ) %>%
+  # remove the bute events as they are duplicates and just for training in 2023, and sometimes the camera is not defined
+  filter(camera_id != 'newgraph_bute'| is.na(camera_id)) %>%
+  # remove the form making site
+  filter(site_id != '12345')
 
 # clean up data fields to make copy and paste to prov template easier
 form_prep2 <- form_prep1 %>%
   # some columns that have yes/no answers have NA values in mergin, need to change to No
   # need to add "No" as default values to mergin
-  mutate(across(contains('yes_no'), ~replace_na(.,"No"))) %>%
+  mutate(across(contains('yes_no'), ~replace_na(.,'No'))) %>%
   # some numeric fields for CBS have NA values when a user input 0
   mutate(across(c(outlet_drop_meters, outlet_pool_depth_0_01m, culvert_slope_percent, stream_slope),
-                ~case_when(crossing_type == "Closed Bottom Structure" ~replace_na(.,0),
+                ~case_when(crossing_type == 'Closed Bottom Structure' ~replace_na(.,0),
                 TRUE ~ .
                 ))) %>%
   # change "trib" to long version "Tributary"
-  mutate(stream_name = str_replace_all(stream_name, 'Trib ', 'Tributary '))
+  mutate(stream_name = str_replace_all(stream_name, 'Trib ', 'Tributary ')) %>%
+  # change "Hwy" to "Highway"
+  mutate(road_name = str_replace_all(road_name, 'Hwy ', 'Highway '))
 
 # to use all the columns from the template first we make an empty dataframe from a template
 template <- fpr::fpr_import_pscis() %>%
@@ -105,9 +121,9 @@ form <- bind_rows(
 
 # burn to a csv
 form %>% readr::write_csv(paste0(
-    'data/dff/survey_form_',
-    format(lubridate::now(), "%Y%m%d"),
-    '.csv'))
+    'data/dff/form_pscis_',
+    format(lubridate::now(), '%Y%m%d'),
+    '.csv'), na='')
 
 # --------------------moti climate change ---------------------------
 #
