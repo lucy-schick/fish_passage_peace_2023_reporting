@@ -28,7 +28,7 @@ form_prep <- bind_rows(
   poisspatial::ps_sfc_to_coords(X = 'easting', Y = 'northing') %>%
   # add in utm zone of study area
   mutate(utm_zone = utm) %>%
-  readr::write_csv(paste0('data/inputs_extracted/mergin_backups/form_pscis_raw_',
+  readr::write_csv(paste0('data/dff/form_pscis_raw_',
                    format(lubridate::now(), "%Y%m%d"),
                    '.csv'))
 
@@ -102,7 +102,10 @@ form_prep2 <- form_prep1 %>%
   # change "trib" to long version "Tributary"
   mutate(stream_name = str_replace_all(stream_name, 'Trib ', 'Tributary ')) %>%
   # change "Hwy" to "Highway"
-  mutate(road_name = str_replace_all(road_name, 'Hwy ', 'Highway '))
+  mutate(road_name = str_replace_all(road_name, 'Hwy ', 'Highway ')) %>%
+  # remove white spaces from start of strings in road and stream columns
+  mutate(road_name = str_trim(road_name, side = 'left'),
+         stream_name = str_trim(stream_name, side = 'left'))
 
 # to use all the columns from the template first we make an empty dataframe from a template
 template <- fpr::fpr_import_pscis() %>%
@@ -116,6 +119,8 @@ form <- bind_rows(
 ) %>%
   # only select columns from template object
   select(any_of(names(template))) %>%
+  # remove scoring columns, as these can't be copied and pasted anyways because of macros
+  select(-stream_width_ratio:-barrier_result) %>%
   # then arrange it by pscis id to separate phase 1s from reassessments
   arrange(pscis_crossing_id, date)
 
