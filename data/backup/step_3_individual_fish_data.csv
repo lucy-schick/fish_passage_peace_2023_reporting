@@ -1,2 +1,1 @@
-x,x_2,fish_data_submission_spreadsheet_template_v_2_0_january_26_2023,x_3,x_4,x_5,x_6,x_7,x_8,x_9,x_10,x_11,x_12,x_13,x_14,x_15,x_16,x_17,x_18,x_19
-REFERENCE NUMBER,Gazetted Names,Local Name,Waterbody ID,Reach #,Site #,Sampling Method,Method Number,Haul#/Pass#,Species,Length (mm),Weight (g),Sex,Maturity,Age Structure,Age Sample #,Age,Genetic Structure,Genetic Sample #,Comments
+reference_number,gazetted_names,local_name,waterbody_id,reach_number,site_number,sampling_method,method_number,haul_number_pass_number,species,length_mm,weight_g,sex,maturity,age_structure,age_sample_number,age,genetic_structure,genetic_sample_number,comments

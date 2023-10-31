@@ -1,6 +1,4 @@
-x,fish_data_submission_spreadsheet_template_v_2_0_april_27_2012,x_2,x_3,x_4,x_5
-"Table A. ""Species"" column entry options (Sorted alphabetical by COMMON NAME)",,,,,
-STEP,COMMON NAME,GROUP,SCIENTIFIC NAME,SPECIES CODE,COMMENTS
+step,common_name,group,scientific_name,species_code,comments
 Step 2,No Fish Caught,,,NFC,
 Step 2,No Mussel (Freshwater General)  Found,,,NMF,
 "Step 2, Step 3",Unidentified Species,,,SP,
