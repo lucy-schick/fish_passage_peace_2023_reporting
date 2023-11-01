@@ -54,67 +54,26 @@ fpr_photo_resize_batch(
   dir_source = '/Users/airvine/Projects/gis/sern_peace_fwcp_2023/ignore_mobile/photos/',
   dir_target = '/Users/airvine/Projects/gis/sern_peace_fwcp_2023/ignore_mobile/photos_resized/')
 
-
-# function to rename the photos
-
-dff_photo_rename <- function(dat = df_test,
-                             col_pull = site_id,
-                             dir_from_stub = '/Users/airvine/Projects/gis/sern_peace_fwcp_2023/ignore_mobile/photos_resized/',
-                             dir_to_stub = '/Users/airvine/Library/CloudStorage/OneDrive-Personal/Projects/repo/fish_passage_peace_2023_reporting/data/photos/sorted/'){
-  # create new photo directories
-  dat %>%
-    pull({{ col_pull }}) %>%
-    map(fpr::fpr_photo_folders, path = dir_to_stub)
-
-  # make a dataframe ready to rename your photos with
-  dat2 <- dat %>%
-    # don't pivot the photo tag names though
-    tidyr::pivot_longer(
-      cols = starts_with('photo_') & !contains('tag'),
-      values_to = 'photo_og',
-      names_to = 'photo_renamed',
-      cols_vary = 'slowest') %>%
-    dplyr::mutate(photo_renamed = case_when(stringr::str_detect(photo_renamed, 'photo_extra1') ~
-                                       janitor::make_clean_names(photo_extra1_tag, allow_dupes = T),
-                                     stringr::str_detect(photo_renamed, 'photo_extra2') ~
-                                       janitor::make_clean_names(photo_extra2_tag, allow_dupes = T),
-                                     # is.na(photo_renamed) ~ 'untagged',
-                                     T ~ photo_renamed),
-           photo_renamed = stringr::str_replace_all(photo_renamed, 'photo', ''),
-           photo_renamed = stringr::str_replace_all(photo_renamed, '_', '')) %>%
-    # remove rows with no photo
-    dplyr::filter(!is.na(photo_og)) %>%
-    dplyr::mutate(photo_renamed = paste0(dir_to_stub,
-                                  site_id,
-                                  '/',
-                                  tools::file_path_sans_ext(basename(photo_og)),
-                                  '_',
-                                  str_extract(photo_renamed, '.*$'),
-                                  '.JPG'),
-           photo_og = paste0(dir_from_stub, basename(photo_og))
-    )
-  mapply(file.copy,
-         from =  dat2 %>% pull(photo_og),
-         to = dat2 %>% pull(photo_renamed),
-         overwrite = T,
-         copy.mode = TRUE)
-}
+# move to onedrive so we don't pay for space on mergin.  should just go direct to onedrive in the future
+fpr::fpr_photo_resize_batch(
+  dir_source = '/Users/airvine/Projects/gis/sern_peace_fwcp_2023/ignore_mobile/photos_resized/',
+  dir_target = '/Users/airvine/Library/CloudStorage/OneDrive-Personal/Projects/repo/fish_passage_peace_2023_reporting/data/photos/mergin/')
 
 
-dff_photo_rename(dat = form_pscis)
+# rename the photos from the FISS cards------------------
+# dataframe comes from fiss_site_tidy
+fpr::fpr_photo_rename(
+  dat = form_fiss_site_raw,
+  dir_from_stub = '/Users/airvine/Library/CloudStorage/OneDrive-Personal/Projects/repo/fish_passage_peace_2023_reporting/data/photos/mergin/',
+  dir_to_stub = '/Users/airvine/Library/CloudStorage/OneDrive-Personal/Projects/repo/fish_passage_peace_2023_reporting/data/photos/sorted/',
+  col_string_add = TRUE,
+  col_string_append = location)
 
-# t1 <- form_pscis %>%
-#   # don't pivot the photo tag names though
-#   tidyr::pivot_longer(
-#     cols = starts_with('photo_') & !contains('tag'),
-#     values_to = 'photo_og',
-#     names_to = 'photo_renamed',
-#     cols_vary = 'slowest') %>%
-#   select(site_id, mergin_user, contains('photo'))
-#
-# t2 <- t %>%
-#   filter(stringr::str_detect(photo_renamed,'photo_extra')) %>%
-#   filter(!is.na(photo_og))
+# remove all the duplicated photos on onedrive that were renamed.
+fpr::fpr_photo_remove_dupes(dir_target = '/Users/airvine/Library/CloudStorage/OneDrive-Personal/Projects/repo/fish_passage_peace_2023_reporting/data/photos/sorted/')
+
+
+
 
 
 #-----------------------------------old-----------------------
