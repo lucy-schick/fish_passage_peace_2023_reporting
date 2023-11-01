@@ -33,18 +33,22 @@ utm <- 10
 # read in cleaned amalgamated fiss form into a list of dataframes using colwise to guess the column types
 # if we don't try to guess the col types we have issues later with the bind_rows join
 # make sure the file name is the most recent version
-form_fiss_site_raw <- sf::st_read(dsn= paste0('../../gis/', dir_project, '/form_fiss_site_20231027.gpkg')) %>%
-  st_transform(crs = 26910) %>%
+form_fiss_site_raw <- sf::st_read(dsn= paste0('../../gis/', dir_project, '/data_field/2023/form_fiss_site_2023.gpkg')) %>%
+  st_transform(crs = 26900 + utm) %>%
   poisspatial::ps_sfc_to_coords(X = 'utm_easting', Y = 'utm_northing') %>%
   # add in utm zone of study area
-  mutate(utm_zone = utm) %>%
-  # get a site_id that we can use to make photo directories
-  tidyr::separate(local_name, into = c('site_id', 'location', 'ef'), remove = F) %>%
+  dplyr::mutate(utm_zone = utm) %>%
+  # get a site_id and a location that we can use to make photo directories and tag photos respectively
+  tidyr::separate(local_name, into = c('site_id', 'location'), remove = F, extra = "merge") %>%
   #need to rename the photo columns
   dplyr::rename(photo_extra1 = photo_extra_1,
                 photo_extra2 = photo_extra_2,
                 photo_extra1_tag = photo_extra_1_tag,
-                photo_extra2_tag = photo_extra_2_tag)
+                photo_extra2_tag = photo_extra_2_tag,
+                photo_typical1 = photo_typical_1,
+                photo_typical2 = photo_typical_2)
+
+
 
 # see the names of our form
 names(form_fiss_site_raw)
