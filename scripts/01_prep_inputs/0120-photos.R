@@ -70,10 +70,24 @@ fpr::fpr_photo_rename(
   col_string_append = location)
 
 # remove all the duplicated photos on onedrive that were renamed.
-fpr::fpr_photo_remove_dupes(dir_target = '/Users/airvine/Library/CloudStorage/OneDrive-Personal/Projects/repo/fish_passage_peace_2023_reporting/data/photos/sorted/')
+photos_dry_run_before <- fpr::fpr_photo_remove_dupes('/Users/airvine/Library/CloudStorage/OneDrive-Personal/Projects/repo/fish_passage_peace_2023_reporting/data/photos/sorted/')
+photos_dry_run3_before <- fpr::fpr_photo_remove_dupes('/Users/airvine/Library/CloudStorage/OneDrive-Personal/Projects/repo/fish_passage_peace_2023_reporting/data/photos/sorted/',
+                                               min_replicates = 3)
 
 
+# actually run the removal of the first un-renamed photo
+# fpr::fpr_photo_remove_dupes('/Users/airvine/Library/CloudStorage/OneDrive-Personal/Projects/repo/fish_passage_peace_2023_reporting/data/photos/sorted/',
+#                             dry_run = F)
 
+photos_dry_run_after <- fpr::fpr_photo_remove_dupes('/Users/airvine/Library/CloudStorage/OneDrive-Personal/Projects/repo/fish_passage_peace_2023_reporting/data/photos/sorted/')
+photos_dry_run3_after <- fpr::fpr_photo_remove_dupes('/Users/airvine/Library/CloudStorage/OneDrive-Personal/Projects/repo/fish_passage_peace_2023_reporting/data/photos/sorted/',
+                                                      min_replicates = 3)
+
+save(photos_dry_run_before,
+     photos_dry_run3_before,
+     photos_dry_run_after,
+     photos_dry_run3_after,
+     file = "data/inputs_extracted/photos_dry_run.RData")
 
 
 #-----------------------------------old-----------------------
