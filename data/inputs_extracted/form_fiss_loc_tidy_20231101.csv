@@ -1,0 +1,21 @@
+rowid,reference_number,gazetted_name,alias_local_name,waterbody_type,waterbody_id_identifier,watershed_code_45_digit,twc_number,reach_number,site_number,survey_date,utm_method,utm_zone,utm_easting,utm_northing,no_visible_channel,dewatered_dry_int_channel,time
+1,,Tributary to Parsnip River,125231_us_ef1,stream,,,,,,2023-08-28,,10,549966,6065156,,,12:52:44
+2,,Tributary to Parsnip River,125231_us_ef2,stream,,,,,,2023-08-28,,10,549972,6065176,,,13:09:16
+3,,Tributary to Parsnip river,125231_us_ef3,stream,,,,,,2023-08-28,,10,549972,6065197,,,14:33:39
+4,,Tributary to Parsnip River,125231_ds_ef1 ,stream,,,,,,2023-08-28,,10,549903,6065094,,,15:28:12
+5,,Tributary to Parsnip River,125231_ds_ef2,stream,,,,,,2023-08-28,,10,549918,6065095,,,15:43:40
+6,,Tributary to Parsnip River,125231_ds_ef3,stream,,,,,,2023-08-28,,10,549925,6065097,,,16:05:15
+7,,Fern Creek,125261_ds_ef1,stream,,,,,,2023-08-29,,10,534620,6067691,,,11:06:32
+8,,Fern Creek,125261_ds_ef2,stream,,,,,,2023-08-29,,10,534607,6067718,,,11:28:44
+9,,Fern Creek ,125261_ds_ef3,stream,,,,,,2023-08-29,,10,534591,6067743,,,12:30:19
+10,,Fern Creek,125261_us_ef1,stream,,,,,,2023-08-29,,10,534638,6067823,,,14:39:16
+11,,Fern Creek,125261_us_ef2,stream,,,,,,2023-08-29,,10,534633,6067840,,,15:23:07
+12,,Fern Creek,125261_us_ef3,stream,,,,,,2023-08-29,,10,534628,6067852,,,15:42:29
+13,,Tributary to McLeod Lake,2200799_us,stream,,,,,,2023-08-31,,10,499086,6094099,,,13:25:08
+14,,Tributary to McLeod Lake,2200799_ds,stream,,,,,,2023-08-31,,10,498977,6094004,,,14:10:28
+15,,42 Mile Creek,3700024_us,stream,,,,,,2023-09-01,,10,510959,6072481,,,09:23:38
+16,,42 Mile Creek,3700024_ds,stream,,,,,,2023-09-01,,10,510791,6072377,,,10:50:07
+17,,Tributary to Altezega Creek,3703459_us,stream,,,,,,2023-09-02,,10,513786,6067308,,,09:47:34
+18,,Tributary to Altezega Creek,3703459_ds,stream,,,,,,2023-09-02,,10,513634,6067243,,,11:44:02
+19,,Tributary to McLeod Lake,2200002_us,stream,,,,,,2023-08-31,,10,498001,6093546,,,13:33:57
+20,,Tributary to McLeod Lake,2200002_ds,stream,,,,,,2023-08-31,,10,497761,6093679,,,15:05:20
