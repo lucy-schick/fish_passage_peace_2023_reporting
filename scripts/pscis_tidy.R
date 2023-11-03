@@ -9,39 +9,41 @@ source('scripts/packages.R')
 # name the project directory we are pulling from
 dir_project <- 'sern_peace_fwcp_2023'
 
-# read in the forms and join together
-form_pscis1 <- sf::st_read(dsn= paste0('../../gis/', dir_project, '/form_pscis.gpkg'))
-
-form_pscis2 <- sf::st_read(dsn= paste0('../../gis/', dir_project, '/form_pscis_20230825_resaved.gpkg'))
-
-# check to see that column names are equiv (must be if number is the same but still)
-identical(names(form_pscis1), names(form_pscis2))
-
-# bind rows and burn as csv to back up folder with coords added
+# pull out utm coordinates, set utm zone but check to make sure all data falls in one zone
 utm <- 10
 
-form_prep <- bind_rows(
-  form_pscis1,
-  form_pscis2
-) %>%
-  st_transform(crs = 26910) %>%
-  poisspatial::ps_sfc_to_coords(X = 'easting', Y = 'northing') %>%
-  # add in utm zone of study area
-  mutate(utm_zone = utm) %>%
-  readr::write_csv(paste0('data/dff/form_pscis_raw_',
-                   format(lubridate::now(), "%Y%m%d"),
-                   '.csv'))
-
-# burn amalgamated form to backup folder as gpckg, use latest synced version number on mergin
-form_amalg <- bind_rows(
-  form_pscis1,
-  form_pscis2
-  ) %>%
-  sf::st_write('data/inputs_extracted/mergin_backups/form_pscis_v70.gpkg', append=FALSE)
+# read in the forms and join together
+# form_pscis1 <- sf::st_read(dsn= paste0('../../gis/', dir_project, '/form_pscis.gpkg'))
+#
+# form_pscis2 <- sf::st_read(dsn= paste0('../../gis/', dir_project, '/form_pscis_20230825_resaved.gpkg'))
+#
+# # check to see that column names are equiv (must be if number is the same but still)
+# identical(names(form_pscis1), names(form_pscis2))
+#
+# # bind rows and burn as csv to back up folder with coords added
+#
+# form_prep <- bind_rows(
+#   form_pscis1,
+#   form_pscis2
+# ) %>%
+#   st_transform(crs = 26910) %>%
+#   poisspatial::ps_sfc_to_coords(X = 'easting', Y = 'northing') %>%
+#   # add in utm zone of study area
+#   mutate(utm_zone = utm) %>%
+#   readr::write_csv(paste0('data/dff/form_pscis_raw_',
+#                    format(lubridate::now(), "%Y%m%d"),
+#                    '.csv'))
+#
+# # burn amalgamated form to backup folder as gpckg, use latest synced version number on mergin
+# form_amalg <- bind_rows(
+#   form_pscis1,
+#   form_pscis2
+#   ) %>%
+#   sf::st_write('data/inputs_extracted/mergin_backups/form_pscis_v70.gpkg', append=FALSE)
 
 # read in cleaned amalgamated pscis form
-form_pscis <- sf::st_read(dsn= paste0('../../gis/', dir_project, '/form_pscis_v70.gpkg')) %>%
-  st_transform(crs = 26910) %>%
+form_pscis <- sf::st_read(dsn= paste0('../../gis/', dir_project, '/data_field/2023/form_pscis_2023.gpkg')) %>%
+  st_transform(crs = 26900 + utm) %>%
   poisspatial::ps_sfc_to_coords(X = 'easting', Y = 'northing') %>%
   # add in utm zone of study area
   mutate(utm_zone = utm)
