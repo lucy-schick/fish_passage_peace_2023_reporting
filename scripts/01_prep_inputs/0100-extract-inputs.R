@@ -189,7 +189,7 @@ dbGetQuery(conn,
 dbGetQuery(conn,
            "SELECT table_name
            FROM information_schema.tables
-           WHERE table_schema='whse_basemapping'")
+           WHERE table_schema='working'")
 # # # # #
 # # # # # ##list column names in a table
 dbGetQuery(conn,
@@ -210,18 +210,18 @@ pscis_all_sf$misc_point_id <- seq.int(nrow(pscis_all_sf))
 
 
 # I'm going to create the ali schema locally so this looks the same on the remote db
-# dbSendQuery(conn, paste0("CREATE SCHEMA IF NOT EXISTS ", "ali",";"))
+#dbSendQuery(conn, paste0("CREATE SCHEMA IF NOT EXISTS ", "ali",";"))
 
 
 # load to database
-sf::st_write(obj = pscis_all_sf, dsn = conn, Id(schema= "ali", table = "misc"))
+sf::st_write(obj = pscis_all_sf, dsn = conn, Id(schema= "working", table = "misc"))
 
 
 
 # sf doesn't automagically create a spatial index or a primary key
-res <- dbSendQuery(conn, "CREATE INDEX ON ali.misc USING GIST (geometry)")
+res <- dbSendQuery(conn, "CREATE INDEX ON working.misc USING GIST (geometry)")
 dbClearResult(res)
-res <- dbSendQuery(conn, "ALTER TABLE ali.misc ADD PRIMARY KEY (misc_point_id)")
+res <- dbSendQuery(conn, "ALTER TABLE working.misc ADD PRIMARY KEY (misc_point_id)")
 dbClearResult(res)
 
 dat_info <- dbGetQuery(conn, "SELECT
@@ -229,7 +229,7 @@ dat_info <- dbGetQuery(conn, "SELECT
   b.*,
   ST_Distance(ST_Transform(a.geometry,3005), b.geom) AS distance
 FROM
-  ali.misc AS a
+  working.misc AS a
 CROSS JOIN LATERAL
   (SELECT *
    FROM bcfishpass.crossings
@@ -264,7 +264,7 @@ dat_joined <- left_join(
 # )
 
 # load to database
-sf::st_write(obj = pscis_all_sf, dsn = conn, Id(schema= "ali", table = "misc"))
+# sf::st_write(obj = pscis_all_sf, dsn = conn, Id(schema= "ali", table = "misc"))
 
 dat_info <- dbGetQuery(conn,
                        "
@@ -326,8 +326,6 @@ dat_joined3 <- left_join(
 
 # see https://github.com/NewGraphEnvironment/fish_passage_bulkley_2022_reporting/issues/16 for this section.  putting aside for now
 # we need to get the road class from the DRA layer whse_basemapping.transport_line_type_code
-
-
 
 # look at any sites more than 100m away from their match
 #  the reason there is more than one hit is because we
@@ -477,18 +475,15 @@ str_type <- pscis_all %>%
 ##burn to a csvs so we can copy and paste into spreadsheet (could make a function to do this all at once....)
 str_type %>%
   filter(source %ilike% 'phase1') %>%
-  arrange(rowid) %>%
-  readr::write_csv(file = paste0(getwd(), '/data/inputs_extracted/str_type_pscis1.csv'),
+  readr::write_csv('data/inputs_extracted/str_type_pscis1.csv',
                    na = '')
 str_type %>%
   filter(source %ilike% 'phase2') %>%
-  arrange(rowid) %>%
-  readr::write_csv(file = paste0(getwd(), '/data/inputs_extracted/str_type_pscis2.csv'),
+  readr::write_csv('data/inputs_extracted/str_type_pscis2.csv',
                    na = '')
 str_type %>%
   filter(source %ilike% 'reasses') %>%
-  arrange(rowid) %>%
-  readr::write_csv(file = paste0(getwd(), '/data/inputs_extracted/str_type_pscis_reassessments.csv'),
+  readr::write_csv('data/inputs_extracted/str_type_pscis_reassessments.csv',
                    na = '')
 
 
@@ -498,14 +493,14 @@ str_type %>%
 # spreadsheet to build for input includes site lengths, surveyors initials, time, priority for remediation, updated fish species (if changed from my_fish_sp())
 # thing is that we don't really have the fish info
 
-hab_con <- fpr_import_hab_con()
+hab_con <- fpr_import_hab_con(backup = F, row_empty_remove = T)
 hab_priority_prep1 <- hab_con %>%
   purrr::pluck("step_1_ref_and_loc_info") %>%
-  dplyr::filter(!is.na(site_number))%>%
+  dplyr::filter(!is.na(alias_local_name)) %>%
   mutate(survey_date = janitor::excel_numeric_to_date(as.numeric(survey_date))) %>%
   select(reference_number:alias_local_name, survey_date) %>%
-  tidyr::separate(alias_local_name, into = c('site', 'location', 'ef'), remove = F) %>%
-  mutate(time_start = NA_character_,
+  tidyr::separate(alias_local_name, c("site", "location", "ef"), sep = "_", remove = FALSE) %>%
+  mutate(time_start = NA_character_, # can grab times from form_fiss_site_tidy csv
          surveyors = NA_character_,
          length_surveyed = NA_character_,
          hab_value = NA_character_, #get from pscis sheets later.  Too much of a pain to join now due to multiple ids
@@ -528,19 +523,9 @@ hab_priority_prep <- left_join(
 
 # grab the fish species
 
-
-
-
 # burn to csv to use as your template.  For safety use a different name then rename manually
-# hab_priority_prep %>%
-#   readr::write_csv('data/habitat_confirmations_priorities_raw.csv', na = '')
-
-# separate local site names into site, location, and ef
-
-habitat_confirmations_priorities <- readr::read_csv(
-  file = "./data/habitat_confirmations_priorities.csv") %>%
-  separate(alias_local_name, c("site", "location", "ef"), sep = "_", remove = FALSE) %>%
-  readr::write_csv(file = "./data/habitat_confirmations_priorities.csv", na = "")
+hab_priority_prep %>%
+  readr::write_csv('data/habitat_confirmations_priorities_raw.csv', na = '')
 
 
 # extract rd cost multiplier ----------------------------------------------
