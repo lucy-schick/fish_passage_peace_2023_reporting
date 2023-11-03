@@ -36,6 +36,9 @@ utm <- 10
 form_fiss_site_raw <- sf::st_read(dsn= paste0('../../gis/', dir_project, '/data_field/2023/form_fiss_site_2023.gpkg')) %>%
   st_transform(crs = 26900 + utm) %>%
   poisspatial::ps_sfc_to_coords(X = 'utm_easting', Y = 'utm_northing') %>%
+  # round utms to nearest whole numbers, spreadsheet does not allow decimals
+  mutate(utm_easting = round(utm_easting),
+         utm_northing = round(utm_northing)) %>%
   # add in utm zone of study area
   dplyr::mutate(utm_zone = utm) %>%
   # get a site_id and a location that we can use to make photo directories and tag photos respectively
@@ -140,7 +143,8 @@ form_fiss_loc <- bind_rows(
 
   form_site_info_prep %>%
     # alias local name is not called the same in both sheets so rename
-    rename(alias_local_name = local_name) %>%
+    rename(alias_local_name = local_name,
+           gazetted_name = gazetted_names) %>%
     mutate(utm_method = as.character(utm_method)) %>%
     select(rowid,
            dplyr::any_of(form_raw_names_location),
@@ -168,13 +172,10 @@ form_fiss_site <- bind_rows(
            dplyr::any_of(form_raw_names_site),
            # add the time to help put the puzzle together after)
            survey_date,
-           time,
-           comments_2)
+           time)
 ) %>%
-  # join the comments
-  dplyr::mutate(comments = case_when(
-    !is.na(comments_2) ~ paste0(comments, '. ', comments_2, '. ', time),
-    T ~ paste0(comments, '. ', time))) %>%
+  # add time to end of comments, there are no comments in the comments_2 column so no need to combine
+  dplyr::mutate(comments = paste0(comments, ' ', time)) %>%
   select(rowid, everything())
 
 # burn to file
