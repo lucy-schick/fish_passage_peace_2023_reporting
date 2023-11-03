@@ -1,0 +1,11 @@
+rowid,aggregated_crossings_id,pscis_crossing_id,my_crossing_reference,source,barrier_result,downstream_channel_width_meters,fill_depth_meters,fill_dpth_over,crossing_fix,span_input
+5,6539,6539,,pscis_reassessments.xlsm,Barrier,4.5,0.3,-2.7,Replace with New Open Bottom Structure,10
+6,6541,6541,,pscis_reassessments.xlsm,Barrier,3.8,2,-1,Replace with New Open Bottom Structure,10
+7,6543,6543,,pscis_reassessments.xlsm,Barrier,4.7,0.5,-2.5,Replace with New Open Bottom Structure,10
+8,6544,6544,,pscis_reassessments.xlsm,Barrier,2.7,0.3,-2.7,Replace with New Open Bottom Structure,10
+9,6546,6546,,pscis_reassessments.xlsm,Barrier,8,2,-1,Replace with New Open Bottom Structure,13
+10,6621,6621,,pscis_reassessments.xlsm,Barrier,5.6,2.5,-0.5,Replace with New Open Bottom Structure,10
+11,6622,6622,,pscis_reassessments.xlsm,Barrier,2.5,1,-2,Replace with New Open Bottom Structure,10
+12,6623,6623,,pscis_reassessments.xlsm,Barrier,2.6,1,-2,Replace with New Open Bottom Structure,10
+13,6624,6624,,pscis_reassessments.xlsm,Passable,3.8,1,-2,,
+14,57621,57621,,pscis_reassessments.xlsm,Passable,,,,,
