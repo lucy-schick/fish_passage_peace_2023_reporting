@@ -6,14 +6,16 @@ source('scripts/packages.R')
 source('scripts/functions.R')
 
 name_repo <- 'fish_passage_peace_2023_reporting'
-stub_to <- 'C:/Users/matwi/OneDrive'
+# stub_to <- 'C:/Users/matwi/OneDrive'
+stub_to <- '/Users/airvine/Library/CloudStorage/OneDrive-Personal'
 
 # Phase 1 submission -----------
 
 ##path to the photos on onedrive
-path <- paste0(stub_to, '/Projects/repo/', name_repo,
-               '/data/photos/sorted/')
+# path <- paste0(stub_to, '/Projects/repo/', name_repo,
+#                '/data/photos/sorted/')
 
+path <- '/Users/airvine/Library/CloudStorage/OneDrive-Personal/Projects/2023_data/peace/photos/'
 ##use the pscis spreadsheet to make the folders to copy the photos to
 d <- fpr::fpr_import_pscis(workbook_name = 'pscis_phase1.xlsm')
 
@@ -23,7 +25,8 @@ path_to_photos <- paste0(path, folderstocopy)
 
 
 ##here we transfer just the photos with labels over into the PSCIS directory where we will upload from to the gov interface
-targetdir = paste0(stub_to, '/Projects/PSCIS/phase1_submissions/PSCIS_peace_2023_phase1/')
+targetdir = paste0(stub_to, '/Projects/PSCIS/phase1_submissions/2023/peace/')
+
 dir.create(targetdir)
 
 folderstocreate<- paste0(targetdir, folderstocopy)
@@ -39,7 +42,7 @@ filestocopy_list <- path_to_photos %>%
 ##view which files do not have any photos to paste by reviewing the empty_files object
 empty_idx <- which(!lengths(filestocopy_list))
 
-empty_files <- empty_idx %>% fpr_filter_list()
+empty_files <- empty_idx %>% tfpr_filter_list()
 
 
 ##rename long names if necessary
@@ -61,10 +64,10 @@ photo_sort_tracking %>%
   readr::write_csv(file = paste0(getwd(), '/data/photos/photo_sort_tracking_phase1.csv'))
 
 filestopaste_list <- filestocopy_list %>%
-  map(fpr_photo_change_name)
+  map(tfpr_photo_change_name)
 
 ##!!!!!!!!!!!!!!!copy over the photos!!!!!!!!!!!!!!!!!!!!!!!
-mapply(fpr_copy_over_photos,
+mapply(tfpr_copy_over_photos,
        filescopy =  filestocopy_list,
        filespaste = filestopaste_list)
 
