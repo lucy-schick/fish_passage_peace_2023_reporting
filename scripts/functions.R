@@ -19,7 +19,7 @@ tab_fish_mt <- function(sit = my_site){
 
 # take habitat confirmation xls and make a csv with the alias_local_name pasted to the comments
 # so people can see which comments are linked to which site
-fpr_hab_alias_to_comments <- function(target = target_dir){
+tfpr_hab_alias_to_comments <- function(target = target_dir){
   fpr_import_hab_con(col_filter_na = T,
                      row_empty_remove = T,
                      backup = FALSE) %>%
@@ -65,7 +65,7 @@ xref_moti_climate_names <- tibble::tribble(
                              "priority_notes",                                                                 "Describe details and rational for priority rankings",         NA,     NA,     NA
   )
 
-fpr_table_moti <- function(dat = tab_moti_phase2,
+tfpr_table_moti <- function(dat = tab_moti_phase2,
                            xref_table = xref_moti_climate_names,
                            site = my_site,
                            ...){
@@ -107,7 +107,7 @@ fpr_table_moti <- function(dat = tab_moti_phase2,
 
 }
 
-fpr_table_moti_comments <- function(dat = tab_moti_phase2,
+tfpr_table_moti_comments <- function(dat = tab_moti_phase2,
                            site = my_site,
                            ...){
   tab_comments <- dat %>%
