@@ -46,10 +46,20 @@ utm <- 10
 
 # read in amalgamated pscis form
 form_pscis <- sf::st_read(dsn= paste0('../../gis/', dir_project, '/data_field/2023/form_pscis_2023.gpkg')) %>%
+  # assumes in albers
+  mutate(
+    x = sf::st_coordinates(.)[,1],
+    y = sf::st_coordinates(.)[,2]) %>%
+  # then grab the utms. fragile since relies on having only 1 utm zone. there
+  # are functions somewhere to deal with this (can't remember which repo though)
   st_transform(crs = 26900 + utm) %>%
-  poisspatial::ps_sfc_to_coords(X = 'easting', Y = 'northing') %>%
+  mutate(
+    easting = sf::st_coordinates(.)[,1],
+    northing = sf::st_coordinates(.)[,2]) %>%
   # add in utm zone of study area
-  mutate(utm_zone = utm)
+  mutate(utm_zone = utm) %>%
+  # not sure we need to but turn non-spatial
+  sf::st_drop_geometry()
 
 # check for duplicates
 form_pscis %>%
@@ -127,7 +137,7 @@ form_pscis_cleaned %>%
 
 # read in form from Q
 form_pscis <- sf::st_read(dsn= paste0('../../gis/', dir_project, '/data_field/2023/form_pscis_2023.gpkg')) %>%
-  st_transform(crs = 26900 + utm) %>%
+  # st_transform(crs = 26900 + utm) %>%
   st_drop_geometry()
 
 
