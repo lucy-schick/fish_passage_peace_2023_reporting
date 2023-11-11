@@ -4,7 +4,7 @@ source('scripts/packages.R')
 
 # relative path to the q project form
 
-#--------------------import---------------------------
+#--------------------process forms raw from field---------------------------
 
 # name the project directory we are pulling from
 dir_project <- 'sern_peace_fwcp_2023'
@@ -41,7 +41,10 @@ utm <- 10
 #   ) %>%
 #   sf::st_write('data/inputs_extracted/mergin_backups/form_pscis_v70.gpkg', append=FALSE)
 
-# read in cleaned amalgamated pscis form
+
+#---------------------pscis clean and QA only--------------------------
+
+# read in amalgamated pscis form
 form_pscis <- sf::st_read(dsn= paste0('../../gis/', dir_project, '/data_field/2023/form_pscis_2023.gpkg')) %>%
   st_transform(crs = 26900 + utm) %>%
   poisspatial::ps_sfc_to_coords(X = 'easting', Y = 'northing') %>%
@@ -54,26 +57,6 @@ form_pscis %>%
   group_by(site_id) %>%
   filter(n()>1)
 
-# this is a table that cross references column names for pscis table and has the columns in the same order as the spreadsheet
-xref_names_pscis <- fpr::fpr_xref_pscis
-
-# get order of columns as per the excel template spreadsheet
-# this can be used as a select(all_of(name_pscis_sprd_ordered)) later
-# to order columns for the field form and/or put the field entered table in order
-name_pscis_sprd_ordered <- fpr::fpr_xref_pscis %>%
-  filter(!is.na(spdsht)) %>%
-  select(spdsht) %>%
-  pull(spdsht)
-
-# see names that coincide between the xref table and what we have
-intersect(name_pscis_sprd_ordered, names(form_pscis))
-
-# see which are different
-setdiff(name_pscis_sprd_ordered, names(form_pscis))
-# order matters
-setdiff(names(form_pscis), name_pscis_sprd_ordered)
-
-##---------------------pscis clean only--------------------------
 form_prep1 <- form_pscis %>%
   #split date time column into date and time
   dplyr::mutate(date_time_start = lubridate::ymd_hms(date_time_start),
@@ -109,6 +92,64 @@ form_prep2 <- form_prep1 %>%
   mutate(road_name = str_trim(road_name, side = 'left'),
          stream_name = str_trim(stream_name, side = 'left'))
 
+form_pscis_cleaned <- form_prep2 %>%
+  # append moti ids to comments, differentiate between highway major structure, and add time to end
+  mutate(assessment_comment = case_when(
+    moti_chris_culvert_id > 1000000 ~ paste0(assessment_comment, ' chris_culvert_id: ', moti_chris_culvert_id, '.'),
+    T ~ assessment_comment),
+    assessment_comment = case_when(
+      moti_chris_culvert_id < 1000000 ~ paste0(assessment_comment, ' chris_hwy_structure_road_id: ', moti_chris_culvert_id, '.'),
+      T ~ assessment_comment),
+    assessment_comment = paste0(assessment_comment, ' ', time)
+  ) %>%
+  # ditch time column
+  select(-time)
+
+# burn cleaned copy to QGIS project gpkg, the pscis clean section can be repeated again when changes are made in Q
+
+form_pscis_cleaned %>%
+  st_as_sf(coords = c('easting', 'northing'), crs = 26900 + utm, remove = F) %>%
+  # convert back to project crs
+  st_transform(crs = 3005) %>%
+  sf::st_write(paste0('../../gis/', dir_project, '/data_field/2023/form_pscis_2023.gpkg'), append=F, delete_dsn=T)
+
+# burn to version controlled csv, so changes can be viewed on git
+
+form_pscis_cleaned %>%
+  readr::write_csv(paste0('data/dff/form_pscis_2023.csv'), na='')
+
+
+
+#---------------------pscis export only--------------------------
+
+# in this section we will read in cleaned form from Q after review and finalization,
+# and then get the names of the input template so we can copy and past special directly into the spreadsheet
+
+# read in form from Q
+form_pscis <- sf::st_read(dsn= paste0('../../gis/', dir_project, '/data_field/2023/form_pscis_2023.gpkg')) %>%
+  st_transform(crs = 26900 + utm) %>%
+  st_drop_geometry()
+
+
+# this is a table that cross references column names for pscis table and has the columns in the same order as the spreadsheet
+xref_names_pscis <- fpr::fpr_xref_pscis
+
+# get order of columns as per the excel template spreadsheet
+# this can be used as a select(all_of(name_pscis_sprd_ordered)) later
+# to order columns for the field form and/or put the field entered table in order
+name_pscis_sprd_ordered <- fpr::fpr_xref_pscis %>%
+  filter(!is.na(spdsht)) %>%
+  select(spdsht) %>%
+  pull(spdsht)
+
+# see names that coincide between the xref table and what we have
+intersect(name_pscis_sprd_ordered, names(form_pscis))
+
+# see which are different
+setdiff(name_pscis_sprd_ordered, names(form_pscis))
+# order matters
+setdiff(names(form_pscis), name_pscis_sprd_ordered)
+
 # to use all the columns from the template first we make an empty dataframe from a template
 template <- fpr::fpr_import_pscis() %>%
   slice(0)
@@ -117,7 +158,7 @@ template <- fpr::fpr_import_pscis() %>%
 # we may as well keep all the columns that are not in the spreadsheet and append to the end
 form <- bind_rows(
   template,
-  form_prep2
+  form_pscis
 ) %>%
   # only select columns from template object
   select(any_of(names(template))) %>%
@@ -126,11 +167,10 @@ form <- bind_rows(
   # then arrange it by pscis id to separate phase 1s from reassessments
   arrange(pscis_crossing_id, date)
 
-# burn to a csv
+
+# burn to a csv ready for copy and paste to template
 form %>% readr::write_csv(paste0(
-    'data/dff/form_pscis_',
-    format(lubridate::now(), '%Y%m%d'),
-    '.csv'), na='')
+    'data/dff/pscis_export.csv'), na='')
 
 # --------------------moti climate change ---------------------------
 #
@@ -163,23 +203,23 @@ form %>% readr::write_csv(paste0(
 # # so let's try that first
 #
 #
-# # get_this <- bcdata::bcdc_tidy_resources('ministry-of-transportation-mot-culverts') %>%
-# #   filter(bcdata_available == T)  %>%
-# #   pull(package_id)
-# #
-# # dat <- bcdata::bcdc_get_data(get_this)
-# #
-# # moti_raw <- dat %>%
-# #   purrr::set_names(nm = janitor::make_clean_names(names(dat)))
-# #
-# # # match our sites to ids
-# # moti <- left_join(
-# #   form_prep,
-# #
-# #   moti_raw %>% select(culvert_id, chris_culvert_id) %>% sf::st_drop_geometry(),
-# #
-# #   by = c('mot_culvert_id' = 'culvert_id')
-# # )
+# get_this <- bcdata::bcdc_tidy_resources('ministry-of-transportation-mot-culverts') %>%
+#   filter(bcdata_available == T)  %>%
+#   pull(package_id)
+#
+# dat <- bcdata::bcdc_get_data(get_this)
+#
+# moti_raw <- dat %>%
+#   purrr::set_names(nm = janitor::make_clean_names(names(dat)))
+#
+# # match our sites to ids
+# moti <- left_join(
+#   form_prep2,
+#
+#   moti_raw %>% select(culvert_id, chris_culvert_id) %>% sf::st_drop_geometry(),
+#
+#   by = c('moti_chris_culvert_id' = 'culvert_id')
+# )
 #
 # # the names must have changed so lets use the file in the mergin project as we know that one is the same
 # moti_raw <- sf::st_read('../../gis/mergin/bcfishpass_skeena_20220823/clipped_moti_culverts_sp.gpkg') %>%
@@ -195,8 +235,6 @@ form %>% readr::write_csv(paste0(
 #
 # # burn to a csv
 # moti %>%
-#
-#
 #   #sort data by date
 #   arrange(date) %>%
 #
@@ -204,4 +242,3 @@ form %>% readr::write_csv(paste0(
 #     'data/dff/form_pscis_moti_',
 #     format(lubridate::now(), "%Y%m%d"),
 #     '.csv'))
-
