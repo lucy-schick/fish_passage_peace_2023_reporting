@@ -85,30 +85,30 @@ form_prep1 <- form_pscis %>%
   filter(site_id != '12345')
 
 # clean up data fields to make copy and paste to prov template easier
-form_prep2 <- form_prep1 %>%
-  # some columns that have yes/no answers have NA values in mergin, need to change to No
-  # need to add "No" as default values to mergin
-  mutate(across(contains('yes_no'), ~replace_na(.,'No'))) %>%
-  # some numeric fields for CBS have NA values when a user input 0
-  mutate(across(c(outlet_drop_meters, outlet_pool_depth_0_01m, culvert_slope_percent, stream_slope),
-                ~case_when(crossing_type == 'Closed Bottom Structure' ~replace_na(.,0),
-                TRUE ~ .
-                ))) %>%
-  # change "trib" to long version "Tributary"
-  mutate(stream_name = str_replace_all(stream_name, 'Trib ', 'Tributary ')) %>%
-  # change "Hwy" to "Highway"
-  mutate(road_name = str_replace_all(road_name, 'Hwy ', 'Highway ')) %>%
-  # remove white spaces from start of strings in road and stream columns
-  mutate(road_name = str_trim(road_name, side = 'left'),
-         stream_name = str_trim(stream_name, side = 'left'))
+# form_prep2 <- form_prep1 %>%
+#   # some columns that have yes/no answers have NA values in mergin, need to change to No
+#   # need to add "No" as default values to mergin
+#   mutate(across(contains('yes_no'), ~replace_na(.,'No'))) %>%
+#   # some numeric fields for CBS have NA values when a user input 0
+#   mutate(across(c(outlet_drop_meters, outlet_pool_depth_0_01m, culvert_slope_percent, stream_slope),
+#                 ~case_when(crossing_type == 'Closed Bottom Structure' ~replace_na(.,0),
+#                 TRUE ~ .
+#                 ))) %>%
+#   # change "trib" to long version "Tributary"
+#   mutate(stream_name = str_replace_all(stream_name, 'Trib ', 'Tributary ')) %>%
+#   # change "Hwy" to "Highway"
+#   mutate(road_name = str_replace_all(road_name, 'Hwy ', 'Highway ')) %>%
+#   # remove white spaces from start of strings in road and stream columns
+#   mutate(road_name = str_trim(road_name, side = 'left'),
+#          stream_name = str_trim(stream_name, side = 'left'))
 
-form_pscis_cleaned <- form_prep2 %>%
+form_pscis_cleaned <- form_prep1 %>%
   # append moti ids to comments, differentiate between highway major structure, and add time to end
   mutate(assessment_comment = case_when(
-    moti_chris_culvert_id > 1000000 ~ paste0(assessment_comment, ' chris_culvert_id: ', moti_chris_culvert_id, '.'),
+    moti_chris_culvert_id > 1000000 ~ paste0(assessment_comment, ' Ministry of Transportation chris_culvert_id: ', moti_chris_culvert_id, '.'),
     T ~ assessment_comment),
     assessment_comment = case_when(
-      moti_chris_culvert_id < 1000000 ~ paste0(assessment_comment, ' chris_hwy_structure_road_id: ', moti_chris_culvert_id, '.'),
+      moti_chris_culvert_id < 1000000 ~ paste0(assessment_comment, ' Ministry of Transportation chris_hwy_structure_road_id: ', moti_chris_culvert_id, '.'),
       T ~ assessment_comment),
     assessment_comment = paste0(assessment_comment, ' ', time)
   ) %>%
