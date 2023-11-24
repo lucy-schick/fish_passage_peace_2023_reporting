@@ -563,9 +563,6 @@ rd_class_surface <- bcfishpass %>%
     pscis_all %>% pull(pscis_crossing_id))
   )
 
-
-
-
 conn <- rws_connect("data/bcfishpass.sqlite")
 rws_list_tables(conn)
 rws_write(rd_class_surface, exists = F, delete = T,
@@ -574,31 +571,34 @@ rws_disconnect(conn)
 
 
 ####----tab cost multipliers for road surface-----
-rd_cost_mult <- pscis_rd %>%
-  select(my_road_class, my_road_surface) %>%
-  # mutate(road_surface_mult = NA_real_, road_class_mult = NA_real_) %>%
-  mutate(road_class_mult = case_when(my_road_class == 'local' ~ 4,
-                                     my_road_class == 'collector' ~ 4,
-                                     my_road_class == 'arterial' ~ 15,
-                                     my_road_class == 'highway' ~ 15,
-                                     my_road_class == 'rail' ~ 15,
-                                     T ~ 1))  %>%
-  mutate(road_surface_mult = case_when(my_road_surface == 'loose' |
-                                         my_road_surface == 'rough' ~
-                                         1,
-                                       T ~ 2)) %>%
-  # mutate(road_type_mult = road_class_mult * road_surface_mult) %>%
-  mutate(cost_m_1000s_bridge = road_surface_mult * road_class_mult * 20,  #changed from 12.5 due to inflation
-         cost_embed_cv = road_surface_mult * road_class_mult * 40) %>%
-  # mutate(cost_1000s_for_10m_bridge = 10 * cost_m_1000s_bridge) %>%
-  distinct( .keep_all = T) %>%
-  tidyr::drop_na() %>%
-  arrange(cost_m_1000s_bridge, my_road_class)
+# moving this to a csv to simplify setup. We just alter the csv when we need more categories and want to change the price
+# csv located in 'data/inputs_raw/tab_cost_rd_mult.csv'
 
-rws_write(rd_cost_mult, exists = F, delete = TRUE,
-          conn = conn, x_name = "rd_cost_mult")
-rws_list_tables(conn)
-rws_disconnect(conn)
+# rd_cost_mult <- pscis_rd %>%
+#   select(my_road_class, my_road_surface) %>%
+#   # mutate(road_surface_mult = NA_real_, road_class_mult = NA_real_) %>%
+#   mutate(road_class_mult = case_when(my_road_class == 'local' ~ 4,
+#                                      my_road_class == 'collector' ~ 4,
+#                                      my_road_class == 'arterial' ~ 15,
+#                                      my_road_class == 'highway' ~ 15,
+#                                      my_road_class == 'rail' ~ 15,
+#                                      T ~ 1))  %>%
+#   mutate(road_surface_mult = case_when(my_road_surface == 'loose' |
+#                                          my_road_surface == 'rough' ~
+#                                          1,
+#                                        T ~ 2)) %>%
+#   # mutate(road_type_mult = road_class_mult * road_surface_mult) %>%
+#   mutate(cost_m_1000s_bridge = road_surface_mult * road_class_mult * 20,  #changed from 12.5 due to inflation
+#          cost_embed_cv = road_surface_mult * road_class_mult * 40) %>%
+#   # mutate(cost_1000s_for_10m_bridge = 10 * cost_m_1000s_bridge) %>%
+#   distinct( .keep_all = T) %>%
+#   tidyr::drop_na() %>%
+#   arrange(cost_m_1000s_bridge, my_road_class)
+#
+# rws_write(rd_cost_mult, exists = F, delete = TRUE,
+#           conn = conn, x_name = "rd_cost_mult")
+# rws_list_tables(conn)
+# rws_disconnect(conn)
 
 
 
@@ -714,11 +714,7 @@ hab_priority_fish_hg <- left_join(
   rename(species_codes = observedspp_upstr) %>%
   mutate(
     upstream_habitat_length_m = bt_rearing_km * 1000,
-    species_codes = stringr::str_replace_all(species_codes, c('CCT,|SST,|SP,'), ''),
-    species_codes = case_when(
-      site == 198090 ~ NA_character_,
-      T ~ species_codes
-    )
+    species_codes = stringr::str_replace_all(species_codes, c('CCT,|SST,|SP,'), '')
   ) %>%
   readr::write_csv('data/inputs_extracted/hab_priority_fish_hg.csv', na = '')
 
@@ -747,7 +743,8 @@ hab_loc <- habitat_confirmations %>%
 ##add the species code
 hab_fish_codes <- fishbc::freshwaterfish %>%
   select(species_code = Code, common_name = CommonName) %>%
-  tibble::add_row(species_code = 'NFC', common_name = 'No Fish Caught')
+  tibble::add_row(species_code = 'NFC', common_name = 'No Fish Caught') %>%
+  mutate(common_name = case_when(common_name == 'Cutthroat Trout' ~ 'Cutthroat Trout (General)', T ~ common_name))
 
 hab_fish_indiv_prep2 <- left_join(
   hab_fish_indiv_prep,
@@ -769,7 +766,7 @@ hab_fish_indiv_prep3 <- left_join(
                 haul_number_pass_number,
                 species_code,
                 length_mm,
-                weight_g) ##added method #
+                weight_g)
 
 
 ##we need the size of the sites too
@@ -828,16 +825,15 @@ hab_fish_indiv <- full_join(
   ),
   by = c(
     "reference_number",
-    # 'alias_local_name' = 'local_name',
     "sampling_method",
     "method_number",
     "haul_number_pass_number")
 ) %>%
   mutate(species_code = as.character(species_code)) %>%
-  mutate(species_code = case_when(
-    is.na(species_code) ~ 'NFC',
-    T ~ species_code)
-  ) %>%
+  # mutate(species_code = case_when(
+  #   is.na(species_code) ~ 'NFC',
+  #   T ~ species_code)
+  # ) %>%
   mutate(species_code = as.factor(species_code)) %>%
   mutate(comments = as.character(comments)) %>%
   mutate(life_stage = case_when(  ##this section comes from the histogram below - we include here so we don't need to remake the df
@@ -848,12 +844,12 @@ hab_fish_indiv <- full_join(
     T ~ NA_character_
     ),
     life_stage = case_when(
-      species_code %like% 'CC' ~ NA_character_,
+      species_code %in% c('CC', 'SU', 'BB') ~ NA_character_,
       T ~ life_stage),
     comments = case_when(
-      species_code %like% 'CC' & !is.na(comments) ~
+      species_code %in% c('CC', 'SU', 'BB') & !is.na(comments) ~
         paste0(comments, 'Not salmonids so no life stage specified.'),
-      species_code %like% 'CC' & is.na(comments) ~
+      species_code %in% c('CC', 'SU', 'BB') & is.na(comments) ~
         'Not salmonids so no life stage specified.',
       T ~ comments)
     )%>%
@@ -877,7 +873,7 @@ bin_1 <- floor(min(hab_fish_indiv$length_mm, na.rm = TRUE)/5)*5
 bin_n <- ceiling(max(hab_fish_indiv$length_mm, na.rm = TRUE)/5)*5
 bins <- seq(bin_1,bin_n, by = 5)
 
-plot_fish_hist <- ggplot(hab_fish_indiv %>% filter(!species_code %like% 'CC'),
+plot_fish_hist <- ggplot(hab_fish_indiv %>% filter(!species_code %in% c('CC', 'SU')),
                          aes(x=length_mm
                              # fill=alias_local_name
                              # color = alias_local_name
@@ -888,7 +884,8 @@ plot_fish_hist <- ggplot(hab_fish_indiv %>% filter(!species_code %like% 'CC'),
   facet_wrap(~species_code)+
   # scale_color_grey() +
   # scale_fill_grey() +
-  theme_bw(base_size = 8)+
+  ggdark::dark_theme_bw(base_size = 8)+
+  # theme_bw(base_size = 8)+
   scale_x_continuous(breaks = bins[seq(1, length(bins), by = 2)])+
   # scale_color_manual(values=c("grey90", "grey60", "grey30", "grey0"))+
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
@@ -938,18 +935,18 @@ hab_fish_input <- left_join(
          # a hack to get number of columns right
          fish_activity = age,
          comments) %>%
-  mutate(make = 'other',
-         model = 'halltech HT2000') %>%
+  mutate(model = case_when(local_name %like% 'ef' ~ 'halltech HT2000'),
+         make = case_when(local_name %like% 'ef' ~ 'other')) %>%
   mutate(total_number = case_when(
     species == 'No Fish Caught' ~ NA_integer_,
     T ~ total_number
-  )) %>%
-  janitor::adorn_totals()   ##use this to ensure you have the same number of fish in the summary as the individual fish sheet
+  )) #%>% ths was commented out because it was changing the character types of columns
+#janitor::adorn_totals()   ##use this to ensure you have the same number of fish in the summary as the individual fish sheet
+
 
 ##burn to a csv so you can cut and paste into your fish submission
 hab_fish_input %>%
-  readr::write_csv(file = paste0(getwd(), '/data/inputs_extracted/hab_con_fish_summary.csv'),
-                   na = "")
+  readr::write_csv('data/inputs_extracted/hab_con_fish_summary.csv', na = "")
 
 
 # this will be joined to the abundance estimates and the confidence intervals
