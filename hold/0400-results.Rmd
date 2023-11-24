@@ -1,0 +1,451 @@
+# Results and Discussion
+
+`r if(gitbook_on)knitr::asis_output("Results of Phase 1 and Phase 2 assessments are summarized in Figure \\@ref(fig:map-interactive) with additional details provided in sections below.")` 
+
+<br>
+
+```{r map-interactive, eval= gitbook_on, fig.cap='Map of target sites. Full screen available through button below zoom.'}
+##make colors for the priorities
+pal <- 
+   colorFactor(palette = c("red", "yellow", "grey", "black"), 
+               levels = c("high", "moderate", "low", "no fix"))
+
+pal_phase1 <- 
+   colorFactor(palette = c("red", "yellow", "grey", "black"), 
+               levels = c("high", "moderate", "low", NA))
+
+# tab_map_phase2 <- tab_map %>% filter(source %like% 'phase2')
+#https://stackoverflow.com/questions/61026700/bring-a-group-of-markers-to-front-in-leaflet
+# marker_options <- markerOptions(  
+#   zIndexOffset = 1000)
+tracks <- sf::read_sf("./data/habitat_confirmation_tracks.gpx", layer = "tracks")
+
+
+wshd_study_areas <- sf::read_sf('data/fishpass_mapping/wshd_study_areas.geojson')
+  # st_transform(crs = 4326)
+
+map_phase3 <- bcfishpass %>% 
+  filter(aggregated_crossings_id %in% c(125179, 125000, 125261, 125231, 1016602819)) %>% 
+  mutate(stream_crossing_id = case_when(aggregated_crossings_id == 1016602819 ~ 125345,
+                                        T ~ stream_crossing_id)) %>% 
+    sf::st_as_sf(coords = c("utm_easting", "utm_northing"),
+               crs = 26910, remove = F) %>% ##don't forget to put it in the right crs buds
+  sf::st_transform(crs = 4326)
+
+map_phase4 <- map_phase3 %>% 
+  filter(stream_crossing_id == 125179)
+  
+map <- leaflet(height=500, width=780) %>%
+  addTiles()  %>% 
+  # leafem::addMouseCoordinates(proj4 = 26911) %>% ##can't seem to get it to render utms yet
+  # addProviderTiles(providers$"Esri.DeLorme") %>% 
+  addProviderTiles("Esri.WorldTopoMap", group = "Topo") %>%
+  addProviderTiles("Esri.WorldImagery", group = "ESRI Aerial") %>% 
+  addPolygons(data = wshd_study_areas, color = "#F29A6E", weight = 1, smoothFactor = 0.5,
+              opacity = 1.0, fillOpacity = 0,
+              fillColor = "#F29A6E", label = wshd_study_areas$watershed_group_name) %>%
+  
+  addPolygons(data = wshds, color = "#0859C6", weight = 1, smoothFactor = 0.5,
+              opacity = 1.0, fillOpacity = 0.25,
+              fillColor = "#00DBFF",
+              label = wshds$stream_crossing_id,
+              popup = leafpop::popupTable(x = select(wshds %>% st_set_geometry(NULL),
+                                                     Site = stream_crossing_id,
+                                                     elev_min:area_km),
+                                          feature.id = F,
+                                          row.numbers = F),
+              group = "Confirmation 2022") %>% 
+  addLegend(
+    position = "topright",
+    colors = c("red", "yellow", "grey", "black"),
+    labels = c("High", "Moderate", "Low", 'No fix'), opacity = 1,
+    title = "Fish Passage Priorities") %>% 
+#   # addCircleMarkers(
+#   # data=tab_plan_sf,
+#   # label = tab_plan_sf$Comments,
+#   # labelOptions = labelOptions(noHide = F, textOnly = F),
+#   # popup = leafpop::popupTable(x = tab_plan_sf %>% st_drop_geometry(),
+#   #                             feature.id = F,
+#   #                             row.numbers = F),
+#   # radius = 9,
+#   # fillColor = ~pal_phase1(tab_plan_sf$Priority),
+#   # color= "#ffffff",
+#   # stroke = TRUE,
+#   # fillOpacity = 1.0,
+# # weight = 2,
+# # opacity = 1.0,
+# # group = "Planning") %>% 
+addCircleMarkers(data=tab_map %>%
+                   filter(source %like% 'phase1' | source %like% 'pscis_reassessments'),
+                 label = tab_map %>% filter(source %like% 'phase1' | source %like% 'pscis_reassessments') %>% pull(pscis_crossing_id),
+                 # label = tab_map$pscis_crossing_id,
+                 labelOptions = labelOptions(noHide = F, textOnly = TRUE),
+                 popup = leafpop::popupTable(x = select((tab_map %>% st_set_geometry(NULL) %>% filter(source %like% 'phase1' | source %like% 'pscis_reassessments')),
+                                                        Site = pscis_crossing_id, Priority = priority_phase1, Stream = stream_name, Road = road_name, `Habitat value`= habitat_value, `Barrier Result` = barrier_result, `Culvert data` = data_link, `Culvert photos` = photo_link, `Model data` = model_link),
+                                             feature.id = F,
+                                             row.numbers = F),
+                 radius = 9,
+                 fillColor = ~pal_phase1(priority_phase1),
+                 color= "#ffffff",
+                 stroke = TRUE,
+                 fillOpacity = 1.0,
+                 weight = 2,
+                 opacity = 1.0,
+                 group = "Assessment 2022") %>% 
+  addPolylines(data=tracks,
+               opacity=0.75, color = '#e216c4',
+               fillOpacity = 0.75, weight=5, group = "Confirmation 2022") %>%
+
+addAwesomeMarkers(
+    lng = as.numeric(photo_metadata$gps_longitude),
+    lat = as.numeric(photo_metadata$gps_latitude),
+    popup = leafpop::popupImage(photo_metadata$url, src = "remote"),
+    clusterOptions = markerClusterOptions(),
+    group = "Confirmation 2022") %>%
+
+  addCircleMarkers(
+    data=tab_hab_map,
+    label = tab_hab_map$pscis_crossing_id,
+    labelOptions = labelOptions(noHide = T, textOnly = TRUE),
+    popup = leafpop::popupTable(x = select((tab_hab_map %>% st_drop_geometry()),
+                                           Site = pscis_crossing_id,
+                                           Priority = priority,
+                                           Stream = stream_name,
+                                           Road = road_name,
+                                           `Habitat (m)`= upstream_habitat_length_m,
+                                           Comments = comments,
+                                           `Culvert data` = data_link,
+                                           `Culvert photos` = photo_link,
+                                           `Model data` = model_link),
+                                feature.id = F,
+                                row.numbers = F),
+    radius = 9,
+    fillColor = ~pal(priority),
+    color= "#ffffff",
+    stroke = TRUE,
+    fillOpacity = 1.0,
+    weight = 2,
+    opacity = 1.0,
+    group = "Confirmation 2022"
+    ) %>%
+  
+    addCircleMarkers(
+    data=map_phase3,
+    label = map_phase3$stream_crossing_id,
+    labelOptions = labelOptions(noHide = T, textOnly = TRUE),
+    popup = leafpop::popupTable(x = select((map_phase3 %>% st_drop_geometry()),
+                                           Site = stream_crossing_id,
+                                           Stream = pscis_stream_name,
+                                           Road = pscis_road_name,
+                                           Comments = pscis_assessment_comment),
+                                feature.id = F,
+                                row.numbers = F),
+    radius = 9,
+    fillColor = "red",
+    color= "#ffffff",
+    stroke = TRUE,
+    fillOpacity = 1.0,
+    weight = 2,
+    opacity = 1.0,
+    group = "Design"
+    ) %>% 
+  
+      addCircleMarkers(
+    data=map_phase4,
+    label = map_phase4$stream_crossing_id,
+    labelOptions = labelOptions(noHide = T, textOnly = TRUE),
+    popup = leafpop::popupTable(x = select((map_phase3 %>% st_drop_geometry()),
+                                           Site = stream_crossing_id,
+                                           Stream = pscis_stream_name,
+                                           Road = pscis_road_name,
+                                           Comments = pscis_assessment_comment),
+                                feature.id = F,
+                                row.numbers = F),
+    radius = 9,
+    fillColor = "red",
+    color= "#ffffff",
+    stroke = TRUE,
+    fillOpacity = 1.0,
+    weight = 2,
+    opacity = 1.0,
+    group = "Remediation"
+    ) %>%
+  
+  addLayersControl(
+    baseGroups = c(
+      "Esri.DeLorme",
+      "ESRI Aerial"),
+    overlayGroups = c("Assessment 2022", "Confirmation 2022", "Design", "Remediation"),
+    options = layersControlOptions(collapsed = F)) %>%
+  leaflet.extras::addFullscreenControl() %>%
+  addMiniMap(tiles = providers$"Esri.NatGeoWorldMap",
+             zoomLevelOffset = -6, width = 100, height = 100)
+
+map %>% 
+  hideGroup(c("Assessment 2022", "Confirmation 2022"))
+
+
+
+```
+
+## Identify and Communicate Connectivity Issues {-}
+
+### Engage Partners {-}
+
+SERNbc and McLeod Lake have been actively engaging with the following groups to build awareness for the initiative, solicit input, prioritize sites, raise partnership funding and plan/implement fish passage remediations: 
+
+  * McLeod Lake Indian Band members of council
+  * BCTS Engineering
+  * CN Rail
+  * Canadian Forest Products (Canfor)
+  * Sinclar Forest Projects Ltd. (Sinclar)
+  * Northern Engineering - Ministry of Forests
+  * BC Ministry of Transportation and Infrastructure
+  * Fish Passage Technical Working Group
+  * Coastal Gasliink
+  * British Columbia Wildlife Federation
+  * Planning foresters and biologists Ministry of Forests, Lands, Natural Resource Operations and Rural Development (restructured into Ministry of Forests and Ministry of Land, Water and Resource Stewardship)
+  *  Fisheries experts
+   
+The [Environmental Stewardship Initiative](https://www2.gov.bc.ca/gov/content/environment/natural-resource-stewardship/consulting-with-first-nations/collaborative-stewardship-bc/environmental-stewardship-initiative) (ESI) is a collaborative partnership between the Province and First Nations with projects designed to focus on ecosystem assessment, restoration, enhancement, research and education. To date, four regional environmental stewardship projects have been developed throughout northern British Columbia. A governance working group with representatives from all four stewardship forums provides governance oversight and guidance for the ESI. The Parsnip River watershed group is within the Regional Strategic Environmental Assessment Forum (RSEA) area. Indigenous partners for RSEA include McLeod lake, Blueberry River, Halfway River, Doig River, West Moberly, Prophet River and Sauteau.  Forum values of focus to date include old forest/forest biodiversity, water, moose, peaceful enjoyment and environmental livelihoods. Working together with McLeod Lake Indian Band we are leveraging RSEA initiatives by overlaying Parsnip River watershed group fish passage planning data with the [Recreational Opportunity Spectrum Inventory data](https://catalogue.data.gov.bc.ca/dataset/recreational-opportunity-spectrum-inventory) to facilitate discussions with partners and stakeholders about how long term landscape stewardship goals of McLeod Lake Indian Band relate to stream crossing infrastructure upgrades/removals within their traditional territory.  The inventory data summarizes recreation opportunities as combinations of settings and probable human experience opportunities organized along a spectrum of classes. The spectrum is set out in terms of seven classes as follows: Primitive (P), Semi-primitive Non-motorized (SPNM), Semi-primitive Motorized (SPM), Roaded Natural (RN), Roaded Modified (RM), Rural (R), Urban (U).  Areas classified towards the primitive end of the spectrum provide more opportunities for First Nations groups such as the McLeod Lake Indian Band to exercise their rights as indigenous people in areas less disturbed by industrial activity within their traditional territory [@unitednationsgeneralassembly2007UnitedNations].
+
+<br>
+
+### Mapping {-}
+
+Georeferenced field maps containing updated modelling outputs are presented in `r if(gitbook_on){knitr::asis_output("[here](https://hillcrestgeo.ca/outgoing/fishpassage/projects/parsnip/archive/2022-05-27/) and available for bulk download as [Attachment 1](https://hillcrestgeo.ca/outgoing/fishpassage/projects/parsnip/archive/2022-05-27/parsnip_2022-05-27.zip).")} else knitr::asis_output("[Attachment 1](https://hillcrestgeo.ca/outgoing/fishpassage/projects/parsnip/archive/2022-05-27/parsnip_2022-05-27.zip).")`
+
+<br>
+
+### Interactive Dashboard {-}
+
+`r if(gitbook_on){knitr::asis_output("The interactive dashboard is presented in Figure \\@ref(fig:widget-planning-caption).")}else knitr::asis_output("A csv containing fish passage modelling data used for input into the interactive dashboard to facilitate planning for 2023 field survey sites is included as [Attachment 2](https://github.com/NewGraphEnvironment/fish_passage_peace_2022_reporting/blob/main/docs/Attachment2_planning.csv). Please note that the interactive dashboard is located within the online interactive version of the report located at https://newgraphenvironment.github.io/fish_passage_peace_2022_reporting/.")` 
+
+```{r field-planning-prep}
+# join bcfishpass to some pscis columns for the screening table
+# get our dataframe to link to a map
+# xings filtered by >1km of potential rearing habitat
+xf <- left_join(
+  bcfishpass %>% 
+    st_as_sf(coords = c('utm_easting', 'utm_northing'), crs = 26910, remove = F) %>% 
+    filter(is.na(pscis_status) | (pscis_status != 'HABITAT CONFIRMATION' &
+                                    barrier_status != 'PASSABLE' &
+                                    barrier_status != 'UNKNOWN')) %>% 
+    filter(bt_rearing_km > 0.499) %>%
+    filter(crossing_type_code != 'OBS') %>% 
+    filter(is.na(barriers_anthropogenic_dnstr)) %>% 
+    # rename(bt_rearing_km_raw = bt_rearing_km) %>%
+    # mutate(bt_rearing_km = case_when(
+    #   bt_rearing_km_raw >= 1 & bt_rearing_km_raw < 2 ~ '1-2km',
+    #   bt_rearing_km_raw >= 2 & bt_rearing_km_raw <= 5 ~ '2-5km',
+    #   bt_rearing_km_raw >= 5 & bt_rearing_km_raw <= 10 ~ '5-10km',
+    #   T ~ '>10km')
+    # ) %>%
+    # mutate(bt_rearing_km = factor(bt_rearing_km, levels = c('1-2km', '2-5km', '5-10km', '>10km'))) %>%
+    select(id = aggregated_crossings_id, 
+           pscis_status, 
+           barrier_status, 
+           contains('bt_'), 
+           utm_easting,
+           utm_northing,
+           gradient_gis = gradient,
+           mapsheet = dbm_mof_50k_grid,
+           watershed_group_code) %>% 
+    # need to run rowise for our fpr function to hit each row
+    mutate(map_link = paste0('https://hillcrestgeo.ca/outgoing/fishpassage/projects/parsnip/archive/2022-05-27/FishPassage_', mapsheet, '.pdf')) %>% 
+    mutate(map_link = paste0("<a href ='", map_link,"'target='_blank'>", map_link,"</a>")) %>% 
+    arrange(id) %>% 
+    st_transform(crs = 4326),
+  
+  pscis %>% 
+    mutate(stream_crossing_id = as.character(stream_crossing_id)) %>% 
+    select(
+      stream_crossing_id, 
+      stream_name, 
+      road_name, 
+      outlet_drop,
+      channel_width = downstream_channel_width,
+      habitat_value_code,
+      image_view_url,
+      assessment_comment) %>% 
+    mutate(image_view_url = paste0("<a href ='", image_view_url,"'target='_blank'>",image_view_url,"</a>")) %>% 
+    st_drop_geometry(),
+  
+  by = c('id' = 'stream_crossing_id')) %>% 
+  select(id,
+         stream_name,
+         habitat_value = habitat_value_code,
+         mapsheet,
+         map_link,
+         image_view_url,
+         pscis_status:bt_slopeclass15_km, 
+         bt_spawning_km:gradient_gis,
+         # bt_spawning_km,
+         # bt_rearing_km_raw:gradient_gis,
+         road_name:assessment_comment,
+         watershed_group_code)
+  # dplyr::relocate(assessment_comment, .after = last_col())
+  
+  
+  
+
+# xf %>%
+#   filter(!is.na(pscis_status))
+# 
+# t <- xf %>%
+#   group_by(bt_rearing_km) %>%
+#   summarise(n = n())
+
+```
+
+```{r widget-planning, eval = gitbook_on}
+# Wrap data frame in SharedData
+sd <- SharedData$new(xf %>% select(-mapsheet))
+
+
+# Use SharedData like a dataframe with Crosstalk-enabled widgets
+map <- sd %>% 
+  
+  leaflet(height=500) %>% #height=500, width=780
+  # addTiles() %>% 
+  addProviderTiles("Esri.WorldTopoMap", group = "Topo") %>%
+  
+  addProviderTiles("Esri.WorldImagery", group = "ESRI Aerial") %>% 
+  
+  addCircleMarkers(
+    label = xf$id,
+    labelOptions = labelOptions(noHide = T, textOnly = TRUE),
+    popup = leafpop::popupTable(xf %>% 
+                                  st_drop_geometry() %>% 
+                                  select(id, 
+                                         stream_name,
+                                         bt_rearing_km,
+                                         # bt_rearing_km = bt_rearing_km_raw,
+                                         bt_spawning_km,
+                                         mapsheet,
+                                         image_view_url, 
+                                         assessment_comment,
+                                         watershed_group_code),
+                                feature.id = F,
+                                row.numbers = F),
+    radius = 9,
+    fillColor = "red",
+    color= "#ffffff",
+    stroke = TRUE,
+    fillOpacity = 1.0,
+    weight = 2,
+    opacity = 1.0
+  ) %>% 
+  addPolygons(data = wshd_study_areas, color = "#F29A6E", weight = 1, smoothFactor = 0.5,
+              opacity = 1.0, fillOpacity = 0,
+              fillColor = "#F29A6E", label = wshd_study_areas$watershed_group_name) %>% 
+  addLayersControl(
+    baseGroups = c(
+      "Esri.DeLorme",
+      "ESRI Aerial"),
+    options = layersControlOptions(collapsed = F)) %>% 
+  leaflet.extras::addFullscreenControl(position = "bottomright")
+
+# tbl <- reactable::reactable(
+#   sd,
+#   selection = "multiple",
+#   onClick = "select",
+#   rowStyle = list(cursor = "pointer"),
+#   defaultPageSize = 5
+#   # minRows = 10
+# )
+
+# htmltools::browsable(
+#   htmltools::tagList(map, tbl)
+# )
+
+
+
+widgets <- bscols(
+  widths = c(2, 5, 5),
+  filter_checkbox("label",
+                  "Watershed Group",
+                  sd,
+                  ~watershed_group_code),
+  filter_slider(id = "label",
+                label = "Bull Trout Rearing (km)",
+                sharedData = sd,
+                column = ~bt_rearing_km,
+                round = 1,
+                min = 0,
+                max = 100),
+  filter_slider(id = "label",
+                label = "Bull Trout Spawning (km)",
+                sharedData = sd,
+                column = ~bt_spawning_km,
+                round = 1,
+                max = 45)
+)
+
+htmltools::browsable(
+  htmltools::tagList(
+    widgets,
+    map,
+    
+    datatable(sd, 
+              class = 'cell-border stripe',
+              extensions=c("Scroller","Buttons","FixedColumns"), 
+              style="bootstrap",
+              # class="compact",
+              width="100%",
+              rownames = F,
+              options=list(
+                deferRender=TRUE, 
+                scrollY=300, 
+                scrollX = T,
+                scroller=TRUE,
+                dom = 'Bfrtip',
+                buttons = list(
+                  'copy',
+                  list(
+                    extend = 'collection',
+                    buttons = c('csv'),
+                    text = 'Download csv')),
+                fixedColumns = list(leftColumns = 2),
+                initComplete = JS("function(settings, json) {","$(this.api().table().container()).css({'font-size': '11px'});","}")),
+              escape = F)
+  ))
+
+
+```
+
+```{r widget-planning-caption, fig.cap= my_caption, out.width = "0.01%",  eval = gitbook_on}
+my_photo = 'fig/pixel.png'
+my_caption= 'Dashboard to facilitate field planning for field surveys. Note that only sites modelled with no crossings and having 0.5km or more of bull trout rearing habitat (>1.5m channel width and <7.5% gradient). Full screen available through button in bottom right of map.'
+knitr::include_graphics(my_photo, dpi = NA)
+```
+
+
+```{r tab-planning-pdf, eval= F}
+
+# identical(gitbook_on, FALSE)
+my_caption = 'Field planning results to facilitate selection of restoration opportunities for 2022 field surveys.'
+
+xf %>% 
+  sf::st_drop_geometry() %>% 
+  select(id:habitat_value,
+         outlet_drop,
+         bt_spawning_km, 
+         bt_rearing_km,
+         mapsheet,
+         utm_easting,
+         utm_northing,
+         assessment_comment) %>% 
+  
+  # test by removing the html
+  select(-mapsheet) %>% 
+  fpr::fpr_kable(caption_text = my_caption,
+                 scroll = gitbook_on)
+  # fpr_kable(caption_text = caption_text,
+  #           scroll = gitbook_on)
+
+```
+
+## Fish Passage Assessments {-}
+
+Fish passage assessments were conducted at 12 sites in August 2022 by Allan Irvine, R.P.Bio., Mateo Winterscheidt, B.Sc., Nathan Prince, Traditional Land Use Coordinator - McLeod Lake and Eran Spence, Forestry Referrals Officer - McLeod Lake. Assessments were conducted at four previously unassessed sites, three assessments took place as part of habitat confirmation assessments and five sites were reassessed as they had either been replaced since the data in PSCIS was last updated or because they were being scoped for habitat values while serving as training case studies for collaborating technicians. All previously assessed crossings were either fords or bridges so presented no concerns for fish passage. `r if(gitbook_on){knitr::asis_output("Detailed data with photos are presented in [Appendix - Phase 1 Fish Passage Assessment Data and Photos]")} else knitr::asis_output("Detailed fish passage assessment data with photos are presented in [Attachment 3 - Phase 1 Data and Photos]")`.
