@@ -3,26 +3,17 @@
 
 source('scripts/packages.R')
 # source('R/functions.R')
-# source('scripts/private_info.R')
 
 # thinking we better use the remote database since my local version is outdated and not willing to risk a week of time to rebuild (might be fine in a day but never really know till we climb in)
 
-# conn <- DBI::dbConnect(
-#   RPostgres::Postgres(),
-#   dbname = Sys.getenv('PG_DB_BCBARRIERS'),
-#   host = Sys.getenv('PG_HOST_BCBARRIERS'),
-#   port = Sys.getenv('PG_PORT_BCBARRIERS'),
-#   user = Sys.getenv('PG_USER_BCBARRIERS'),
-#   password = Sys.getenv('PG_PASS_BCBARRIERS')
-# )
 
 conn <- DBI::dbConnect(
   RPostgres::Postgres(),
-  dbname = Sys.getenv('PG_DB_DEV'),
-  host = Sys.getenv('PG_HOST_DEV'),
-  port = Sys.getenv('PG_PORT_DEV'),
-  user = Sys.getenv('PG_USER_DEV'),
-  password = Sys.getenv('PG_PASS_DEV')
+  dbname = Sys.getenv('PG_DB_SHARE'),
+  host = Sys.getenv('PG_HOST_SHARE'),
+  port = Sys.getenv('PG_PORT_SHARE'),
+  user = Sys.getenv('PG_USER_SHARE'),
+  password = Sys.getenv('PG_PASS_SHARE')
 )
 
 #
@@ -78,13 +69,13 @@ dat$misc_point_id <- seq.int(nrow(dat))
 
 # dbSendQuery(conn, paste0("CREATE SCHEMA IF NOT EXISTS ", "test_hack",";"))
 # load to database
-sf::st_write(obj = dat, dsn = conn, Id(schema= "ali", table = "misc"))
+sf::st_write(obj = dat, dsn = conn, Id(schema= "working", table = "misc"))
 
 
 # sf doesn't automagically create a spatial index or a primary key
-res <- dbSendQuery(conn, "CREATE INDEX ON ali.misc USING GIST (geometry)")
+res <- dbSendQuery(conn, "CREATE INDEX ON working.misc USING GIST (geometry)")
 dbClearResult(res)
-res <- dbSendQuery(conn, "ALTER TABLE ali.misc ADD PRIMARY KEY (misc_point_id)")
+res <- dbSendQuery(conn, "ALTER TABLE working.misc ADD PRIMARY KEY (misc_point_id)")
 dbClearResult(res)
 
 dat_info <- dbGetQuery(conn, "SELECT
@@ -92,7 +83,7 @@ dat_info <- dbGetQuery(conn, "SELECT
   b.*,
   ST_Distance(ST_Transform(a.geometry,3005), b.geom) AS distance
 FROM
-  ali.misc AS a
+  working.misc AS a
 CROSS JOIN LATERAL
   (SELECT *
    FROM bcfishpass.crossings
@@ -165,18 +156,13 @@ dat <- bcdata::bcdc_get_data(get_this)
 ## xref_pscis_my_crossing_modelled ----------------
 xref_pscis_my_crossing_modelled <- dat %>%
   purrr::set_names(nm = tolower(names(.))) %>%
-  dplyr::filter(funding_project_number == "peace_2022_phase1") %>%
+  dplyr::filter(funding_project_number == "peace_2023_Phase1") %>%
   select(external_crossing_reference, stream_crossing_id) %>%
   dplyr::mutate(external_crossing_reference = as.numeric(external_crossing_reference)) %>%
   sf::st_drop_geometry()
 
-
-
-
-
-
+# burn to sqlite-------------
 ##this is how we update our local db.
-##my time format format(Sys.time(), "%Y%m%d-%H%M%S")
 # mydb <- DBI::dbConnect(RSQLite::SQLite(), "data/bcfishpass.sqlite")
 conn <- rws_connect("data/bcfishpass.sqlite")
 rws_list_tables(conn)
@@ -244,9 +230,22 @@ test <- bcfishpass %>%
 ##nope - all good
 
 ##grab the bcfishpass spawning and rearing table and put in the database so it can be used to populate the methods and tie to the references table
-urlfile="https://raw.githubusercontent.com/smnorris/bcfishpass/main/parameters/parameters_newgraph/habitat.csv"
+urlfile="https://raw.githubusercontent.com/smnorris/bcfishpass/main/parameters/example_newgraph/parameters_habitat_thresholds.csv"
 
 bcfishpass_spawn_rear_model <- readr::read_csv(url(urlfile))
+
+# put it in the db
+conn <- rws_connect("data/bcfishpass.sqlite")
+rws_list_tables(conn)
+# archive <- readwritesqlite::rws_read_table("bcfishpass_spawn_rear_model", conn = conn)
+# rws_write(archive, exists = F, delete = TRUE,
+#           conn = conn, x_name = paste0("bcfishpass_spawn_rear_model_archive_", format(Sys.time(), "%Y-%m-%d-%H%m")))
+# rws_drop_table("bcfishpass_spawn_rear_model", conn = conn)
+rws_write(bcfishpass_spawn_rear_model, exists = F, delete = TRUE,
+          conn = conn, x_name = "bcfishpass_spawn_rear_model")
+rws_list_tables(conn)
+readwritesqlite::rws_disconnect(conn)
+
 
 # PSCIS historic info--------------------------------------------------------------------
 #to write the background
