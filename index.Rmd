@@ -1,5 +1,5 @@
 --- 
-title: "Restoring Fish Passage in the Peace Region - 2022 - PEA-F23-F-3761-DCA"
+title: "Restoring Fish Passage in the Peace Region - 2023"
 author: |
  |
  | Prepared for
@@ -20,7 +20,7 @@ author: |
 
 date: |
  |
- | Version 0.1.3 `r format(Sys.Date(), "%Y-%m-%d")`
+ | Version 0.0.1 `r format(Sys.Date(), "%Y-%m-%d")`
 toc-title: Table of Contents
 site: bookdown::bookdown_site
 output: 

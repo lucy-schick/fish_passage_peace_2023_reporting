@@ -4,8 +4,8 @@
 
 
 # add project specific variables ------------------------------------------
-filename_html <- 'Peace2022'
-repo_name <- 'fish_passage_peace_2022_reporting'
+filename_html <- 'Peace2023'
+repo_name <- 'fish_passage_peace_2023_reporting'
 maps_location <- 'https://hillcrestgeo.ca/outgoing/fishpassage/projects/parsnip/archive/2022-05-27/'
 maps_location_zip <- 'https://hillcrestgeo.ca/outgoing/fishpassage/projects/parsnip/archive/2022-05-27/parsnip_2022-05-27.zip'
 
@@ -39,32 +39,18 @@ pscis_all_prep <- pscis_list %>%
 ##this is our new db made from 0282-extract-bcfishpass2-crossing-corrections.R and 0290
 conn <- readwritesqlite::rws_connect("data/bcfishpass.sqlite")
 readwritesqlite::rws_list_tables(conn)
-bcfishpass_phase2 <- readwritesqlite::rws_read_table("bcfishpass", conn = conn) %>%
-  filter(stream_crossing_id %in%
-           (pscis_phase2 %>%
-              pull(pscis_crossing_id))) %>%
-  # HHHHHHHHHAAAAAAAAAAACCCCCCCCCCCCCCCCCCCKKKKKKKKKKKKKKK for now we will get rid of NAs
-  filter(!is.na(stream_crossing_id))
-  bcfishpass <- readwritesqlite::rws_read_table("bcfishpass", conn = conn)
+bcfishpass <- readwritesqlite::rws_read_table("bcfishpass", conn = conn)
 # bcfishpass_archive <- readwritesqlite::rws_read_table("bcfishpass_archive_2022-03-02-1403", conn = conn)
 bcfishpass_column_comments <- readwritesqlite::rws_read_table("bcfishpass_column_comments", conn = conn)
-
-pscis_historic_phase1 <- readwritesqlite::rws_read_table("pscis_historic_phase1", conn = conn)
-pscis_historic_phase2 <- readwritesqlite::rws_read_table("pscis_historic_phase2", conn = conn)
+# pscis_historic_phase1 <- readwritesqlite::rws_read_table("pscis_historic_phase1", conn = conn)
+# pscis_historic_phase2 <- readwritesqlite::rws_read_table("pscis_historic_phase2", conn = conn)
 bcfishpass_spawn_rear_model <- readwritesqlite::rws_read_table("bcfishpass_spawn_rear_model", conn = conn)
 rd_class_surface_prep <- readwritesqlite::rws_read_table("rd_class_surface", conn = conn)
-xref_pscis_my_crossing_modelled <- readwritesqlite::rws_read_table("xref_pscis_my_crossing_modelled", conn = conn) %>%
-  filter(stream_crossing_id != 198323) # this site is in the Crooked River watershed but was loaded with peace data, don't need for this report
-
-
-wshds <- readwritesqlite::rws_read_table("wshds", conn = conn) %>%
-  mutate(aspect = as.character(aspect))
-
+xref_pscis_my_crossing_modelled <- readwritesqlite::rws_read_table("xref_pscis_my_crossing_modelled", conn = conn)
+wshds <- readwritesqlite::rws_read_table("wshds", conn = conn) #%>%
+  # mutate(aspect = as.character(aspect))
 pscis <- readwritesqlite::rws_read_table("pscis", conn = conn)
-
-photo_metadata <- readwritesqlite::rws_read_table("photo_metadata", conn = conn)
-# fiss_sum <- readwritesqlite::rws_read_table("fiss_sum", conn = conn)
-
+#photo_metadata <- readwritesqlite::rws_read_table("photo_metadata", conn = conn)
 
 rws_disconnect(conn)
 
@@ -79,8 +65,6 @@ pscis_all <- left_join(
     is.na(pscis_crossing_id) ~ as.numeric(stream_crossing_id),
     T ~ pscis_crossing_id
   )) %>%
-  #filter out site from crooked river watershed that we uploaded with parsnip data
-  filter(!is.na(pscis_crossing_id)) %>%
   arrange(pscis_crossing_id)
 
 pscis_all_sf <- pscis_all %>%
@@ -119,7 +103,7 @@ pscis_all_sf <- pscis_all_sf %>%
 ####-----------report table--------------------
 #  HACK hashout for now!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! becasue some columns are now missing from bcfishpass.crossings
 
-tab_cost_rd_mult <- readr::read_csv(paste0(getwd(), '/data/inputs_raw/tab_cost_rd_mult.csv'))
+tab_cost_rd_mult <- readr::read_csv('data/inputs_raw/tab_cost_rd_mult.csv')
 
 
 tab_cost_rd_mult_report <- tab_cost_rd_mult %>%
@@ -172,15 +156,11 @@ phase1_priorities <- pscis_all %>%
 
 
 ##turn spreadsheet into list of data frames
-#  HACK !!!!we don't yet have pscis_crossing_id s
 pscis_phase1_for_tables <- pscis_all %>%
   filter(source %ilike% 'phase1' |
            source %ilike% 'reassessments' ) %>%
-  # HACK
-  # arrange(site_id)
-# # UNHACK below
   arrange(pscis_crossing_id) %>%
-  # becasue we have reassessments too
+  # because we have reassessments too
   mutate(site_id = case_when(is.na(my_crossing_reference) ~ pscis_crossing_id,
                              T ~ my_crossing_reference))
 
@@ -219,12 +199,12 @@ tab_photo_url <- list.files(path = paste0(getwd(), '/data/photos/'), full.names 
 #   # dplyr::group_split(value)
 #
 #
-# # html tables
-# tabs_phase1 <- mapply(
-#   fpr::fpr_table_cv_detailed_print,
-#   tab_sum = tab_summary,
-#   comments = tab_summary_comments,
-#   photos = tab_photo_url)
+# html tables
+tabs_phase1 <- mapply(
+  fpr::fpr_table_cv_detailed_print,
+  tab_sum = tab_summary,
+  comments = tab_summary_comments,
+  photos = tab_photo_url)
 
 
 # html tables for the pdf version
@@ -246,12 +226,12 @@ tab_photo_url <- list.files(path = paste0(getwd(), '/data/photos/'), full.names 
 #     kableExtra::add_footnote(label = '<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>', escape = F, notation = 'none')
 # }
 
-# tabs_phase1_pdf <- mapply(
-#   fpr::fpr_table_cv_detailed_print,
-#   tab_sum = tab_summary,
-#   comments = tab_summary_comments,
-#   photos = tab_photo_url,
-#   gitbook_switch = FALSE)
+tabs_phase1_pdf <- mapply(
+  fpr::fpr_table_cv_detailed_print,
+  tab_sum = tab_summary,
+  comments = tab_summary_comments,
+  photos = tab_photo_url,
+  gitbook_switch = FALSE)
 
 # tabs_phase1_pdf <- mapply(fpr_print_tab_summary_all_pdf, tab_sum = tab_summary, comments = tab_summary_comments, photos = tab_photo_url)
 
@@ -260,7 +240,6 @@ habitat_confirmations <- fpr_import_hab_con(col_filter_na = T, row_empty_remove 
 
 hab_site_prep <-  habitat_confirmations %>%
   purrr::pluck("step_4_stream_site_data") %>%
-  # tidyr::separate(local_name, into = c('site', 'location'), remove = F) %>%
   mutate(average_gradient_percent = round(average_gradient_percent * 100, 1)) %>%
   mutate_if(is.numeric, round, 1) %>%
   select(-gazetted_names:-site_number, -feature_type:-utm_method) %>%   ##remove the feature utms so they don't conflict with the site utms
@@ -316,7 +295,8 @@ hab_fish_collect_map_prep2 <- right_join(
 ##add the species code
 hab_fish_codes <- fishbc::freshwaterfish %>%
   select(species_code = Code, common_name = CommonName) %>%
-  tibble::add_row(species_code = 'NFC', common_name = 'No Fish Caught')
+  tibble::add_row(species_code = 'NFC', common_name = 'No Fish Caught') %>%
+  mutate(common_name = case_when(common_name == 'Cutthroat Trout' ~ 'Cutthroat Trout (General)', T ~ common_name))
 
 # this is the table to burn to geojson for mapping
 # we are just going to keep 1 site for upstream and downstream because more detail won't show well on the map anyway
@@ -425,7 +405,6 @@ hab_fish_indiv <- full_join(
   ),
   by = c(
     "reference_number",
-    # 'alias_local_name' = 'local_name',
     "sampling_method",
     "method_number",
     "haul_number_pass_number")
@@ -437,14 +416,14 @@ hab_fish_indiv <- full_join(
   ) %>%
   mutate(species_code = as.factor(species_code)) %>%
   mutate(life_stage = case_when(  ##this section comes from the histogram below - we include here so we don't need to remake the df
-    length_mm <= 65 ~ 'fry',
-    length_mm > 65 & length_mm <= 110 ~ 'parr',
-    length_mm > 110 & length_mm <= 140 ~ 'juvenile',
+    length_mm <= 55 ~ 'fry',
+    length_mm > 55 & length_mm <= 100 ~ 'parr',
+    length_mm > 100 & length_mm <= 140 ~ 'juvenile',
     length_mm > 140 ~ 'adult',
     T ~ NA_character_
   ),
   life_stage = case_when(
-    species_code %in% c('L', 'SU', 'LSU') ~ NA_character_,
+    species_code %in% c('CC', 'SU', 'BB') ~ NA_character_,
     T ~ life_stage
   ))%>%
   mutate(life_stage = fct_relevel(life_stage,
@@ -1216,7 +1195,7 @@ tab_hab_map <- left_join(
   tab_cost_est_phase2 %>% filter(source %like% 'phase2'),
   hab_loc_prep %>% select(site, priority, utm_easting, utm_northing, comments),
   by = c('pscis_crossing_id' = 'site')
-)  %>%
+) %>%
   sf::st_as_sf(coords = c("utm_easting", "utm_northing"),
                crs = 26910, remove = F) %>%
   sf::st_transform(crs = 4326) %>%
