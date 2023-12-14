@@ -305,58 +305,34 @@ fpr::fpr_photo_flip(site_id = 14000997, rotate = 270, str_to_pull = '5578')
 fpr::fpr_photo_flip(site_id = 2021090399, rotate = 270, str_to_pull = '5756')
 
 # QA photo files ----------------------------------------------------------
+fpr::fpr_photo_qa_df(dir_photos = '/Users/airvine/Library/CloudStorage/OneDrive-Personal/Projects/2023_data/peace/photos/')
 
-pscis_all <- fpr_import_pscis_all() %>%
-  bind_rows
-
-
-# here is a little test on how to see the folder that need all photos to be renamed
-# if you have a folder that is not in your pscis sheets it will break things.  watch out.
-# consider using list of folders in the file
-test <- fpr::fpr_photo_qa() %>%
-  data.table::rbindlist(fill = T)
-
-
-do_these_bud <- fpr::fpr_photo_qa()[
-  fpr::fpr_photo_qa() %>%
-    map(fpr::fpr_dat_w_rows) %>%
-    grep(pattern = F)
-] %>%
-  names(.) %>%
-  unique(.)
-
-# here is the test for missing individual photos
-test <- fpr::fpr_photo_qa() %>%
-  bind_rows() %>%
-  dplyr::filter(if_any(everything(), is.na))
-
-test
 
 # build photo amalgamation for each site ------------------------------------------------
-pscis_all <- fpr::fpr_import_pscis_all() %>%
-  bind_rows()
-
-pscis_all %>%
+# get a list of sites to burn
+sites_l <- fpr::fpr_import_pscis_all() %>%
+  bind_rows() %>%
   distinct(site_id) %>%
   arrange(site_id) %>%
-  # put this here to work around issue 64
-  # filter(site_id != 198110) %>%
-  # filter(site_id != 123750) %>%
-  # filter(site_id != 198116) %>%
-  # head() %>% #test
-  pull(site_id)  %>%
-  purrr::map(fpr_photo_amalg_cv)
+  pull(site_id)
+
+# burn the amal photos to onedrive
+sites_l %>%
+  purrr::map(fpr::fpr_photo_amalg_cv, dir_photos = '/Users/airvine/Library/CloudStorage/OneDrive-Personal/Projects/2023_data/peace/photos/')
 
 
-# can't build the amalgamated photos
-setdiff(  list.dirs('data/photos', full.names = F, recursive = F),
+# Find sites that have directories but do not have an entry in the PSCIS spreadsheets
+dir_photos <- '/Users/airvine/Library/CloudStorage/OneDrive-Personal/Projects/2023_data/peace/photos/'
+setdiff(
+  list.dirs(dir_photos, full.names = F, recursive = F),
 
-          pscis_all %>%
-            distinct(site_id) %>%
-            arrange(site_id) %>%
-            # head() %>% #test
-            pull(site_id)
+  pscis_all %>%
+    distinct(site_id) %>%
+    arrange(site_id) %>%
+    # head() %>% #test
+    pull(site_id)
 )
+
 
 # make phase2 photo files and copy in photos ------------------------------
 
@@ -364,7 +340,7 @@ setdiff(  list.dirs('data/photos', full.names = F, recursive = F),
 # need to be copied into new folders
 
 ##path to the photos
-path <- paste0(getwd(), '/data/photos/')
+path_photos <- '/Users/airvine/Library/CloudStorage/OneDrive-Personal/Projects/2023_data/peace/photos/'
 
 
 ##use the pscis spreadsheet to make the folders to copy the photos to
@@ -386,9 +362,9 @@ folderstocopy<- pscis_new_sites$external_crossing_reference %>% as.character()
 
 folders_new_names <- pscis_new_sites$pscis_crossing_id %>% as.character()
 
-path_to_photos <- paste0(getwd(), '/data/photos/', folderstocopy)
+path_to_photos <- paste0(path_photos, folderstocopy)
 
-folderstocreate <- paste0(path, folders_new_names)
+folderstocreate <- paste0(path_photos, folders_new_names)
 
 ##create the folders
 lapply(folderstocreate, dir.create)
