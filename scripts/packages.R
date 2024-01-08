@@ -37,7 +37,11 @@ pkgs_cran <- c(
   'DT',
   'fishbc',
   'chron',
-  'xfun'
+  'xfun',
+  'remotes',
+  'roxygen2',
+  'devtools'
+
   # 'analogsea',
   # 'here'
   # rgl,
@@ -58,7 +62,7 @@ pkgs_all <- c(pkgs_cran,
 
 # install or upgrade all the packages with pak
 lapply(pkgs_all,
-       pak::pkg_install)
+       pak::pkg_install, dependencies = TRUE)
 
 # load all the packages
 
