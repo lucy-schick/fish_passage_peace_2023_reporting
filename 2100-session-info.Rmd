@@ -5,7 +5,6 @@
 ```{r session info, comment="", class.source = 'fold-show'}
 
 # looks like our use of the pak package has broken this due to links to packages linked in DESCRIPTION files such as cpp11 and AsioHeaders. So we will try the good old fashioned sessionInfo function instead
-# xfun::session_info() 
-sessionInfo()
+devtools::session_info()
 
 ```
