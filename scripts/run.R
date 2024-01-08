@@ -8,6 +8,8 @@ preview_chapter('0100-intro.Rmd')
 # rmarkdown::render_site(output_format = 'bookdown::gitbook',
 #                        encoding = 'UTF-8')
 
+# to load from scratch we need the pipe
+library(magrittr)
 
 {
   # These files are included in the gitbook version already so we move them out of the build
@@ -32,7 +34,7 @@ preview_chapter('0100-intro.Rmd')
 
 
 # define the _bookfile_name from _bookdown.yml
-filename_html <- 'Peace2022'
+filename_html <- 'Peace2023'
 
 {
 
@@ -64,3 +66,4 @@ filename_html <- 'Peace2022'
   file.remove(paste0(getwd(), '/', filename_html, '.html'))
 
 }
+
