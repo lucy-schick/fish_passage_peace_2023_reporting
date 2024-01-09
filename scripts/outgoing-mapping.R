@@ -67,22 +67,8 @@ wshd_study_areas %>%
 dbDisconnect(conn = conn)
 
 ####------------add the watersheds-------------------------
+# this is done in 0170-load-wshd_stats.R
 
-
-
-##we needed to remove crossings that are first order - this used to run but doesn't want to anymore
-##i wonder if it is because the 1st order watershed is the first one on the list so the api kicks us off...
-bcfishpass_phase2_clean <- bcfishpass_phase2 %>%
-  filter(stream_order != 1)
-
-wshds <- fpr_sp_watershed(bcfishpass_phase2_clean)
-
-# ##add to the geopackage
-wshds %>%
-  sf::st_write(paste0("./data/fishpass_mapping/", 'fishpass_mapping', ".gpkg"), 'hab_wshds', append = F) ##might want to f the append....
-
-#burn to kml as well so we can see elevations
-st_write(wshds, append = TRUE, driver = 'kml', dsn = "data/inputs_extracted/wshds.kml")
 
 ####--------------------burn geojsons from geopackage-----------------------------------------------------
 ##we need geojsons to make the mapping convenient so lets pull everything out of the geopackage and write to geojson files
