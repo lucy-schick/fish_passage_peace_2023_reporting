@@ -1,14 +1,7 @@
-# this file imports our data and builds the tables we need for our reporting
-
-
-
-
-# add project specific variables ------------------------------------------
-filename_html <- 'Peace2023'
+# set some project parameters
 repo_name <- 'fish_passage_peace_2023_reporting'
-maps_location <- 'https://hillcrestgeo.ca/outgoing/fishpassage/projects/parsnip/archive/2022-05-27/'
-maps_location_zip <- 'https://hillcrestgeo.ca/outgoing/fishpassage/projects/parsnip/archive/2022-05-27/parsnip_2022-05-27.zip'
 
+# import data and build tables we for reporting
 
 pscis_list <- fpr::fpr_import_pscis_all()
 pscis_phase1 <- pscis_list %>% pluck('pscis_phase1')
@@ -67,27 +60,27 @@ pscis_all <- left_join(
   )) %>%
   arrange(pscis_crossing_id)
 
-pscis_all_sf <- pscis_all %>%
+pscis_all_sf_prep <- pscis_all %>%
   # distinct(.keep_all = T) %>%
   sf::st_as_sf(coords = c("easting", "northing"),
                crs = 26910, remove = F) %>% ##don't forget to put it in the right crs buds
   sf::st_transform(crs = 3005) ##convert to match the bcfishpass format
 
-
 # looks like the api maxes out at 220 queries and we have 223.  As a work around lets make a function then split by source
-fpr_get_elev <- function(dat){
+tfpr_get_elev <- function(dat){
   poisspatial::ps_elevation_google(dat,
-                                   key = Sys.getenv('GOOG_API_KEY'),
+                                   # renamed the GOOG_API_KEY to poisson default of "GOOGLE_MAPS_ELEVATION_API_KEY"
+                                   # key = Sys.getenv('GOOG_API_KEY'),
                                    Z = 'elev') %>%
-  mutate(elev = round(elev, 0))
+    mutate(elev = round(elev, 0))
 }
 
-pscis_all_sf <- pscis_all_sf %>%
+pscis_all_sf <- pscis_all_sf_prep %>%
   dplyr::group_split(source) %>%
-  purrr::map(fpr_get_elev) %>%
+  purrr::map(tfpr_get_elev) %>%
   dplyr::bind_rows()
 
-
+rm(pscis_all_sf_prep)
 
 ##this is not working or needed yet
 # bcfishpass_rd <- bcfishpass %>%

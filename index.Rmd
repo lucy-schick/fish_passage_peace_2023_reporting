@@ -65,7 +65,7 @@ font_set <- 9
 ```
 
 
-```{r}
+```{r pkg-tables}
 source('scripts/packages.R')
 source('scripts/tables.R')
 
