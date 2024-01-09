@@ -87,7 +87,7 @@ reference_number,gazetted_names,local_name,waterbody_id,reach_number,site_number
 6,Tributary to Parsnip River,125231_ds_ef3,0,0,6,electrofishing,1,1,Rainbow Trout,52,2.1,,,,,,,,
 7,Fern Creek,125261_ds_ef1,0,0,7,electrofishing,1,1,Rainbow Trout,77,4.3,,,,,,,,3DD.003E192B9B
 7,Fern Creek,125261_ds_ef1,0,0,7,electrofishing,1,1,Rainbow Trout,136,27.9,,,,,,,,3DD.003E192BD0
-7,Fern Creek,125261_ds_ef1,0,0,7,electrofishing,1,1,Rainbow Trout,92,8.6,,,,,,,,3DD.003E192B98
+7,Fern Creek,125261_ds_ef1,0,0,7,electrofishing,1,1,Rainbow Trout,92,8.599999999999998,,,,,,,,3DD.003E192B98
 7,Fern Creek,125261_ds_ef1,0,0,7,electrofishing,1,1,Rainbow Trout,95,9.1,,,,,,,,3DD.003E192BDE
 7,Fern Creek,125261_ds_ef1,0,0,7,electrofishing,1,1,Rainbow Trout,63,1.9,,,,,,,,
 7,Fern Creek,125261_ds_ef1,0,0,7,electrofishing,1,1,Rainbow Trout,54,1.9,,,,,,,,
@@ -138,7 +138,7 @@ reference_number,gazetted_names,local_name,waterbody_id,reach_number,site_number
 11,Fern Creek,125261_us_ef2,0,0,11,electrofishing,1,1,Rainbow Trout,45,1,,,,,,,,
 11,Fern Creek,125261_us_ef2,0,0,11,electrofishing,1,1,Rainbow Trout,40,0.5,,,,,,,,
 11,Fern Creek,125261_us_ef2,0,0,11,electrofishing,1,1,Sculpin (General),70,3.5,,,,,,,,photo
-11,Fern Creek,125261_us_ef2,0,0,11,electrofishing,1,1,Rainbow Trout,98,7.6,,,,,,,,3DD.003E192BC4
+11,Fern Creek,125261_us_ef2,0,0,11,electrofishing,1,1,Rainbow Trout,98,7.599999999999999,,,,,,,,3DD.003E192BC4
 11,Fern Creek,125261_us_ef2,0,0,11,electrofishing,1,1,Rainbow Trout,79,5.1,,,,,,,,3DD.003E192BA4
 11,Fern Creek,125261_us_ef2,0,0,11,electrofishing,1,1,Rainbow Trout,86,6.3,,,,,,,,3DD.003E192B93
 11,Fern Creek,125261_us_ef2,0,0,11,electrofishing,1,1,Rainbow Trout,149,22.5,,,,,,,,3DD.003E192B9F
