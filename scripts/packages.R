@@ -37,7 +37,6 @@ pkgs_cran <- c(
   'DT',
   'fishbc',
   'chron',
-  'xfun',
   'remotes',
   'roxygen2',
   'devtools'
