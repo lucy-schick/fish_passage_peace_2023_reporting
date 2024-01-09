@@ -45,7 +45,7 @@ utm <- 10
 #---------------------pscis clean and QA only--------------------------
 
 # read in amalgamated pscis form
-form_pscis <- sf::st_read(dsn= paste0('../../gis/', dir_project, '/data_field/2023/form_pscis_2023.gpkg')) %>%
+form_pscis <- sf::st_read(dsn= paste0('../../gis/', dir_project, '/data_field/2023/form_pscis_2023.gpkg'))
   # assumes in albers
   mutate(
     x = sf::st_coordinates(.)[,1],
@@ -130,57 +130,7 @@ form_pscis_cleaned %>%
 
 
 
-#---------------------pscis export only--------------------------
 
-# in this section we will read in cleaned form from Q after review and finalization,
-# and then get the names of the input template so we can copy and past special directly into the spreadsheet
-
-# read in form from Q
-form_pscis <- sf::st_read(dsn= paste0('../../gis/', dir_project, '/data_field/2023/form_pscis_2023.gpkg')) %>%
-  # st_transform(crs = 26900 + utm) %>%
-  st_drop_geometry()
-
-
-# this is a table that cross references column names for pscis table and has the columns in the same order as the spreadsheet
-xref_names_pscis <- fpr::fpr_xref_pscis
-
-# get order of columns as per the excel template spreadsheet
-# this can be used as a select(all_of(name_pscis_sprd_ordered)) later
-# to order columns for the field form and/or put the field entered table in order
-name_pscis_sprd_ordered <- fpr::fpr_xref_pscis %>%
-  filter(!is.na(spdsht)) %>%
-  select(spdsht) %>%
-  pull(spdsht)
-
-# see names that coincide between the xref table and what we have
-intersect(name_pscis_sprd_ordered, names(form_pscis))
-
-# see which are different
-setdiff(name_pscis_sprd_ordered, names(form_pscis))
-# order matters
-setdiff(names(form_pscis), name_pscis_sprd_ordered)
-
-# to use all the columns from the template first we make an empty dataframe from a template
-template <- fpr::fpr_import_pscis() %>%
-  slice(0)
-
-# then we join it to our populated spreadsheet
-# we may as well keep all the columns that are not in the spreadsheet and append to the end
-form <- bind_rows(
-  template,
-  form_pscis
-) %>%
-  # only select columns from template object
-  select(any_of(names(template))) %>%
-  # remove scoring columns, as these can't be copied and pasted anyways because of macros
-  select(-stream_width_ratio:-barrier_result) %>%
-  # then arrange it by pscis id to separate phase 1s from reassessments
-  arrange(pscis_crossing_id, date)
-
-
-# burn to a csv ready for copy and paste to template
-form %>% readr::write_csv(paste0(
-    'data/dff/pscis_export.csv'), na='')
 
 # --------------------moti climate change ---------------------------
 #
