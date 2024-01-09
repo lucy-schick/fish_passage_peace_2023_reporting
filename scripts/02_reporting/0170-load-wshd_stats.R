@@ -1,14 +1,22 @@
 source('scripts/packages.R')
-source('scripts/tables.R')
+# source('scripts/tables.R')
 
 # retrieve the watersheds and elevations of the pscis sites then burn to the sqlite
+
+pscis2 <- fpr::fpr_import_pscis(workbook_name = 'pscis_phase2.xlsm') %>%
+  sf::st_as_sf(coords = c("easting", "northing"),
+               crs = 26910, remove = F) %>% ##don't forget to put it in the right crs buds
+  sf::st_transform(crs = 3005) %>%
+  poisspatial::ps_elevation_google(Z = 'elev_site') %>%
+  mutate(elev_site = round(elev_site, 0))
+
 
 # get phase 2 pscis site data from sqlite, only possible after provincial submission and bcfishpass db update
 conn <- readwritesqlite::rws_connect("data/bcfishpass.sqlite")
 readwritesqlite::rws_list_tables(conn)
 bcfishpass_phase2 <- readwritesqlite::rws_read_table("bcfishpass", conn = conn) %>%
   filter(stream_crossing_id %in%
-           (pscis_phase2 %>%
+           (pscis2 %>%
               pull(pscis_crossing_id))) %>%
   filter(!is.na(stream_crossing_id))
 
@@ -87,39 +95,36 @@ bcfishpass_phase2_clean <- bcfishpass_phase2 %>%
 # )
 
 
-## call fwapgr - badass
+## call fwapgr to get the watersheds as spatial objects
 wshds_fwapgr <- fpr::fpr_sp_watershed(bcfishpass_phase2_clean)
 
 # join first order df to original df
-# wshds <- bind_rows(
+# wshds_prep <- bind_rows(
 #   wshds_fwapgr,
 #   wshds_1ord
 # )
 
-#so far we don't have any first order watersheds so
-wshds <- wshds_fwapgr
+#in this particular script we don't have any first order watersheds so
+wshds_prep <- wshds_fwapgr
 
 ## add in the elevation of the site
-wshds <- left_join(wshds %>% mutate(stream_crossing_id = as.numeric(stream_crossing_id)),
-                   pscis_all_sf %>% distinct(pscis_crossing_id, .keep_all = T) %>%
+wshds_prep2 <- left_join(wshds_prep %>% mutate(stream_crossing_id = as.numeric(stream_crossing_id)),
+                   pscis2 %>% distinct(pscis_crossing_id, .keep_all = T) %>%
                      st_drop_geometry() %>%
-                     select(pscis_crossing_id, elev_site = elev),
+                     select(pscis_crossing_id, elev_site),
                    by = c('stream_crossing_id' = 'pscis_crossing_id'))
 
-# calculate stats for each watershed
-wshds <- fpr::fpr_sp_wshd_stats(dat = wshds) %>%
-  mutate(area_km = round(area_ha/100, 1)) %>%
-  mutate(across(contains('elev'), round, 0)) %>%
-  arrange(stream_crossing_id)
 
-# ##add to the geopackage - nned to mak
-#wshds %>%
-#  sf::st_write(paste0("./data/fishpass_mapping/", 'fishpass_mapping', ".gpkg"), 'hab_wshds',
-#               delete_layer = T, append = F) ##might want to f the append....
+# calculate stats for each watershed
+hab_wshds <- fpr::fpr_sp_wshd_stats(dat = wshds_prep2)
+
+
+#add to the geopackage
+fpr::fpr_make_geopackage(dat = hab_wshds, utm_zone = 10)
 
 
 #burn to kml as well so we can see elevations
-st_write(wshds %>%
+st_write(hab_wshds %>%
            rename(name = stream_crossing_id),
          append = F,
          delete_layer = T,
@@ -130,7 +135,7 @@ st_write(wshds %>%
 conn <- rws_connect("data/bcfishpass.sqlite")
 rws_list_tables(conn)
 rws_drop_table("wshds", conn = conn) ##now drop the table so you can replace it
-rws_write(wshds, exists = F, delete = TRUE,
+rws_write(hab_wshds, exists = F, delete = TRUE,
           conn = conn, x_name = "wshds")
 rws_list_tables(conn)
 rws_disconnect(conn)
