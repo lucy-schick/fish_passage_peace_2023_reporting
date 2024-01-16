@@ -1,7 +1,5 @@
-# # install.packages('pacman')
-
 pkgs_cran <- c(
-  # 'raster', #load this dog before dplyr yo
+  'rmarkdown',
   'tidyverse',
   'readwritesqlite',
   'sf',
@@ -12,7 +10,6 @@ pkgs_cran <- c(
   'kableExtra',
   'httr',
   'RPostgres',
-  # 'RPostgreSQL',
   'DBI',
   'magick',
   'bcdata',
@@ -29,9 +26,7 @@ pkgs_cran <- c(
   'english',
   'leaflet.extras',
   'ggdark',
-  'geojsonio',
   'pdftools',
-  'xlsx',
   'pagedown',
   'crosstalk',
   'DT',
@@ -40,14 +35,6 @@ pkgs_cran <- c(
   'remotes',
   'roxygen2',
   'devtools'
-
-  # 'analogsea',
-  # 'here'
-  # rgl,
-  # geojsonsf,
-  # bit64 ##to make integer column type for pg
-  # gert  ##to track git moves
-  ##leafpop I think
 )
 pkgs_gh <- c(#'Envirometrix/plotKML',  #plot kml needed to go ahead of other packages for some reason and wants to reinstall everytime.... not sure why. hash out for nowpoissonconsulting/fwapgr",
              'poissonconsulting/poisspatial',
@@ -61,7 +48,8 @@ pkgs_all <- c(pkgs_cran,
 
 # install or upgrade all the packages with pak
 lapply(pkgs_all,
-       pak::pkg_install, dependencies = TRUE)
+       pak::pkg_install,
+       ask = FALSE)
 
 # load all the packages
 
