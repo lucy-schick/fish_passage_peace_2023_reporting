@@ -9,7 +9,7 @@ In 2019/2020, following a literature review, analysis of fish habitat modelling 
 
 <br>
 
-In 2022/2023, this collaborative project leveraged ongoing connectivity restoration initiatives in the province and engaged multiple partners to catalyze fish passage restoration activities at high-priority sites identified in 2019/2020 and 2021/2022. Key accomplishments include the replacement of PSCIS crossing 125179, prioritization of two crossings on the Chuchinka-Table FSR for replacement in 2024-2025 (with engineering designs commissioned and materials purchased), and field assessments including fish sampling at high priority crossing 125000 on a tributary to the Parsnip River near Arctic Lake.
+In 2022/2023, this collaborative project leveraged ongoing connectivity restoration initiatives in the province and engaged multiple partners to catalyze fish passage restoration activities at high-priority sites identified in 2019/2020 and 2021/2022. Key accomplishments include the replacement of PSCIS crossing 125179, prioritization of two crossings on the Chuchinka-Table FSR for replacement in 2024-2025 (with engineering designs commissioned and materials purchased), and field assessments including fish sampling at high priority crossing 125000 on a tributary to the Parsnip River near Arctic Lake. 
 
 
 ```{r overview-map, fig.cap = 'Overview map of Study Area',eval=T}
@@ -21,7 +21,7 @@ knitr::include_graphics("fig/project_overview.png")
 
 ## Tse'khene {-}
 
-The Parsnip River watershed is located within the south-eastern portion of the 108,000 km^2^ traditional territory of the Tse'khene from the [McLeod Lake Indian Band](https://www.mlib.ca/about/History). The Tse'khene *"People of the Rocks"* are a south westerly extension of the Athabascan speaking people of northern Canada.  They were nomadic hunters whose language belongs to the Beaver-Sarcee-Tse'khene branch of Athapaskan [@HistoryWhoWeAre2023].  Extensive work is underway to preserve the language with resources such as First Voices available [online](https://www.firstvoices.com/explore/FV/sections/Data/Athabascan/Tse'Khene%20(McLeod%20Lake)/Tse'Khene%20(McLeod%20Lake)/learn) and in [app form](https://apps.apple.com/us/app/tsekhene-mcleod-lake/id1503929250) for iphone and ipad devices.
+The Parsnip River watershed is located within the south-eastern portion of the 108,000 km^2^ traditional territory of the Tse'khene from the [McLeod Lake Indian Band](https://www.mlib.ca/about/History). The Tse'khene *"People of the Rocks"* are a south westerly extension of the Athabascan speaking people of northern Canada.  They were nomadic hunters whose language belongs to the Beaver-Sarcee-Tse'khene branch of Athapaskan [@HistoryWhoWeAre2023].  Extensive work is underway to preserve the language with resources such as First Voices available [online](https://www.firstvoices.com/tsekhene-mcleod) and in [app form](https://apps.apple.com/us/app/tsekhene-mcleod-lake/id1503929250) for iphone and ipad devices.
 
 <br>
 
