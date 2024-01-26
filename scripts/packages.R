@@ -34,7 +34,8 @@ pkgs_cran <- c(
   'chron',
   'remotes',
   'roxygen2',
-  'devtools'
+  'devtools',
+  'reprex'
 )
 pkgs_gh <- c(#'Envirometrix/plotKML',  #plot kml needed to go ahead of other packages for some reason and wants to reinstall everytime.... not sure why. hash out for nowpoissonconsulting/fwapgr",
              'poissonconsulting/poisspatial',
