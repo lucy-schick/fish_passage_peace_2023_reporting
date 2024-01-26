@@ -4,58 +4,67 @@
 # create csv that can be used to paste special into the PSCIS submission spreadsheet
 
 
+# first we back up the gpkg in the repo and update the coordinate columns in the gpkg in QGIS
+pscis_raw <- fpr_sp_gpkg_backup(
+  path_gpkg = "~/Projects/gis/sern_peace_fwcp_2023/data_field/2023/form_pscis_2023.gpkg",
+  update_utm = TRUE,
+  update_site_id = TRUE,
+  write_back_to_path = FALSE,
+  write_to_csv = TRUE,
+  write_to_rdata = TRUE,
+  return_object = TRUE)
 
 
-gpkg_path = '../../gis/sern_peace_fwcp_2023/data_field/2023/form_pscis_2023.gpkg'
-# gpkg_path = '../../gis/sern_skeena_2023/background_layers.gpkg'
-# my_form <- sf::st_read(dsn = gpkg_path, layer = 'crossings', use_stream = T)
-
-# read it in
-dat <- sf::st_read(dsn = gpkg_path)
-
-# update utms for input to spreadsheet and update lat and long so we can recreate with just a version controlled csv in the repo
-dat2 <-  dat %>%
-  fpr::fpr_sp_assign_latlong() %>%
-  fpr::fpr_sp_assign_utm()
-
-# burn back to GIS project with the updated coordinates
-# dat2 %>%
-#   sf::st_write(gpkg_path, append=F, delete_dsn=T)
-
-# burn out the most recent version of everything to csv
-dat2 %>%
-  readr::write_csv(paste0(
-    'data/dff/form_pscis_2023.csv'), na = '')
-
-# prep for csvs for cut and paste
-dat3 <- dat2 %>%
+# prep for csvs for cut and paste by subsetting columns to those in spreadsheet
+pscis_spdsht_cols <- pscis_raw %>%
+  # make a column to identify phase 1 sites
+  dplyr::mutate(
+    phase = case_when(
+      !is.na(my_crossing_reference) ~ 1,
+      TRUE ~ 2
+    )
+  ) %>%
+  # arrange by phase then date (helps when following through raw photos)
+  dplyr::arrange(phase, date_time_start) %>%
   # only select columns from template object
-  dplyr::select(any_of(names(fpr_xref_template_pscis()))) %>%
+  dplyr::select(any_of(names(fpr_xref_template_pscis())), site_id) %>%
   # remove scoring columns, as these can't be copied and pasted anyways because of macros
-  dplyr::select(-stream_width_ratio:-barrier_result) %>%
-  # then arrange it by pscis id to separate phase 1s from phase 2 and reassessments
-  dplyr::arrange(pscis_crossing_id, date)
+  dplyr::select(-stream_width_ratio:-barrier_result)
+  # then arrange it by pscis id to separate phase 1s from phase 2 and reassessments if using just one csv
+  # dplyr::arrange(pscis_crossing_id, date)
 
 
-# phase1
-dat_p1 <- dat3 %>%
-  dplyr::filter(!is.na(my_crossing_reference))
+# get phase1 sites ids
+sites_p1 <- pscis_spdsht_cols %>%
+  dplyr::filter(!is.na(my_crossing_reference)) %>%
+  dplyr::pull(my_crossing_reference)
 
-# put a switch to see if the rassess sites are in the template?
-dat_r <- dat3 %>%
-  dplyr::filter(
-    pscis_crossing_id %in%
-      (fpr::fpr_import_pscis(workbook_name = 'pscis_reassessments.xlsm') %>%
-         dplyr::pull(pscis_crossing_id)
-      )
-  )
+# seperate out phase 1 sites and sort for cut and paste
+dat_p1 <- pscis_spdsht_cols %>%
+  dplyr::filter(!is.na(my_crossing_reference)) %>%
+  dplyr::arrange(date)
 
-# phase 2 sites should be the ones left over
+# see if the rassess sites are in the template
+sites_reassess <- fpr::fpr_import_pscis(workbook_name = 'pscis_reassessments.xlsm') %>%
+  dplyr::pull(pscis_crossing_id)
+
+dat_r <- pscis_spdsht_cols %>%
+  dplyr::filter(pscis_crossing_id %in% sites_reassess)
+
+# put a switch to pull out the phase 2 sites by looking at the fisheries data submission template
+# this doesn't actually work because some of these sites might just be monitoring sites!!
+sites_p2 <- fpr_import_hab_con(col_filter_na = TRUE, row_empty_remove = TRUE, backup = FALSE) %>%
+  purrr::pluck("step_1_ref_and_loc_info") %>%
+  mutate(survey_date = janitor::excel_numeric_to_date(as.numeric(survey_date))) %>%
+  tidyr::separate(alias_local_name, into = c('site', 'location'), remove = FALSE) %>%
+  mutate(site = as.numeric(site)) %>%
+  dplyr::filter(!stringr::str_detect(alias_local_name, "_ef")) %>%
+  dplyr::distinct(site, .keep_all = FALSE) %>%
+  dplyr::pull(site)
+
+dat_p2 <- pscis_spdsht_cols %>%
+  dplyr::filter(pscis_crossing_id %in% sites_phase2)
+
+# do a sanity check to make sure we have all the sites only in one place
 
 
-
-
-
-
-# get a list of unique sites from hab con
-hc <- fpr_import_hab_con()
