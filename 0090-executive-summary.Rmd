@@ -1,55 +1,43 @@
+# Executive Summary {.unnumbered}
 
-
-# Executive Summary {-}
-
-The health and viability of freshwater fish populations can depend on access to tributary and off channel areas which provide refuge during high flows, opportunities for foraging, overwintering habitat, spawning habitat and summer rearing habitat. As road crossing structures are commonly upgraded or removed there are numerous opportunities to restore connectivity by ensuring that fish passage considerations are incorporated into repair, replacement, relocation and deactivation designs. 
+The health and viability of freshwater fish populations can depend on access to tributary and off channel areas which provide refuge during high flows, opportunities for foraging, overwintering habitat, spawning habitat and summer rearing habitat. As road crossing structures are commonly upgraded or removed there are numerous opportunities to restore connectivity by ensuring that fish passage considerations are incorporated into repair, replacement, relocation and deactivation designs.
 
 <br>
 
-The Society for Ecosystem Restoration in Northern BC (SERNbc) is working together with the McLeod Lake Indian Band, the Peace Region Fish and Wildlife Compensation Program (FWCP), the Provincial Fish Passage Technical Working Group (FPTWG), Ministry of Forests, road/rail tenure holders and other FWCP stakeholders/partners to prioritize, plan and fund the restoration of fish passage at Parsnip River watershed road crossing structure barriers. 
+The Society for Ecosystem Restoration in Northern BC (SERNbc) is working together with the McLeod Lake Indian Band, the Peace Region Fish and Wildlife Compensation Program (FWCP), the Provincial Fish Passage Technical Working Group (FPTWG), road/rail tenure holders and other FWCP stakeholders/partners to prioritize, plan and fund the restoration of fish passage at road crossing structure barriers within the Parsnip River, Carp River and Crooked River watershed groups.
 
 <br>
 
-The project engages FWCP partners and stakeholders to clearly communicate fish passage issues in FWCP Peace Region watersheds while collaboratively planning and executing the steps necessary to realize fish passage restorations. Work completed and ongoing aligns with the Fish and Wildlife Compensation Program Rivers, Lakes and Reservoirs Action Plan [@fishandwildlifecompensationprogram2020PeaceRegion] sub objective 6 of addressing fish passage issues in streams to enhance productivity of priority species.  Project activities undertaken address the following actions:
+The project engages FWCP partners and stakeholders to clearly communicate fish passage issues in FWCP Peace Region watersheds while collaboratively planning and executing the steps necessary to realize fish passage restorations. Work completed and ongoing aligns with the Fish and Wildlife Compensation Program Rivers, Lakes and Reservoirs Action Plan [@fishandwildlifecompensationprogram2020PeaceRegion] sub objective 6 of addressing fish passage issues in streams to enhance productivity of priority species. Project activities undertaken address the following actions:
 
-  * PEA.RLR.S06.RI.20 - Conducting engagement to prioritize options for fish passage improvement-P1 
-  * PEA.RLR.S06.RI.19 - Conducting research to prioritize fish passage actions-P1
-  * PEA.RLR.S06.HB.21 - Restoring fish access to streams-P1
-  
-<br>
-
-
-This project builds on Society for Ecosystem Restoration Northern BC (SERNbc) work in 2018 - 2019 and 2021 - 2022 which can be referenced [here](https://newgraphenvironment.github.io/Parsnip_Fish_Passage/) [@irvine2020ParsnipRiver] and [here](https://newgraphenvironment.github.io/fish_passage_parsnip_2021_reporting/) [@irvine2022PEAF22F3577DCARestoring]. 
+-   PEA.RLR.S06.RI.20 - Conducting engagement to prioritize options for fish passage improvement-P1
+-   PEA.RLR.S06.RI.19 - Conducting research to prioritize fish passage actions-P1
+-   PEA.RLR.S06.HB.21 - Restoring fish access to streams-P1
 
 <br>
 
-Through 2022/2023 project activities numerous project partners were engaged and we were able to identify and conduct fish passage planning/restoration activities at multiple high priority sites. 
-
-- At PSCIS crossing 125179 - a tributary to Missinka River within the Parsnip River watershed group, twin culverts that were negatively impacting fish passage were replaced with a clear-span bridge.  
-- Two crossings on the Chuchinka-Table FSR within the Parsnip River watershed group were prepared for replacement with engineering designs commissioned and construction materials purchased by Canadian Forest Products.
-- Numerous sites were assessed in the field including those identified through 2021/2022 planning activities and sites where data collected can be utilized in future years to understand the severity of connectivity issues and help evaluate the effectiveness of restoration investments. 
-- We have been actively engaging with numerous groups to build awareness for the initiative, solicit input, prioritize sites, raise partnership funding and plan/implement fish passage remediations.
-- Field maps incorporating the newly developed sa'ba (bull trout) spawning and rearing habitat model have been developed for the Parsnip River, Carp Lake and Crooked River watershed groups to facilitate communication among project collaborators and on the ground assessments. The georeferenced  `pdf` maps are served online and were were generated using reproducible open source workflows.
-- We built an interactive dashboard to allow users to conduct background research and planning to facilitate communication and enable future field surveys in the Peace Region. The interactive interface allows screening of previously inventoried as well as modelled stream crossing locations based on watershed group as well as the likely quantity and quality of bull trout rearing and spawning habitat modelled upstream. Historic assessment data including photos of sites can be viewed when present and users can download csv results and associated georeferenced field maps to facilitate field surveys.
+This project builds on Society for Ecosystem Restoration Northern BC (SERNbc) work in [2019 - 2020](https://newgraphenvironment.github.io/Parsnip_Fish_Passage/) [@irvine2020ParsnipRiver], [2021 - 2022](https://newgraphenvironment.github.io/fish_passage_parsnip_2021_reporting/)[@irvine2022PEAF22F3577DCARestoring] and [2022 - 2023](https://newgraphenvironment.github.io/fish_passage_peace_2022_reporting/) [@irvine_winterscheidt2023RestoringFish].
 
 <br>
 
-Although an engineering design was commissioned by Sinclar Group to facilitate replacement of high priority PSCIS crossing 125000 on the Chuchinka-Arctic FSR in 2022, installation of the clearspan structure has been delayed because of changes in plans for logging beyond the stream due to old growth referrals. The British Columbia government has asked licensees to defer harvest of these areas until "partners develop a new approach for old growth forest management". 
+Through 2023/2024 project activities numerous project partners were engaged and we were able to identify and conduct fish passage planning/restoration activities at multiple high priority sites.
 
-<br>
+-   In 2020-2022, we collaborated with McLeod Lake and Sinclar to replace crossing 125179 with a bridge. Partnership funding covered 75% of the costs. The site was visited in 2022, and data, along with orthoimagery acquired by drone, is available online.
 
-British Columbia Timber Sales is planning to deactivate the Chuchinka-Colbourne FSR between the location of high priority PSCIS crossing 125345 on a tributary to the Parsnip River and the Chuchinka-Anzac FSR. Included in the deactivation is removal of crossing 125345.  The work was scheduled for July and August of 2022 but has been rescheduled for this year due to a road washout in 2022. 
+-   BCTS leveraged our prioritization of crossing 125345, located on a tributary to the Parsnip River, to help them secure funding for its removal during the 2023 deactivation of the Chuchinka-Colbourne FSR.
+
+-   BCTS leveraged our prioritization of crossing 125403 (tributary to the Parsnip River) to help them secure funding to remove the crossing during deactivation of the Hooda Lake Forest Service Road in 2023.
+
+-   In 2023, Canfor plans to replace crossing 125231 (Tributary to Table River) at km21 on the Chuchinka-Table FSR with a bridge. An engineering design is complete, materials sourced, and a contract with Canfor is in place for installation preparations (engineering design, environmental management planning/permitting, and material acquisition). The estimated replacement cost is \$410,000, and Canfor committed \$205,000. To proceed in 2024, FWCP support is necessary to cover the remaining 50% (\$90,000) of project costs.
+
+-   We are building McLeod Lake's capacity to engage in fisheries management and restoration activities within their territory through training, fieldwork, and inclusion in planning and communication processes.
+
+-   To diversify potential partners for implementation and funding, remediation planning and fieldwork were conducted at various sites in the Carp River, Crooked River, and Parsnip River watershed groups. This included initial surveys on numerous Ministry of Transportation and Infrastructure sites, incorporating recently adapted assessments with climate change risk assessment metrics
 
 <br>
 
 In addition to structure replacements and removals to restore connectivity - communications, research and monitoring are essential parts of any restoration initiative as they ensure that we identify the best and most efficient opportunities for fish passage restoration while incorporating adaptive management informed by traditional knowledge and real-time planning/monitoring data. Recommendations going forward include:
 
-- Continue to engage partners to raise funds for remediations, identify sites for restoration, conduct remedial works and assess effectiveness of works. 
-- Continue to conduct detailed assessments where blockages are present and large amounts of habitat are potentially available within the Parsnip River and neighboring watershed groups.  As timelines for remediations can be extensive, planning onerous and costs of remedial works significant, continuing assessments throughout the greater area will provide more options for remediation and engage additional funding partners (ex. Ministry of Transportation and Infrastructure, alternative forest licensees). Identifying areas of concern near the community of McLeod Lake is expected to further engage community members and most effectively promote restoration activities.
-- Conduct effectiveness monitoring where sites have been remediated, where sites have been prioritized and where remediations are planned. Electrofishing surveys including tagging of target species with PIT tags are recommended to understand the extent of connectivity impairments, track fish movement/health over time and inform adaptive management. Detailed habitat assessments and acquisition of temperature data can be considered along with photo documentation of stream morphology near crossings. 
- 
-
-
-
-
-
+-   Continue to engage partners to raise funds for remediations, identify sites for restoration, conduct remedial works and assess effectiveness of works.
+-   Continue to conduct detailed assessments where blockages are present and large amounts of habitat are potentially available within the Parsnip River and neighboring watershed groups. As timelines for remediations can be extensive, planning onerous and costs of remedial works significant, continuing assessments throughout the greater area will provide more options for remediation and engage additional funding partners (ex. Ministry of Transportation and Infrastructure, alternative forest licensees). Identifying areas of concern near the community of McLeod Lake is expected to further engage community members and most effectively promote restoration activities.
+-   Conduct effectiveness monitoring where sites have been remediated, where sites have been prioritized and where remediations are planned. Electrofishing surveys including tagging of target species with PIT tags are recommended to understand the extent of connectivity impairments, track fish movement/health over time and inform adaptive management. Detailed habitat assessments and acquisition of temperature data can be considered along with photo documentation of stream morphology near crossings.
