@@ -1,20 +1,11 @@
 source('scripts/packages.R')
 source('scripts/tables.R')
 
-##make your geopackage for mapping
-make_geopackage <- function(dat, gpkg_name = 'fishpass_mapping', utm_zone = 10){
-  nm <-deparse(substitute(dat))
-  dat %>%
-    sf::st_as_sf(coords = c("utm_easting", "utm_northing"), crs = 26900 + utm_zone, remove = F) %>%
-    st_transform(crs = 4326) %>%
-    sf::st_write(paste0("./data/fishpass_mapping/", gpkg_name, ".gpkg"), nm, delete_layer = TRUE)
-}
-
-
-make_geopackage(dat = hab_fish_collect)
-make_geopackage(dat = hab_features)
-make_geopackage(dat = hab_site_priorities)
-make_geopackage(dat = phase1_priorities)
+fpr_make_geopackage(dat = hab_fish_collect)
+#still need to do - see https://github.com/NewGraphEnvironment/fish_passage_peace_2023_reporting/issues/53
+# fpr_make_geopackage(dat = hab_features)
+fpr_make_geopackage(dat = hab_site_priorities)
+fpr_make_geopackage(dat = phase1_priorities)
 
 ##we do this manually since the
 # phase1_priorities %>%
@@ -28,33 +19,10 @@ make_geopackage(dat = phase1_priorities)
 sf::read_sf("./data/habitat_confirmation_tracks.gpx", layer = "tracks") %>%
   sf::st_write(paste0("./data/fishpass_mapping/", 'fishpass_mapping', ".gpkg"), 'hab_tracks', append = TRUE)
 
-##study area watersheds
-# conn <- DBI::dbConnect(
-#   RPostgres::Postgres(),
-#   dbname = Sys.getenv('PG_DB_DO'),
-#   host = Sys.getenv('PG_HOST_DO'),
-#   port = Sys.getenv('PG_PORT'),
-#   user = Sys.getenv('PG_USER_DO'),
-#   password = Sys.getenv('PG_PASS_DO')
-# )
-
-# use remote because up to date
-conn <- DBI::dbConnect(
-  RPostgres::Postgres(),
-  dbname = Sys.getenv('PG_DB_BCBARRIERS'),
-  host = Sys.getenv('PG_HOST_BCBARRIERS'),
-  port = Sys.getenv('PG_PORT_DEV'),
-  user = Sys.getenv('PG_USER_BCBARRIERS'),
-  password = Sys.getenv('PG_PASS_BCBARRIERS')
-)
-# dbGetQuery(conn,
-#            "SELECT column_name,data_type
-#            FROM information_schema.columns
-#            WHERE table_name='fwa_watershed_groups_poly'")
 
 ##here is the study area watersheds
-wshd_study_areas <- st_read(conn,
-                           query = "SELECT * FROM whse_basemapping.fwa_watershed_groups_poly a
+wshd_study_areas <- fpr_db_query(
+  query = "SELECT * FROM whse_basemapping.fwa_watershed_groups_poly a
                                WHERE a.watershed_group_code IN ('PARS','CARP','CRKD')"
 )
 
@@ -63,8 +31,6 @@ wshd_study_areas %>%
   st_cast("POLYGON") %>%
   sf::st_transform(crs = 4326) %>%
   sf::st_write(paste0("./data/fishpass_mapping/", 'fishpass_mapping', ".gpkg"), 'wshd_study_areas', append = F)
-
-dbDisconnect(conn = conn)
 
 ####------------add the watersheds-------------------------
 # this is done in 0170-load-wshd_stats.R
@@ -95,53 +61,3 @@ write_geojson <- function(layers){
 
 layers_to_burn %>%
   map(write_geojson)
-
-##make a kml of the planning info
-tab_plan <- tab_plan_raw %>%
-  filter(!is.na(my_text)) %>%
-  arrange(stream_crossing_id, modelled_crossing_id) %>%
-  mutate(my_priority = case_when(my_priority == 'mod' ~ 'moderate',
-                                 T ~ my_priority)) %>%
-  select(
-         Priority = my_priority,
-         `PSCIS ID` = stream_crossing_id,
-         `Modelled ID` = modelled_crossing_id,
-         `Species` = observedspp_upstr,
-         `Order` = stream_order,
-         `Upstream habitat (km)` = wct_network_km,
-         `Channel width` = downstream_channel_width,
-         `Habitat value` = habitat_value_code,
-         `Image link` = image_view_url,
-          long,
-          lat,
-         Comments = my_text)
-
-
-df <- make_kml_col(tab_plan)
-
-df <- df %>%
-  dplyr::group_split(site_id) %>%
-  purrr::map(make_html_tbl) %>%
-  dplyr::bind_rows()
-
-coords <- df %>%
-  # select(easting, northing) %>%
-  select(long, lat)
-proj4string <- sp::CRS("+init=epsg:3005") #26911
-df <- df %>%
-  sp::SpatialPointsDataFrame(coords = coords, proj4string = proj4string) %>%
-  plotKML::reproject()
-
-# shape = "http://maps.google.com/mapfiles/kml/paddle/A.png"
-# shape = "http://maps.google.com/mapfiles/kml/paddle/wht-blank.png"
-# shape = "http://maps.google.com/mapfiles/kml/pal2/icon18.png"
-
-
-# kml_open("data/outgoing/barrier_assessments.kml")
-kml_open("data/Attachment_1_morice_planning.kml")
-kml_layer(df, shape = df$shape, colour = df$color, labels = df$label, html.table = df$html_tbl, z.scale = 2, LabelScale = 1, size = 1.5)
-kml_close("data/Attachment_1_morice_planning.kml")
-
-##now we will zip up the kml files in the data folder and rename with kmz
-files_to_zip <- paste0("data/", list.files(path = "data/", pattern = "\\.kml$"))  ##this used to includes the planning file which we don't want to do so watch out
-zip::zipr("data/Attachment_1_morice_planning_kml.zip", files = files_to_zip)  ##it does not work to zip to kmz!!
