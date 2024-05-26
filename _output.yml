@@ -6,8 +6,8 @@ bookdown::gitbook:
       before: |
         <li><a href="./">Fish Passage in the Peace Region</a></li>
       after: |
-        <li><a href="https://github.com/NewGraphEnvironment/fish_passage_peace_2022_reporting" target="blank">Scripts and Data</a></li>
-    download: ["Peace2022.pdf", "Peace.html"]
+        <li><a href="https://github.com/NewGraphEnvironment/fish_passage_peace_2023_reporting" target="blank">Scripts and Data</a></li>
+    download: ["Peace2023.pdf", "Peace2023.html"]
     fontsettings:
       theme: night
       family: sans
