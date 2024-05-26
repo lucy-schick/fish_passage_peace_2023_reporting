@@ -5,16 +5,7 @@ source('scripts/packages.R')
 # source('R/functions.R')
 
 # thinking we better use the remote database since my local version is outdated and not willing to risk a week of time to rebuild (might be fine in a day but never really know till we climb in)
-
-
-conn <- DBI::dbConnect(
-  RPostgres::Postgres(),
-  dbname = Sys.getenv('PG_DB_SHARE'),
-  host = Sys.getenv('PG_HOST_SHARE'),
-  port = Sys.getenv('PG_PORT_SHARE'),
-  user = Sys.getenv('PG_USER_SHARE'),
-  password = Sys.getenv('PG_PASS_SHARE')
-)
+conn <- fpr::fpr_db_conn()
 
 #
 ##listthe schemas in the database
@@ -93,7 +84,7 @@ CROSS JOIN LATERAL
 
 ##get all the data and save it as an sqlite database as a snapshot of what is happening.  we can always hopefully update it
 query <- "SELECT *
-   FROM bcfishpass.crossings
+   FROM bcfishpass.crossings_vw
    WHERE watershed_group_code IN ('PARS', 'CRKD', 'CARP')"
 
 
