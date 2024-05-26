@@ -805,7 +805,7 @@ hab_fish_collect_prep <- habitat_confirmations %>%
 
 # test to see if there are any missing lengths
 hab_fish_indiv_prep3 %>%
-  filter(is.na(length_mm))
+  dplyr::filter(is.na(length_mm))
 
 # join the indiv fish data to existing site info
 hab_fish_indiv <- full_join(
@@ -873,13 +873,13 @@ bin_1 <- floor(min(hab_fish_indiv$length_mm, na.rm = TRUE)/5)*5
 bin_n <- ceiling(max(hab_fish_indiv$length_mm, na.rm = TRUE)/5)*5
 bins <- seq(bin_1,bin_n, by = 5)
 
-plot_fish_hist <- ggplot(hab_fish_indiv %>% filter(!species_code %in% c('CC', 'SU')),
+plot_fish_hist <- ggplot(hab_fish_indiv %>% dplyr::filter(!species_code %in% c('CC', 'SU')),
                          aes(x=length_mm
                              # fill=alias_local_name
                              # color = alias_local_name
                          )) +
   geom_histogram(breaks = bins, alpha=0.75,
-                 position="identity", size = 0.75)+
+                 position="identity", linewidth = 0.75)+
   labs(x = "Fork Length (mm)", y = "Count (#)") +
   facet_wrap(~species_code)+
   # scale_color_grey() +
