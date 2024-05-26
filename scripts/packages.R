@@ -1,5 +1,8 @@
 pkgs_cran <- c(
+  #'plotKML', #this takes forever to load - and doesn't work due to rgdal depends so going to leave it out for now
   'rmarkdown',
+  'raster', #load this dog before dplyr and bcdata to avoid conflicts (filter and select)
+  'bcdata',
   'tidyverse',
   'readwritesqlite',
   'sf',
@@ -7,41 +10,42 @@ pkgs_cran <- c(
   'janitor',
   'leafem',
   'leaflet',
-  'kableExtra',
   'httr',
   'RPostgres',
   'DBI',
   'magick',
-  'bcdata',
   'jpeg',
   'datapasta',
   'knitr',
   'data.table',
+  'lubridate',
   'bookdown',
   'fasstr',
   'tidyhydat',
   'elevatr',
-  'rayshader',
-  'exifr',
   'english',
   'leaflet.extras',
   'ggdark',
   'pdftools',
-  'pagedown',
-  'crosstalk',
-  'DT',
-  'fishbc',
   'chron',
-  'remotes',
-  'roxygen2',
+  'leafpop',
+  'exifr',
+  'pagedown',
   'devtools',
-  'reprex'
+  "geojsonio",
+  "fs",
+  "fishbc"
 )
-pkgs_gh <- c(#'Envirometrix/plotKML',  #plot kml needed to go ahead of other packages for some reason and wants to reinstall everytime.... not sure why. hash out for nowpoissonconsulting/fwapgr",
-             'poissonconsulting/poisspatial',
-             'poissonconsulting/fwapgr',
-             "newgraphenvironment/fpr"
-             )
+
+pkgs_gh <- c(
+  "poissonconsulting/fwapgr",
+  # "poissonconsulting/poisutils",
+  "newgraphenvironment/fpr",
+  "newgraphenvironment/rfp",
+  'poissonconsulting/poisspatial',
+  "haozhu233/kableExtra",
+  "gadenbuie/shrtcts"
+)
 
 pkgs_all <- c(pkgs_cran,
               pkgs_gh)
