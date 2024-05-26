@@ -3,21 +3,25 @@
 # source('R/packages.R')
 
 # define your project repo name
-repo_name <- 'fish_passage_peace_2022_reporting'
+repo_name <- 'fish_passage_peace_2023_reporting'
 
-photo_metadata_prep <- exifr::read_exif('data/photos',recursive=T)  %>%
-  janitor::clean_names() %>%
-  select(file_name, source_file, create_date, gps_latitude, gps_longitude) %>%
+photo_metadata_prep <- exifr::read_exif('data/photos',recursive=T)  |>
+  janitor::clean_names() |>
+  select(file_name, source_file, create_date, gps_latitude, gps_longitude) |>
   mutate(url  = paste0('https://github.com/NewGraphEnvironment/', repo_name, '/raw/main/',
-                       source_file)) %>%
-  filter(
-    file_name %like% '_k_'
-  ) %>%
-  mutate(create_date = lubridate::as_datetime(create_date, tz="America/Vancouver"))
+                       source_file)) |>
+  # filter photos used in hab con site memos, but do not include photos used for pscis phase 2 submission portal as we don't want to clutter map
+  # portal photos have been labelled '_k_nm' to distinguish them, they are still committed to repo
+  dplyr::filter(
+    stringr::str_detect(file_name, "_k_") & !stringr::str_detect(file_name, "_nm_")
+  ) |>
+  mutate(create_date = lubridate::as_datetime(create_date, tz="America/Vancouver")) |>
+  # convert blank entires in gps to na so we can filter on them
+  mutate(across(contains('gps'), ~na_if(., "")))
 
-# MW photos aren't georeferenced so link them to tracks
-# read in tracks
-track_points_prep = read_sf('data/habitat_confirmation_tracks.gpx', layer = "track_points")
+if(nrow(photo_metadata_prep |> dplyr::filter(is.na(gps_latitude))) > 0){
+# sometimes MW photos weren't georeferenced so they needed to be linked to tracks
+track_points_prep = read_sf('data/gps/peace_2023_field_mw.gpx', layer = "track_points")
 
 track_points <- track_points_prep %>%
   st_coordinates() %>%
@@ -25,8 +29,12 @@ track_points <- track_points_prep %>%
   setNames(c("gps_longitude","gps_latitude")) %>%
   rowid_to_column()
 
+
+
 mw_photos <- photo_metadata_prep %>%
-  filter(source_file %like% 'TimePhoto') %>%
+  # 'TimePhoto' seems to be naming convention for photos taken by MW
+  # AND only photos that are missing gps coordinates
+  dplyr::filter(stringr::str_detect(source_file, 'TimePhoto') & is.na(gps_latitude)) %>%
   select(file_name, source_file, create_date) %>%
   mutate(create_date = lubridate::as_datetime(create_date, tz="America/Vancouver"))
 
@@ -47,11 +55,13 @@ get_closest_line_in_history <- function(x, history){
 indx_closest_point <- sapply(mw_photos$create_date,
                              get_closest_line_in_history,
                              track_points_prep$time) %>%
-                             as_tibble()
+  as_tibble()
 
 # closest point corresponds to row id in track points so join dataframes
-joined_tracks <- left_join(indx_closest_point, track_points, by = c('value' = 'rowid')) %>%
-  mutate(gps_latitude = as.character(gps_latitude)) %>%
+# this step should only replace the coordinates when they are not already present.
+# thinking left_join with a case_when
+joined_tracks <-  left_join(indx_closest_point, track_points, by = c('value' = 'rowid')) |>
+  mutate(gps_latitude = as.character(gps_latitude)) |>
   mutate(gps_longitude = as.character(gps_longitude))
 
 # tracks are now matched up to photos indexes so bind columns and drop value column
@@ -60,18 +70,21 @@ photo_metadata_processed <- bind_cols(mw_photos, joined_tracks) %>%
   mutate(url  = paste0('https://github.com/NewGraphEnvironment/', repo_name, '/raw/main/',
                        source_file))
 
-photo_metadata <- filter(photo_metadata_prep, !source_file %like% 'TimePhoto') %>%
-  bind_rows(photo_metadata_processed) %>%
+
+photo_metadata <- photo_metadata_prep |>
+  dplyr::filter(!str_detect(source_file, 'TimePhoto')) |>
+  bind_rows(photo_metadata_processed) |>
   select(-create_date)
+}else{
+  photo_metadata <- photo_metadata_prep
+}
 
+conn <- readwritesqlite::rws_connect("data/bcfishpass.sqlite")
+readwritesqlite::rws_list_tables(conn)
+readwritesqlite::rws_drop_table("photo_metadata", conn = conn) ##now drop the table so you can replace it
+readwritesqlite::rws_write(photo_metadata, exists = F, delete = TRUE,
+                           conn = conn, x_name = "photo_metadata")
+readwritesqlite::rws_list_tables(conn)
+readwritesqlite::rws_disconnect(conn)
 
-
-
-conn <- rws_connect("data/bcfishpass.sqlite")
-rws_list_tables(conn)
-rws_drop_table("photo_metadata", conn = conn) ##now drop the table so you can replace it
-rws_write(photo_metadata, exists = F, delete = TRUE,
-          conn = conn, x_name = "photo_metadata")
-rws_list_tables(conn)
-rws_disconnect(conn)
 
