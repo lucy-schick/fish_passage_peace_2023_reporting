@@ -15,44 +15,32 @@ pscis_raw <- fpr_sp_gpkg_backup(
   return_object = TRUE)
 
 
-# prep for csvs for cut and paste by subsetting columns to those in spreadsheet
-pscis_spdsht_cols <- pscis_raw %>%
-  # make a column to identify phase 1 sites
-  dplyr::mutate(
-    phase = case_when(
-      !is.na(my_crossing_reference) ~ 1,
-      TRUE ~ 2
-    )
-  ) %>%
-  # arrange by phase then date (helps when following through raw photos)
-  dplyr::arrange(phase, date_time_start) %>%
+# prep for csvs for cut and paste
+pscis_spsht_cols <- pscis_raw %>%
   # only select columns from template object
   dplyr::select(any_of(names(fpr_xref_template_pscis())), site_id) %>%
   # remove scoring columns, as these can't be copied and pasted anyways because of macros
-  dplyr::select(-stream_width_ratio:-barrier_result)
-  # then arrange it by pscis id to separate phase 1s from phase 2 and reassessments if using just one csv
-  # dplyr::arrange(pscis_crossing_id, date)
+  dplyr::select(-stream_width_ratio:-barrier_result) %>%
+  # then arrange it by pscis id to separate phase 1s from phase 2 and reassessments
+  dplyr::arrange(pscis_crossing_id, date)
 
 
-# get phase1 sites ids
-sites_p1 <- pscis_spdsht_cols %>%
+# phase1
+sites_p1 <- pscis_spsht_cols %>%
   dplyr::filter(!is.na(my_crossing_reference)) %>%
   dplyr::pull(my_crossing_reference)
 
-# seperate out phase 1 sites and sort for cut and paste
-dat_p1 <- pscis_spdsht_cols %>%
-  dplyr::filter(!is.na(my_crossing_reference)) %>%
-  dplyr::arrange(date)
+dat_p1 <- pscis_spsht_cols %>%
+  dplyr::filter(!is.na(my_crossing_reference))
 
-# see if the rassess sites are in the template
+# put a switch to see if the rassess sites are in the template?
 sites_reassess <- fpr::fpr_import_pscis(workbook_name = 'pscis_reassessments.xlsm') %>%
   dplyr::pull(pscis_crossing_id)
 
-dat_r <- pscis_spdsht_cols %>%
+dat_r <- pscis_spsht_cols %>%
   dplyr::filter(pscis_crossing_id %in% sites_reassess)
 
 # put a switch to pull out the phase 2 sites by looking at the fisheries data submission template
-# this doesn't actually work because some of these sites might just be monitoring sites!!
 sites_p2 <- fpr_import_hab_con(col_filter_na = TRUE, row_empty_remove = TRUE, backup = FALSE) %>%
   purrr::pluck("step_1_ref_and_loc_info") %>%
   mutate(survey_date = janitor::excel_numeric_to_date(as.numeric(survey_date))) %>%
@@ -62,9 +50,9 @@ sites_p2 <- fpr_import_hab_con(col_filter_na = TRUE, row_empty_remove = TRUE, ba
   dplyr::distinct(site, .keep_all = FALSE) %>%
   dplyr::pull(site)
 
-dat_p2 <- pscis_spdsht_cols %>%
+dat_p2 <- pscis_spsht_cols %>%
   dplyr::filter(pscis_crossing_id %in% sites_phase2)
 
 # do a sanity check to make sure we have all the sites only in one place
-
+n_distinct(pscis_spsht_cols$)
 
