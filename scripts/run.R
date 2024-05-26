@@ -9,12 +9,15 @@ preview_chapter('0100-intro.Rmd')
 #                        encoding = 'UTF-8')
 
 # to load from scratch we need the pipe
-library(magrittr)
+rmarkdown::render('scripts/02_reporting/photos_import.Rmd', output_dir = "scripts/02_reporting/docs")
+source('scripts/02_reporting/0180-photos-extract-metadata.R')
 
 {
+  source('scripts/functions.R')
+  news_to_appendix()
   # These files are included in the gitbook version already so we move them out of the build
-  files_to_move <- list.files(pattern = ".Rmd$") %>%
-    stringr::str_subset(., '2400', negate = F) #move the attachments out
+  files_to_move <- list.files(pattern = ".Rmd$") |>
+    stringr::str_subset('2300', negate = F) #move the attachments out
   files_destination <- paste0('hold/', files_to_move)
 
   ##move the files
