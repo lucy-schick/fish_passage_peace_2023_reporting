@@ -17,3 +17,6 @@ Peace2023.html
 data/photos/**/*.pdf
 !data/photos/admin/*
 .httr-oauth
+
+
+Peace2023_files/*
