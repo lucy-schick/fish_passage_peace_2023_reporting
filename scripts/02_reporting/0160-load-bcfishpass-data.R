@@ -17,7 +17,8 @@ bcfishpass <- fpr::fpr_db_query(
   {glue::glue_collapse(glue::single_quote(wsg), sep = ', ')}
   );"
   )
-)
+) |>
+  sf::st_drop_geometry()
 
 # grab the bcfishpass spawning and rearing table and put in the database so it can be used to populate the methods
 # like solutions provided here https://github.com/smnorris/bcfishpass/issues/490
