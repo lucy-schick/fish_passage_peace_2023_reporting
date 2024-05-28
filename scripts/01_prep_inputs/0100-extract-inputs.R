@@ -884,9 +884,11 @@ plot_fish_hist <- ggplot(hab_fish_indiv %>% dplyr::filter(!species_code %in% c('
   facet_wrap(~species_code)+
   # scale_color_grey() +
   # scale_fill_grey() +
-  ggdark::dark_theme_bw(base_size = 8)+
+  # ggdark::dark_theme_bw(base_size = 8)+
+  cowplot::theme_minimal_hgrid() +
+  cowplot::panel_border() +
   # theme_bw(base_size = 8)+
-  scale_x_continuous(breaks = bins[seq(1, length(bins), by = 2)])+
+  scale_x_continuous(breaks = bins[seq(1, length(bins), by = 2)]) +
   # scale_color_manual(values=c("grey90", "grey60", "grey30", "grey0"))+
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 # geom_histogram(aes(y=..density..), breaks = bins, alpha=1,
