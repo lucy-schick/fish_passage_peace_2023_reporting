@@ -125,9 +125,17 @@ map %>%
 <br>
 
 ## Climate Change Risk Assessment
-Preliminary climate change risk assessment data is presented below. Phase 1 sites are presented in Table \@ref(tab:tab-moti-climate-phase1), and Phase 2 sites are in Table \@ref(tab:tab-moti-climate-phase2).   
 
-```{r tab-moti-climate-phase1, eval = F}
+```{r, echo=FALSE, results='asis'}
+if(identical(gitbook_on, FALSE)){
+  knitr::asis_output("Due to the large amount of data present, preliminary climate change risk assessment data is presented in the [interactive report](https://newgraphenvironment.github.io/fish_passage_peace_2023_reporting/) at https://newgraphenvironment.github.io/fish_passage_peace_2023_reporting/. Phase 2 sites are in Table \\@ref(tab:tab-moti-climate-phase2).")
+} else {
+  knitr::asis_output("Preliminary climate change risk assessment data is presented below. Phase 1 sites are presented in Table \\@ref(tab:tab-moti-climate-phase1), and Phase 2 sites are in Table \\@ref(tab:tab-moti-climate-phase2).")
+}
+```
+  
+
+```{r tab-moti-climate-phase1, eval = gitbook_on}
 df_transpose <- function(df) {
   
   df %>% 
@@ -153,7 +161,7 @@ tab_moti_phase1 %>%
 
 <br>
 
-```{r tab-moti-climate-phase2, eval = F}
+```{r tab-moti-climate-phase2, eval = TRUE}
 
 tab_moti_phase2 %>% 
   purrr::set_names(nm = xref_moti_climate_names %>% pull(report)) %>%
@@ -199,11 +207,11 @@ Field assessments were conducted between `r format(min(pscis_phase1$date), forma
 <br>
 
 ## Phase 2
-During 2022 field assessments, habitat confirmation assessments were conducted at `r hab_site_priorities %>% nrow()` sites in the Morice River, Zymoetz River and Kispiox River watersheds.  A total of approximately `r habitat_confirmations_priorities %>% pull(length_surveyed) %>% sum(na.rm = T) %>% round(-3)/1000`km of stream was assessed, fish sampling utilizing electrofishing surveys were conducted at two streams. Georeferenced field maps are presented in Attachment 1.
+During 2022 field assessments, habitat confirmation assessments were conducted at `r hab_site_priorities %>% nrow()` sites in the Parsnip River, Carp River and Crooked River watershed groups.  A total of approximately `r habitat_confirmations_priorities %>% pull(length_surveyed) %>% sum(na.rm = T) %>% round(-3)/1000`km of stream was assessed. Georeferenced field maps are presented in Attachment 1.
 
 <br>
 
-As collaborative decision making was ongoing at the time of reporting, site prioritization can be considered preliminary.  In total, `r hab_site_priorities %>% filter(priority %ilike% 'high') %>% nrow() %>% english::as.english()` crossings were rated as high priorities for proceeding to design for replacement, `r hab_site_priorities %>% filter(priority %ilike% 'Moderate') %>% nrow() %>% english::as.english()` crossings were rated as moderate priorities, and `r hab_site_priorities %>% filter(priority %ilike% 'Low') %>% nrow() %>% english::as.english()` crossings were rated as low priorities. Results are summarized in `r if(gitbook_on){knitr::asis_output("Figure \\@ref(fig:map-interactive) and ")}`Tables \@ref(tab:tab-overview) - \@ref(fig:plot-fish-all) with raw habitat and fish sampling data included in digital format [here](https://github.com/NewGraphEnvironment/fish_passage_peace_2023_reporting/blob/main/data/habitat_confirmations.xls).  A summary of preliminary modelling results illustrating the quantity of chinook, coho and steelhead spawning and rearing habitat potentially available upstream of each crossing as estimated by measured/modelled channel width and upstream accessible stream length are presented in Figure \@ref(fig:plot-model-all). Detailed information for each site assessed with Phase 2 assessments (including maps) are presented within site specific appendices to this document.
+As collaborative decision making was ongoing at the time of reporting, site prioritization can be considered preliminary.  In total, `r hab_site_priorities %>% filter(priority %ilike% 'high') %>% nrow() %>% english::as.english()` crossings were rated as high priorities for proceeding to design for replacement, `r hab_site_priorities %>% filter(priority %ilike% 'Moderate') %>% nrow() %>% english::as.english()` crossings were rated as moderate priorities, and `r hab_site_priorities %>% filter(priority %ilike% 'Low') %>% nrow() %>% english::as.english()` crossings were rated as low priorities. Results are summarized in `r if(gitbook_on){knitr::asis_output("Figure \\@ref(fig:map-interactive) and ")}`Tables \@ref(tab:tab-overview) - \@ref(fig:plot-fish-all) with raw habitat and fish sampling data included in digital format [here](https://github.com/NewGraphEnvironment/fish_passage_peace_2023_reporting/blob/main/data/habitat_confirmations.xls).  A summary of preliminary modelling results illustrating quantities of bull trout spawning and rearing habitat potentially available upstream of each crossing as estimated by measured/modelled channel width and upstream accessible stream length are presented in Figure \@ref(fig:plot-model-all). Detailed information for each site assessed with Phase 2 assessments (including maps) are presented within site specific appendices to this document.
 
 `r if(gitbook_on){knitr::asis_output("")} else knitr::asis_output("<br><br><br><br>")`
 
@@ -213,7 +221,7 @@ As collaborative decision making was ongoing at the time of reporting, site prio
 ```{r tab-overview, eval = T}
 table_phase2_overview <- function(dat, caption_text = '', font = font_set, scroll = TRUE){
   dat2 <- dat %>%
-    kable(caption = caption_text, booktabs = T) %>%
+    kable(caption = caption_text, booktabs = T, label = NA) %>%
     kableExtra::kable_styling(c("condensed"),
                               full_width = T,
                               font_size = font) %>%
@@ -258,10 +266,10 @@ tab_cost_est_phase2_report %>%
 
 ```{r tab-habitat-summary}
 tab_hab_summary %>% 
-  filter(Location %ilike% 'upstream') %>% 
+  # filter(Location %ilike% 'upstream') %>% 
   # select(-Location) %>% 
   rename(`PSCIS ID` = Site, `Length surveyed upstream (m)` = `Length Surveyed (m)`) %>%
-  fpr::fpr_kable(caption_text = 'Summary of Phase 2 habitat confirmation details.', scroll = F)
+  fpr::fpr_kable(caption_text = 'Summary of Phase 2 habitat confirmation details.', scroll = gitbook_on)
 
 
 ```
@@ -271,7 +279,7 @@ tab_hab_summary %>%
 ```{r tab-wshd-sum-all}
 fpr::fpr_table_wshd_sum() %>% 
   fpr::fpr_kable(caption_text = paste0('Summary of watershed area statistics upstream of Phase 2 crossings.'),
-                                 footnote_text = 'Elev P60 = Elevation at which 60% of the watershed area is above', scroll = F)
+                                 footnote_text = 'Elev P60 = Elevation at which 60% of the watershed area is above', scroll = F, scroll_box_height = "300px")
 
 ```
 
@@ -311,7 +319,7 @@ bcfishpass_phase2_plot_prep <- bcfishpass %>%
  bcfishpass_phase2_plot_prep %>% 
   ggplot(aes(x = stream_crossing_id, y = value)) +
   geom_bar(stat = "identity")+
-  facet_wrap(~name, ncol = 2)+
+  facet_wrap(~name)+
   # ggdark::dark_theme_bw(base_size = 11)+
    # theme(axis.text.x=element_text(angle=90, hjust=1, vjust=0.5)) +
   labs(x = "Site", y = "Modelled habitat (km)")  +
@@ -320,6 +328,21 @@ bcfishpass_phase2_plot_prep <- bcfishpass %>%
 
 
 ```
+
+
+## Phase 3 - Design
+
+
+
+
+
+## Phase 4 - Remediations
+
+## Monitoring
+
+Fish sampling was conducted as part of baseline monitoring for sites where restorations are planned in 2024 and
+2025.  
+
 
 
 ### Fish Sampling
@@ -347,27 +370,64 @@ tab_fish_sites_sum %>%
 
 ```{r plot-fish-all, fig.cap='Boxplots of densities (fish/100m2) of fish captured by electrofishing during habitat confirmation assessments.', eval=T}
 plot_fish_box_all <-  fish_abund %>% #tab_fish_density_prep
-    filter(
-      !species_code %in% c('MW', 'SU', 'NFC', 'CT', 'LSU')
-    ) %>%
-    ggplot(., aes(x = location, y =density_100m2)) +
-    geom_boxplot()+
-    facet_grid(site ~ species_code, scales ="fixed", #life_stage
-               as.table = T)+
-    # theme_bw()+
-    theme(legend.position = "none", axis.title.x=element_blank()) +
-    geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+
-    ylab(expression(Density ~ (Fish/100 ~  m^2))) +
-    ggdark::dark_theme_bw()
+  filter(
+    !species_code %in% c('MW', 'SU', 'NFC', 'CT', 'LSU')
+  ) %>%
+  ggplot(., aes(x = location, y =density_100m2)) +
+  geom_boxplot()+
+  facet_grid(site ~ species_code, scales ="fixed", #life_stage
+             as.table = T)+
+  # theme_bw()+
+  # theme(legend.position = "none", axis.title.x=element_blank()) +
+  # geom_dotplot(binaxis='y', stackdir='center', dotsize=1)+
+  ylab(expression(Density ~ (Fish/100 ~  m^2))) +
+  # ggdark::dark_theme_bw() 
+  cowplot::theme_minimal_hgrid() +
+  cowplot::panel_border()
 
 plot_fish_box_all
 ```
 
-## Phase 3 - Design
+
+## Challenges and Opportunities
+### Costs, Timing and Partnerships
+Inflation has led to significant cost increases for culvert removals and bridge installations. The projected costs for replacing culverts with bridges on small streams, on unpaved resource roads, have surged from around \$180,000 in 2020 to over \$400,000 in 2023. These estimates are just a fraction of the costs associated with structure replacements on railways, highways, and paved roads, which can range from near a million to tens of millions of dollars per crossing. This challenge poses a significant obstacle without straightforward mitigation. We are actively seeking new funding partners and are requesting current funders consider increasing financial support for necessary actions.
+
+<br>
+
+Infrastructure replacements and removals, even with full funding secured, are complex, taking several years to plan and implement, often involving multiple partners with divergent perspectives.  Cost estimates stay uncertain even post-design, and numerous factors can cause delays or derail plans completely. When financial support depends on annual renewals with expectations for swift outcomes, planning becomes exceptionally challenging. 
+
+<br>
+
+Some landowners and tenure holders lack support to implement remedial actions on the infrastructure they manage, hindering progress in fish passage restoration efforts. CN Rail infrastructure, in particular, significantly contributes to fish passage issues in the FWCP Peace Region. However, representatives from the company have communicated that historically they have been supported to complete one small fish passage remediation project per year across all of western Canada. We are exploring strategies to encourage collaborative cooperation and investment from these stakeholders.
+
+<br>
+
+Economic uncertainty in the forestry sector, resulting from deferred cutting permits on land tracks designated as "old-growth management areas," has significantly impacted our study area. The British Columbia government has urged licensees to postpone harvesting in these areas until a "new approach for old growth forest management" is developed and many cutting permits have been on extended hold. Despite initial plans for the remediation of site 125000 near Arctic Lake in the summer of 2023, our project partner and forest licensee in the area, Sinclar Group, communicated in the spring of 2023 that road updates were no longer practical due to the deferrals affecting logging plans beyond the culvert. Consequently, they would not be able to allocate FWCP dollars earmarked for the site from the 2021/2022 or 2022/2023 fiscal funding pots towards the project. Fortunately, we were able to reallocate their funding to Canfor to catalyze restoration on the Missinka-Table FSR watershed instead.
 
 
 
+### Project Complexity and Communication
+
+It is challenging to communicate the complexity of fish passage issues to diverse partners/stakeholders.  Connectivity is on a spectrum and is not often 100% or 0% with costs of remediation high. Often there are multiple crossings on the same stream with different landowners and tenure holders for each.  We will continue to build relationships and tools to help understand and communicate the issues and find ways forward that involve meaningful actions.  
+
+<br>
+
+Collecting and presenting fish passage data poses challenges for field teams due to the large size of study areas, arduous field conditions and the complexity of stream crossing and habitat data. To address this, we are developing open-source collaborative GIS projects, mobile data collection, and iterative reporting systems to facilitate collaboration and share knowledge and methodologies with diverse partners. 
+
+### Complimentary Programs
+#### Arctic Grayling Research
+Ongoing work in the Parsnip Core area regarding Arctic grayling abundance estimates, critical habitat and spatial ecology
+is providing valuable information to inform fish passage restoration efforts.  Consultants and researchers have been
+developing multiple programs in the area with the support of the FWCP Peace Region.  We are working together with
+these teams to incorporate their findings into our fish passage restoration planning.
+
+#### BCHydro Fish Passage Program
+The BC Hydro Fish Passage Program is currently working with First Nations, regulators and stakeholders in the region to 
+develop strategies to offset impacts of fish entertainment related to the Site C dam expansion project. We met with
+West Moberly-DWB Limited Partnership to discuss how our prgrams can collaborate to identify potential sites for remediation.
 
 
-## Phase 4 - Remediations
- 
+#### Climate Change
+Climate change is a significant threat to fish and fish habitat.  We are working with the Ministry of Transportation and Infrastructure to incorporate climate change risk assessments into our fish passage restoration planning and plan to
+continue the evolution of this program into the future.  
