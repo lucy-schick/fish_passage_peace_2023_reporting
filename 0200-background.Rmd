@@ -1,6 +1,7 @@
 # Background
 
-The study area includes the Parsnip River watershed group and neighbouring areas and is within the traditional territories of the Tse'khene First Nations and the FWCP Peace Region (Figure \@ref(fig:overview-map)).  
+The study area includes the FWCP Peace Region with a focus to date on traditional territories of the Tse'khene First Nations.
+In 2023 filed assessments were completed with the Parsnip River, Carp River and Crooked River watershed groups (Figure \@ref(fig:overview-map)).  
 
 <br>
 
@@ -13,7 +14,7 @@ In 2022/2023, this collaborative project leveraged ongoing connectivity restorat
 
 
 ```{r overview-map, fig.cap = 'Overview map of Study Area',eval=T}
-knitr::include_graphics("fig/project_overview.png")
+knitr::include_graphics("fig/peace_fish_passage_2023.jpeg")
 ```
 
 
