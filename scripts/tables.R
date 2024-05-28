@@ -21,7 +21,8 @@ if (params$update_form_pscis) {
   )
 
   conn <- readwritesqlite::rws_connect("data/bcfishpass.sqlite")
-  # readwritesqlite::rws_drop_table("form_pscis", conn = conn)
+  # won't run on first build if the table doesn't exist
+  readwritesqlite::rws_drop_table("form_pscis_raw", conn = conn)
   readwritesqlite::rws_write(form_pscis_raw, exists = F, delete = TRUE,
                              conn = conn, x_name = "form_pscis_raw")
   readwritesqlite::rws_disconnect(conn)
