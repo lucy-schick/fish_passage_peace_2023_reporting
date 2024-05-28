@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Tributary to McLeod Lake - 198666 - Appendix | Restoring Fish Passage in the Peace Region - 2023</title>
   <meta name="description" content="Restoring Fish Passage in the Peace Region" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Tributary to McLeod Lake - 198666 - Appendix | Restoring Fish Passage in the Peace Region - 2023" />
   <meta property="og:type" content="book" />
@@ -52,6 +52,30 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.2.2/leaflet.js"></script>
+<script src="libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.2.2/leaflet-providers-plugin.js"></script>
+<link href="libs/leaflet-awesomemarkers-2.0.3/leaflet.awesome-markers.css" rel="stylesheet" />
+<script src="libs/leaflet-awesomemarkers-2.0.3/leaflet.awesome-markers.min.js"></script>
+<link href="libs/leaflet-markercluster-1.0.5/MarkerCluster.css" rel="stylesheet" />
+<link href="libs/leaflet-markercluster-1.0.5/MarkerCluster.Default.css" rel="stylesheet" />
+<script src="libs/leaflet-markercluster-1.0.5/leaflet.markercluster.js"></script>
+<script src="libs/leaflet-markercluster-1.0.5/leaflet.markercluster.freezable.js"></script>
+<script src="libs/leaflet-markercluster-1.0.5/leaflet.markercluster.layersupport.js"></script>
+<link href="libs/lfx-fullscreen-1.0.2/lfx-fullscreen-prod.css" rel="stylesheet" />
+<script src="libs/lfx-fullscreen-1.0.2/lfx-fullscreen-prod.js"></script>
+<link href="libs/leaflet-minimap-3.3.1/Control.MiniMap.min.css" rel="stylesheet" />
+<script src="libs/leaflet-minimap-3.3.1/Control.MiniMap.min.js"></script>
+<script src="libs/leaflet-minimap-3.3.1/Minimap-binding.js"></script>
 
 <script type="text/javascript">
 
@@ -83,7 +107,7 @@ document.addEventListener('DOMContentLoaded', toggle_R);
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -155,6 +179,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -186,25 +211,27 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Fish Passage in the Peace Region</a></li>
+<li><a href="./">Fish Passage in the Peace Region 2023</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Acknowledgement</a></li>
 <li class="chapter" data-level="" data-path="executive-summary.html"><a href="executive-summary.html"><i class="fa fa-check"></i>Executive Summary</a></li>
-<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
-<li class="chapter" data-level="1" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i><b>1</b> Background</a></li>
-<li class="chapter" data-level="2" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>2</b> Methods</a></li>
-<li class="chapter" data-level="3" data-path="recommendations.html"><a href="recommendations.html"><i class="fa fa-check"></i><b>3</b> Recommendations</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i><b>2</b> Background</a></li>
+<li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a></li>
+<li class="chapter" data-level="4" data-path="results-and-discussion.html"><a href="results-and-discussion.html"><i class="fa fa-check"></i><b>4</b> Results and Discussion</a></li>
+<li class="chapter" data-level="5" data-path="recommendations.html"><a href="recommendations.html"><i class="fa fa-check"></i><b>5</b> Recommendations</a></li>
 <li class="chapter" data-level="" data-path="appendix---phase-1-fish-passage-assessment-data-and-photos.html"><a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html"><i class="fa fa-check"></i>Appendix - Phase 1 Fish Passage Assessment Data and Photos</a></li>
 <li class="chapter" data-level="" data-path="tributary-to-mcleod-lake---198666---appendix.html"><a href="tributary-to-mcleod-lake---198666---appendix.html"><i class="fa fa-check"></i>Tributary to McLeod Lake - 198666 - Appendix</a></li>
 <li class="chapter" data-level="" data-path="mile-creek---198687---appendix.html"><a href="mile-creek---198687---appendix.html"><i class="fa fa-check"></i>42 Mile Creek - 198687 - Appendix</a></li>
-<li class="chapter" data-level="" data-path="tributary-to-altezega-creek---198694---appendix.html"><a href="tributary-to-altezega-creek---198694---appendix.html"><i class="fa fa-check"></i>Tributary to Altezega Creek - 198694 - Appendix</a></li>
+<li class="chapter" data-level="" data-path="tributary-to-altezega-creek---198723-198694---appendix.html"><a href="tributary-to-altezega-creek---198723-198694---appendix.html"><i class="fa fa-check"></i>Tributary to Altezega Creek - 198723 &amp; 198694 - Appendix</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="change-log.html"><a href="change-log.html"><i class="fa fa-check"></i>Change Log</a></li>
 <li class="chapter" data-level="" data-path="session-info.html"><a href="session-info.html"><i class="fa fa-check"></i>Session Info</a></li>
 <li class="chapter" data-level="" data-path="attachment-1---maps.html"><a href="attachment-1---maps.html"><i class="fa fa-check"></i><strong>Attachment 1 - Maps</strong></a></li>
-<li class="chapter" data-level="" data-path="attachment-2---habitat-assessment-and-fish-sampling-data.html"><a href="attachment-2---habitat-assessment-and-fish-sampling-data.html"><i class="fa fa-check"></i><strong>Attachment 2 - Habitat Assessment and Fish Sampling Data</strong></a></li>
+<li class="chapter" data-level="" data-path="attachment-3---phase-1-data-and-photos.html"><a href="attachment-3---phase-1-data-and-photos.html"><i class="fa fa-check"></i><strong>Attachment 3 - Phase 1 Data and Photos</strong></a></li>
 <li class="divider"></li>
-<li><a href="https://github.com/NewGraphEnvironment/fish_passage_peace_2022_reporting" target="blank">Scripts and Data</a></li>
+<li><a href="https://github.com/NewGraphEnvironment/fish_passage_peace_2023_reporting" target="blank">Scripts and Data</a></li>
 
 </ul>
 
@@ -237,14 +264,14 @@ upstream from McLeod Lake. The stream crossing is located between McLeod Lake St
 <p>Upstream of crossing 198666, rainbow trout have previously been recorded <span class="citation">(Norris 2022)</span>.
 <br></p>
 <p>A summary of habitat modelling outputs is presented in Table
-<a href="tributary-to-mcleod-lake---198666---appendix.html#tab:tab-culvert-bcfp-198666">3.1</a>. A map of the watershed is provided in
+<a href="tributary-to-mcleod-lake---198666---appendix.html#tab:tab-culvert-bcfp-198666">5.1</a>. A map of the watershed is provided in
 map attachment
 <a href="https://hillcrestgeo.ca/outgoing/fishpassage/projects/parsnip/archive/2022-05-27/FishPassage_093J.123.pdf">093J.123</a>.</p>
 <p><br></p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb25-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_bcfp</span>(<span class="at">scroll =</span> F) </span></code></pre></div>
-<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;border-bottom: 0;">
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb38-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_bcfp</span>(<span class="at">scroll =</span> F) </span></code></pre></div>
+<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-culvert-bcfp-198666">Table 3.1: </span>Summary of fish habitat modelling for PSCIS crossing 198666.
+<span id="tab:tab-culvert-bcfp-198666">Table 5.1: </span>Summary of fish habitat modelling for PSCIS crossing 198666.
 </caption>
 <thead>
 <tr>
@@ -419,7 +446,7 @@ BT Slopeclass15 (km)
 <p>At the time of the survey, PSCIS crossing 198666 was
 un-embedded, non-backwatered and ranked as a
 barrier to upstream fish passage according to the provincial protocol
-<span class="citation">(MoE 2011)</span> (Table <a href="tributary-to-mcleod-lake---198666---appendix.html#tab:tab-culvert-198666">3.2</a>). There
+<span class="citation">(MoE 2011)</span> (Table <a href="tributary-to-mcleod-lake---198666---appendix.html#tab:tab-culvert-198666">5.2</a>). There
 was high flow through the culvert at the time of survey. A deep
 outlet pool (2m) and a large outlet drop (2m) indicate that the
 culvert may be undersized. Water temperature was
@@ -428,10 +455,10 @@ pH was 7.9 and
 conductivity was
 410uS/cm.</p>
 <p><br></p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb26-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>()</span></code></pre></div>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb39-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>()</span></code></pre></div>
+<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-culvert-198666">Table 3.2: </span>Summary of fish passage assessment for PSCIS crossing 198666.
+<span id="tab:tab-culvert-198666">Table 5.2: </span>Summary of fish passage assessment for PSCIS crossing 198666.
 </caption>
 <thead>
 <tr>
@@ -691,14 +718,14 @@ Fix Span / Diameter
 </tfoot>
 </table></li>
 </ul>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb27-1" tabindex="-1"></a><span class="do">##this is useful to get some comments for the report</span></span>
-<span id="cb27-2"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb27-2" tabindex="-1"></a>hab_site <span class="sc">%&gt;%</span> <span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;ds&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(comments)</span>
-<span id="cb27-3"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb27-3" tabindex="-1"></a>hab_site <span class="sc">%&gt;%</span> <span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;us&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(comments)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb40-1" tabindex="-1"></a><span class="do">##this is useful to get some comments for the report</span></span>
+<span id="cb40-2"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb40-2" tabindex="-1"></a>hab_site <span class="sc">%&gt;%</span> <span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;ds&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(comments)</span>
+<span id="cb40-3"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb40-3" tabindex="-1"></a>hab_site <span class="sc">%&gt;%</span> <span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;us&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(comments)</span></code></pre></div>
 </div>
 <div id="stream-characteristics-downstream" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics Downstream<a href="tributary-to-mcleod-lake---198666---appendix.html#stream-characteristics-downstream" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The stream was surveyed downstream from crossing 198666 for 250m
-(Figures <a href="tributary-to-mcleod-lake---198666---appendix.html#fig:photo-198666-01">3.1</a> - <a href="tributary-to-mcleod-lake---198666---appendix.html#fig:photo-198666-02">3.2</a>).
+(Figures <a href="tributary-to-mcleod-lake---198666---appendix.html#fig:photo-198666-01">5.1</a> - <a href="tributary-to-mcleod-lake---198666---appendix.html#fig:photo-198666-02">5.2</a>).
 The average channel width was 2.8m, the average wetted width was 1.9m, and the average gradient was 2.7%.Total cover amount was rated as moderate with overhanging vegetation dominant. Cover was also present as undercut banks.The dominant substrate was gravels with cobbles sub-dominant. There was an abundance of large woody debris that created deep pools, diverted water flow, and created natural steps. The
 habitat was rated as NA value for
 salmonid rearing.</p>
@@ -706,9 +733,9 @@ salmonid rearing.</p>
 <div id="stream-characteristics-upstream" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics Upstream<a href="tributary-to-mcleod-lake---198666---appendix.html#stream-characteristics-upstream" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The stream was surveyed upstream from crossing 198666 for 220m
-(Figures <a href="tributary-to-mcleod-lake---198666---appendix.html#fig:photo-198666-03">3.3</a> - <a href="tributary-to-mcleod-lake---198666---appendix.html#fig:photo-198666-06">3.6</a>).
-Total cover amount was rated as moderate with large woody debris dominant. Cover was also present as small woody debris, undercut banks, overhanging vegetation, and instream vegetation.The dominant substrate was fines with fines sub-dominant.The average channel width was 3.4m, the average wetted width was 2.5m, and the average gradient was 1.5%. This stream has the potential to be fish bearing but the gradient is steep. The bank full depth is very high, with a measured average of 0.8m. There was an abundance of large woody debris that provided functionality to the stream habitat by diverting flow and providing cover. The habitat was rated as
-NA value as an important
+(Figures <a href="tributary-to-mcleod-lake---198666---appendix.html#fig:photo-198666-03">5.3</a> - <a href="tributary-to-mcleod-lake---198666---appendix.html#fig:photo-198666-06">5.6</a>).
+The dominant substrate was fines with fines sub-dominant.Total cover amount was rated as moderate with large woody debris dominant. Cover was also present as small woody debris, undercut banks, overhanging vegetation, and instream vegetation.The average channel width was 3.4m, the average wetted width was 2.5m, and the average gradient was 1.5%. This stream has the potential to be fish bearing but the gradient is steep. The bank full depth is very high, with a measured average of 0.8m. There was an abundance of large woody debris that provided functionality to the stream habitat by diverting flow and providing cover. The habitat was rated as
+medium value as an important
 migration corridor containing suitable rearing habitat.</p>
 <p><br></p>
 </div>
@@ -730,20 +757,20 @@ m<sup>2</sup>/$1000.</p>
 4.7km of
 habitat modelled upstream of crossing 198666 with
 areas surveyed rated as
-NA
+medium
 value for salmonid rearing and spawning. 198666 was ranked as a
-NA priority for proceeding to design for replacement. Electrofishing upstream and downstream of the culvert is recommended to provide insight into fish community
+moderate priority for proceeding to design for replacement. Electrofishing upstream and downstream of the culvert is recommended to provide insight into fish community
 composition and density which may justify a higher priority for site remediation.</p>
 <p><br></p>
 <p><br></p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb28-1" tabindex="-1"></a>tab_hab_summary <span class="sc">%&gt;%</span> </span>
-<span id="cb28-2"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb28-2" tabindex="-1"></a>  <span class="fu">filter</span>(Site  <span class="sc">==</span> my_site) <span class="sc">%&gt;%</span> </span>
-<span id="cb28-3"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb28-3" tabindex="-1"></a>  <span class="co"># select(-Site) %&gt;% </span></span>
-<span id="cb28-4"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb28-4" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of habitat details for PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>),</span>
-<span id="cb28-5"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb28-5" tabindex="-1"></a>                 <span class="at">scroll =</span> F) </span></code></pre></div>
-<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb41-1" tabindex="-1"></a>tab_hab_summary <span class="sc">%&gt;%</span> </span>
+<span id="cb41-2"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb41-2" tabindex="-1"></a>  <span class="fu">filter</span>(Site  <span class="sc">==</span> my_site) <span class="sc">%&gt;%</span> </span>
+<span id="cb41-3"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb41-3" tabindex="-1"></a>  <span class="co"># select(-Site) %&gt;% </span></span>
+<span id="cb41-4"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb41-4" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of habitat details for PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>),</span>
+<span id="cb41-5"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb41-5" tabindex="-1"></a>                 <span class="at">scroll =</span> F) </span></code></pre></div>
+<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-habitat-summary-198666">Table 3.3: </span>Summary of habitat details for PSCIS crossing 198666.
+<span id="tab:tab-habitat-summary-198666">Table 5.3: </span>Summary of habitat details for PSCIS crossing 198666.
 </caption>
 <thead>
 <tr>
@@ -832,97 +859,155 @@ Upstream
 moderate
 </td>
 <td style="text-align:left;">
+medium
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+198666
+</td>
+<td style="text-align:left;">
+Upstream2
+</td>
+<td style="text-align:right;">
+150
+</td>
+<td style="text-align:right;">
+3.2
+</td>
+<td style="text-align:right;">
+2.4
+</td>
+<td style="text-align:right;">
+0.7
+</td>
+<td style="text-align:right;">
+4.0
+</td>
+<td style="text-align:left;">
 –
+</td>
+<td style="text-align:left;">
+medium
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+198666
+</td>
+<td style="text-align:left;">
+Upstream3
+</td>
+<td style="text-align:right;">
+250
+</td>
+<td style="text-align:right;">
+3.6
+</td>
+<td style="text-align:right;">
+3.3
+</td>
+<td style="text-align:right;">
+0.4
+</td>
+<td style="text-align:right;">
+1.5
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+medium
 </td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb29-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_ds_typical1&#39;</span>)</span>
-<span id="cb29-2"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb29-2" tabindex="-1"></a></span>
-<span id="cb29-3"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb29-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb30-1" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo1))</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb42-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_ds_typical1&#39;</span>)</span>
+<span id="cb42-2"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb42-2" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb42-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb43-1" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo1))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-198666-01"></span>
-<img src="Peace2023_files/figure-html/photo-198666-01-1.png" alt="Typical habitat downstream of PSCIS crossing 198666." width="100%" />
+<img src="fish_passage_peace_2023_reporting_files/figure-html/photo-198666-01-1.png" alt="Typical habitat downstream of PSCIS crossing 198666." width="100%" />
 <p class="caption">
-Figure 3.1: Typical habitat downstream of PSCIS crossing 198666.
+Figure 5.1: Typical habitat downstream of PSCIS crossing 198666.
 </p>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb31-1" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_ds_typical2&#39;</span>)</span>
-<span id="cb31-2"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb31-2" tabindex="-1"></a></span>
-<span id="cb31-3"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb31-3" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb32-1" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo2))</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb44-1" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_ds_typical2&#39;</span>)</span>
+<span id="cb44-2"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb44-2" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb44-3" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb45-1" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo2))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-198666-02"></span>
-<img src="Peace2023_files/figure-html/photo-198666-02-1.png" alt="Typical habitat downstream of PSCIS crossing 198666." width="100%" />
+<img src="fish_passage_peace_2023_reporting_files/figure-html/photo-198666-02-1.png" alt="Typical habitat downstream of PSCIS crossing 198666." width="100%" />
 <p class="caption">
-Figure 3.2: Typical habitat downstream of PSCIS crossing 198666.
+Figure 5.2: Typical habitat downstream of PSCIS crossing 198666.
 </p>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb33-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
-<span id="cb33-2"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb33-2" tabindex="-1"></a></span>
-<span id="cb33-3"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb33-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
-<span id="cb33-4"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb33-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
-<span id="cb33-5"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb33-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb34-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_us_typical1&#39;</span>)</span>
-<span id="cb34-2"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb34-2" tabindex="-1"></a></span>
-<span id="cb34-3"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb34-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb35-1" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo1))</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb46-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
+<span id="cb46-2"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb46-2" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb46-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
+<span id="cb46-4"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb46-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
+<span id="cb46-5"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb46-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb47-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_us_typical1&#39;</span>)</span>
+<span id="cb47-2"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb47-2" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb47-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb48-1" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo1))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-198666-03"></span>
-<img src="Peace2023_files/figure-html/photo-198666-03-1.png" alt="Typical habitat upstream of PSCIS crossing 198666." width="100%" />
+<img src="fish_passage_peace_2023_reporting_files/figure-html/photo-198666-03-1.png" alt="Typical habitat upstream of PSCIS crossing 198666." width="100%" />
 <p class="caption">
-Figure 3.3: Typical habitat upstream of PSCIS crossing 198666.
+Figure 5.3: Typical habitat upstream of PSCIS crossing 198666.
 </p>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb36-1" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_us_typical2&#39;</span>)</span>
-<span id="cb36-2"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb36-2" tabindex="-1"></a></span>
-<span id="cb36-3"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb36-3" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb37-1" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo2))</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb49-1" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_us_typical2&#39;</span>)</span>
+<span id="cb49-2"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb49-2" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb49-3" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb50-1" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo2))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-198666-04"></span>
-<img src="Peace2023_files/figure-html/photo-198666-04-1.png" alt="Typical habitat upstream of PSCIS crossing 198666." width="100%" />
+<img src="fish_passage_peace_2023_reporting_files/figure-html/photo-198666-04-1.png" alt="Typical habitat upstream of PSCIS crossing 198666." width="100%" />
 <p class="caption">
-Figure 3.4: Typical habitat upstream of PSCIS crossing 198666.
+Figure 5.4: Typical habitat upstream of PSCIS crossing 198666.
 </p>
 </div>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb38-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
-<span id="cb38-2"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb38-2" tabindex="-1"></a></span>
-<span id="cb38-3"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb38-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
-<span id="cb38-4"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb38-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
-<span id="cb38-5"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb38-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb51-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
+<span id="cb51-2"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb51-2" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb51-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
+<span id="cb51-4"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb51-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
+<span id="cb51-5"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb51-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
 <p><br></p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb39-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_u3_&#39;</span>)</span>
-<span id="cb39-2"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb39-2" tabindex="-1"></a></span>
-<span id="cb39-3"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb39-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb40-1" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo1))</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb52-1" tabindex="-1"></a>my_photo1 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_u3_&#39;</span>)</span>
+<span id="cb52-2"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb52-2" tabindex="-1"></a></span>
+<span id="cb52-3"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb52-3" tabindex="-1"></a>my_caption1 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb53-1" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo1))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-198666-05"></span>
-<img src="Peace2023_files/figure-html/photo-198666-05-1.png" alt="Typical habitat upstream of PSCIS crossing 198666." width="100%" />
+<img src="fish_passage_peace_2023_reporting_files/figure-html/photo-198666-05-1.png" alt="Typical habitat upstream of PSCIS crossing 198666." width="100%" />
 <p class="caption">
-Figure 3.5: Typical habitat upstream of PSCIS crossing 198666.
+Figure 5.5: Typical habitat upstream of PSCIS crossing 198666.
 </p>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb41-1" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_u4_&#39;</span>)</span>
-<span id="cb41-2"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb41-2" tabindex="-1"></a></span>
-<span id="cb41-3"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb41-3" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb42-1" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo2))</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb54-1" tabindex="-1"></a>my_photo2 <span class="ot">=</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;_u4_&#39;</span>)</span>
+<span id="cb54-2"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb54-2" tabindex="-1"></a></span>
+<span id="cb54-3"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb54-3" tabindex="-1"></a>my_caption2 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">&#39;Typical habitat upstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb55-1" tabindex="-1"></a>grid<span class="sc">::</span><span class="fu">grid.raster</span>(jpeg<span class="sc">::</span><span class="fu">readJPEG</span>(my_photo2))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:photo-198666-06"></span>
-<img src="Peace2023_files/figure-html/photo-198666-06-1.png" alt="Typical habitat upstream of PSCIS crossing 198666." width="100%" />
+<img src="fish_passage_peace_2023_reporting_files/figure-html/photo-198666-06-1.png" alt="Typical habitat upstream of PSCIS crossing 198666." width="100%" />
 <p class="caption">
-Figure 3.6: Typical habitat upstream of PSCIS crossing 198666.
+Figure 5.6: Typical habitat upstream of PSCIS crossing 198666.
 </p>
 </div>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb43-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
-<span id="cb43-2"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb43-2" tabindex="-1"></a></span>
-<span id="cb43-3"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb43-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
-<span id="cb43-4"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb43-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
-<span id="cb43-5"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb43-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb56-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Left: &#39;</span>, my_caption1, <span class="st">&#39; Right: &#39;</span>, my_caption2)</span>
+<span id="cb56-2"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb56-2" tabindex="-1"></a></span>
+<span id="cb56-3"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb56-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo1)</span>
+<span id="cb56-4"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb56-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
+<span id="cb56-5"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb56-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo2)</span></code></pre></div>
 
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb44-1" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>)</span>
-<span id="cb44-2"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb44-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/packages.R&#39;</span>)</span>
-<span id="cb44-3"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb44-3" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/tables.R&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb45-1" tabindex="-1"></a>my_site <span class="ot">&lt;-</span> <span class="dv">198687</span></span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb57-1" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>)</span>
+<span id="cb57-2"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb57-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/packages.R&#39;</span>)</span>
+<span id="cb57-3"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb57-3" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/tables.R&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="tributary-to-mcleod-lake---198666---appendix.html#cb58-1" tabindex="-1"></a>my_site <span class="ot">&lt;-</span> <span class="dv">198687</span></span></code></pre></div>
 </div>
 </div>
             </section>
@@ -957,7 +1042,7 @@ gitbook.start({
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
-"theme": "night",
+"theme": "white",
 "family": "sans",
 "size": 2
 },
@@ -973,7 +1058,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["Peace2022.pdf", "Peace.html"],
+"download": ["fish_passage_peace_2023_reporting.pdf", "fish_passage_peace_2023_reporting.html"],
 "search": {
 "engine": "fuse",
 "options": null

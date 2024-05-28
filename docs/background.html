@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1 Background | Restoring Fish Passage in the Peace Region - 2023</title>
+  <title>2 Background | Restoring Fish Passage in the Peace Region - 2023</title>
   <meta name="description" content="Restoring Fish Passage in the Peace Region" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1 Background | Restoring Fish Passage in the Peace Region - 2023" />
+  <meta property="og:title" content="2 Background | Restoring Fish Passage in the Peace Region - 2023" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Restoring Fish Passage in the Peace Region" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1 Background | Restoring Fish Passage in the Peace Region - 2023" />
+  <meta name="twitter:title" content="2 Background | Restoring Fish Passage in the Peace Region - 2023" />
   
   <meta name="twitter:description" content="Restoring Fish Passage in the Peace Region" />
   
@@ -52,6 +52,30 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.2.2/leaflet.js"></script>
+<script src="libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.2.2/leaflet-providers-plugin.js"></script>
+<link href="libs/leaflet-awesomemarkers-2.0.3/leaflet.awesome-markers.css" rel="stylesheet" />
+<script src="libs/leaflet-awesomemarkers-2.0.3/leaflet.awesome-markers.min.js"></script>
+<link href="libs/leaflet-markercluster-1.0.5/MarkerCluster.css" rel="stylesheet" />
+<link href="libs/leaflet-markercluster-1.0.5/MarkerCluster.Default.css" rel="stylesheet" />
+<script src="libs/leaflet-markercluster-1.0.5/leaflet.markercluster.js"></script>
+<script src="libs/leaflet-markercluster-1.0.5/leaflet.markercluster.freezable.js"></script>
+<script src="libs/leaflet-markercluster-1.0.5/leaflet.markercluster.layersupport.js"></script>
+<link href="libs/lfx-fullscreen-1.0.2/lfx-fullscreen-prod.css" rel="stylesheet" />
+<script src="libs/lfx-fullscreen-1.0.2/lfx-fullscreen-prod.js"></script>
+<link href="libs/leaflet-minimap-3.3.1/Control.MiniMap.min.css" rel="stylesheet" />
+<script src="libs/leaflet-minimap-3.3.1/Control.MiniMap.min.js"></script>
+<script src="libs/leaflet-minimap-3.3.1/Minimap-binding.js"></script>
 
 <script type="text/javascript">
 
@@ -83,7 +107,7 @@ document.addEventListener('DOMContentLoaded', toggle_R);
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -155,6 +179,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -186,25 +211,27 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Fish Passage in the Peace Region</a></li>
+<li><a href="./">Fish Passage in the Peace Region 2023</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Acknowledgement</a></li>
 <li class="chapter" data-level="" data-path="executive-summary.html"><a href="executive-summary.html"><i class="fa fa-check"></i>Executive Summary</a></li>
-<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
-<li class="chapter" data-level="1" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i><b>1</b> Background</a></li>
-<li class="chapter" data-level="2" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>2</b> Methods</a></li>
-<li class="chapter" data-level="3" data-path="recommendations.html"><a href="recommendations.html"><i class="fa fa-check"></i><b>3</b> Recommendations</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i><b>2</b> Background</a></li>
+<li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a></li>
+<li class="chapter" data-level="4" data-path="results-and-discussion.html"><a href="results-and-discussion.html"><i class="fa fa-check"></i><b>4</b> Results and Discussion</a></li>
+<li class="chapter" data-level="5" data-path="recommendations.html"><a href="recommendations.html"><i class="fa fa-check"></i><b>5</b> Recommendations</a></li>
 <li class="chapter" data-level="" data-path="appendix---phase-1-fish-passage-assessment-data-and-photos.html"><a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html"><i class="fa fa-check"></i>Appendix - Phase 1 Fish Passage Assessment Data and Photos</a></li>
 <li class="chapter" data-level="" data-path="tributary-to-mcleod-lake---198666---appendix.html"><a href="tributary-to-mcleod-lake---198666---appendix.html"><i class="fa fa-check"></i>Tributary to McLeod Lake - 198666 - Appendix</a></li>
 <li class="chapter" data-level="" data-path="mile-creek---198687---appendix.html"><a href="mile-creek---198687---appendix.html"><i class="fa fa-check"></i>42 Mile Creek - 198687 - Appendix</a></li>
-<li class="chapter" data-level="" data-path="tributary-to-altezega-creek---198694---appendix.html"><a href="tributary-to-altezega-creek---198694---appendix.html"><i class="fa fa-check"></i>Tributary to Altezega Creek - 198694 - Appendix</a></li>
+<li class="chapter" data-level="" data-path="tributary-to-altezega-creek---198723-198694---appendix.html"><a href="tributary-to-altezega-creek---198723-198694---appendix.html"><i class="fa fa-check"></i>Tributary to Altezega Creek - 198723 &amp; 198694 - Appendix</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="change-log.html"><a href="change-log.html"><i class="fa fa-check"></i>Change Log</a></li>
 <li class="chapter" data-level="" data-path="session-info.html"><a href="session-info.html"><i class="fa fa-check"></i>Session Info</a></li>
 <li class="chapter" data-level="" data-path="attachment-1---maps.html"><a href="attachment-1---maps.html"><i class="fa fa-check"></i><strong>Attachment 1 - Maps</strong></a></li>
-<li class="chapter" data-level="" data-path="attachment-2---habitat-assessment-and-fish-sampling-data.html"><a href="attachment-2---habitat-assessment-and-fish-sampling-data.html"><i class="fa fa-check"></i><strong>Attachment 2 - Habitat Assessment and Fish Sampling Data</strong></a></li>
+<li class="chapter" data-level="" data-path="attachment-3---phase-1-data-and-photos.html"><a href="attachment-3---phase-1-data-and-photos.html"><i class="fa fa-check"></i><strong>Attachment 3 - Phase 1 Data and Photos</strong></a></li>
 <li class="divider"></li>
-<li><a href="https://github.com/NewGraphEnvironment/fish_passage_peace_2022_reporting" target="blank">Scripts and Data</a></li>
+<li><a href="https://github.com/NewGraphEnvironment/fish_passage_peace_2023_reporting" target="blank">Scripts and Data</a></li>
 
 </ul>
 
@@ -223,26 +250,27 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="background" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">1</span> Background<a href="background.html#background" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>The study area includes the Parsnip River watershed group and neighbouring areas and is within the traditional territories of the Tse’khene First Nations and the FWCP Peace Region (Figure <a href="background.html#fig:overview-map">1.1</a>).</p>
+<div id="background" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Background<a href="background.html#background" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The study area includes the FWCP Peace Region with a focus to date on traditional territories of the Tse’khene First Nations.
+In 2023 filed assessments were completed with the Parsnip River, Carp River and Crooked River watershed groups (Figure <a href="background.html#fig:overview-map">2.1</a>).</p>
 <p><br></p>
 <p>In 2019/2020, following a literature review, analysis of fish habitat modelling data, the Provincial Stream Crossing Inventory System (PSCIS) and a community scoping exercise within the McLeod Lake Indian Band habitat confirmation assessments were conducted at 17 sites throughout the Parsnip River watershed with 10 crossings rated as high priorities for rehabilitation and three crossings rated as moderate priorities for restoration. An engineering design for site 125179 on a tributary to the Missinka River was also completed through the 2019/2020 project. In 2021/2022, project activities reconvened through FWCP directed project PEA-F22-F-3577-DCA. Partners were engaged, funding was raised, planning was conducted and reporting was completed to initiate restoration activities of high priority crossings. Materials were purchased and permitting was put in place to prep for replacement of the twin culverts on the Missinka River tributary with a clear-span bridge.</p>
 <p><br></p>
 <p>In 2022/2023, this collaborative project leveraged ongoing connectivity restoration initiatives in the province and engaged multiple partners to catalyze fish passage restoration activities at high-priority sites identified in 2019/2020 and 2021/2022. Key accomplishments include the replacement of PSCIS crossing 125179, prioritization of two crossings on the Chuchinka-Table FSR for replacement in 2024-2025 (with engineering designs commissioned and materials purchased), and field assessments including fish sampling at high priority crossing 125000 on a tributary to the Parsnip River near Arctic Lake.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="background.html#cb5-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/project_overview.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="background.html#cb5-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/peace_fish_passage_2023.jpeg&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:overview-map"></span>
-<img src="fig/project_overview.png" alt="Overview map of Study Area" width="100%" />
+<img src="fig/peace_fish_passage_2023.jpeg" alt="Overview map of Study Area" width="100%" />
 <p class="caption">
-Figure 1.1: Overview map of Study Area
+Figure 2.1: Overview map of Study Area
 </p>
 </div>
 <p><br></p>
 <div id="tsekhene" class="section level2 unnumbered hasAnchor">
 <h2>Tse’khene<a href="background.html#tsekhene" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The Parsnip River watershed is located within the south-eastern portion of the 108,000 km<sup>2</sup> traditional territory of the Tse’khene from the <a href="https://www.mlib.ca/about/History">McLeod Lake Indian Band</a>. The Tse’khene <em>“People of the Rocks”</em> are a south westerly extension of the Athabascan speaking people of northern Canada. They were nomadic hunters whose language belongs to the Beaver-Sarcee-Tse’khene branch of Athapaskan <span class="citation">(<span>“History <span>Who We Are</span>”</span> 2023)</span>. Extensive work is underway to preserve the language with resources such as First Voices available <a href="https://www.firstvoices.com/explore/FV/sections/Data/Athabascan/Tse&#39;Khene%20(McLeod%20Lake)/Tse&#39;Khene%20(McLeod%20Lake)/learn">online</a> and in <a href="https://apps.apple.com/us/app/tsekhene-mcleod-lake/id1503929250">app form</a> for iphone and ipad devices.</p>
+<p>The Parsnip River watershed is located within the south-eastern portion of the 108,000 km<sup>2</sup> traditional territory of the Tse’khene from the <a href="https://www.mlib.ca/about/History">McLeod Lake Indian Band</a>. The Tse’khene <em>“People of the Rocks”</em> are a south westerly extension of the Athabascan speaking people of northern Canada. They were nomadic hunters whose language belongs to the Beaver-Sarcee-Tse’khene branch of Athapaskan <span class="citation">(<span>“History <span>Who We Are</span>”</span> 2023)</span>. Extensive work is underway to preserve the language with resources such as First Voices available <a href="https://www.firstvoices.com/tsekhene-mcleod">online</a> and in <a href="https://apps.apple.com/us/app/tsekhene-mcleod-lake/id1503929250">app form</a> for iphone and ipad devices.</p>
 <p><br></p>
-<p>The continental divide separates watersheds flowing north into the Arctic Ocean via the Mackenzie River and south and west into the Pacific Ocean via the Fraser River (Figure <a href="background.html#fig:overview-map">1.1</a>). The Parsnip River is a 6th order stream with a watershed that drains an area of 5597km<sup>2</sup>. The mainstem of the river flows within the Rocky Mountain Trench in a north direction into Williston Reservoir starting from the continental divide adjacent to Arctic Lakes. Major tributaries include the Misinchinka, Colbourne, Reynolds, Anzac, Table, Hominka and Missinka sub-basins which drain the western slopes of the Hart Ranges of the Rocky Mountains. The Parsnip River has a mean annual discharge of 150.4 m<sup>3</sup>/s with flow patterns typical of high elevation watersheds on the west side of the northern Rocky Mountains which receive large amounts of precipitation as snow leading to peak levels of discharge during snowmelt, typically from May to July (Figures <a href="background.html#fig:fig-hydrology-plot-flow">1.2</a> - <a href="background.html#fig:fig-hydrology-plot-stats">1.3</a>).</p>
+<p>The continental divide separates watersheds flowing north into the Arctic Ocean via the Mackenzie River and south and west into the Pacific Ocean via the Fraser River (Figure <a href="background.html#fig:overview-map">2.1</a>). The Parsnip River is a 6th order stream with a watershed that drains an area of 5597km<sup>2</sup>. The mainstem of the river flows within the Rocky Mountain Trench in a north direction into Williston Reservoir starting from the continental divide adjacent to Arctic Lakes. Major tributaries include the Misinchinka, Colbourne, Reynolds, Anzac, Table, Hominka and Missinka sub-basins which drain the western slopes of the Hart Ranges of the Rocky Mountains. The Parsnip River has a mean annual discharge of 150.4 m<sup>3</sup>/s with flow patterns typical of high elevation watersheds on the west side of the northern Rocky Mountains which receive large amounts of precipitation as snow leading to peak levels of discharge during snowmelt, typically from May to July (Figures <a href="background.html#fig:fig-hydrology-plot-flow">2.2</a> - <a href="background.html#fig:fig-hydrology-plot-stats">2.3</a>).</p>
 <p><br></p>
 <p>Construction of the 183 m high and 2134 m long W.A.C. Bennett Dam was completed in 1967 at Hudson’s Hope, BC, creating the Williston Reservoir <span class="citation">(Hirst 1991)</span>. Filling of the 375km<sup>2</sup> reservoir was complete in 1972 and flooded a substantial portion of the Parsnip River and major tributary valleys forming what is now known as the Peace and Parsnip reaches. The replacement of riverine habitat with an inundated reservoir environment resulted in profound changes to the ecology, resource use and human settlement patterns in these systems <span class="citation">(Hagen et al. 2015a; Pearce et al. 2019; Stamford, Hagen, and Williamson 2017)</span>. Prior to the filling of the reservoir, the Pack River, into which McLeod Lake flows, was a major tributary to the Parsnip River. The Pack River currently enters the Williston Reservoir directly as the historic location of the confluence of the two rivers lies within the reservoir’s footprint.</p>
 <p><br></p>
@@ -255,7 +283,7 @@ Figure 1.1: Overview map of Study Area
 <div class="figure"><span style="display:block;" id="fig:fig-hydrology-plot-flow"></span>
 <img src="fig/hydrograph_07EE007.png" alt="Parsnip River Above Misinchinka River (Station #07EE007 - Lat 55.08194 Lon -122.913063). Available daily discharge data from 1967 to 2019." width="100%" />
 <p class="caption">
-Figure 1.2: Parsnip River Above Misinchinka River (Station #07EE007 - Lat 55.08194 Lon -122.913063). Available daily discharge data from 1967 to 2019.
+Figure 2.2: Parsnip River Above Misinchinka River (Station #07EE007 - Lat 55.08194 Lon -122.913063). Available daily discharge data from 1967 to 2019.
 </p>
 </div>
 <p><br></p>
@@ -266,13 +294,13 @@ Figure 1.2: Parsnip River Above Misinchinka River (Station #07EE007 - Lat 55.081
 <div class="figure"><span style="display:block;" id="fig:fig-hydrology-plot-stats"></span>
 <img src="fig/hydrology_stats_07EE007.png" alt="Summary discharge statistics (annual maximum, minimum, mean and standard deviation) for Parsnip River at hydrometric station #07EE007." width="100%" />
 <p class="caption">
-Figure 1.3: Summary discharge statistics (annual maximum, minimum, mean and standard deviation) for Parsnip River at hydrometric station #07EE007.
+Figure 2.3: Summary discharge statistics (annual maximum, minimum, mean and standard deviation) for Parsnip River at hydrometric station #07EE007.
 </p>
 </div>
 </div>
 <div id="fisheries" class="section level2 unnumbered hasAnchor">
 <h2>Fisheries<a href="background.html#fisheries" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Fish species recorded in the Parsnip River watershed are detailed in Table <a href="background.html#tab:fiss-species-table">1.1</a> <span class="citation">(MoE 2019a)</span>. In addition to flooding related to the formation of the Williston Reservoir, transmission lines, gas pipelines, rail, road networks, forestry, elevated water temperatures, interrupted connectivity, invasion from non-native species and insect infestations affecting forested areas pose threats to fisheries values in the Parsnip River watershed <span class="citation">(Hagen et al. 2015b; Stamford, Hagen, and Williamson 2017; Hagen and Weber 2019a; Comittee on the Status of Endangered Wildlife in Canada 2012)</span>. A brief summary of trends and knowledge status related to Arctic grayling, bull trout, kokanee, mountain whitefish and rainbow trout in Williston Watershed streams is provided in <span class="citation">Fish and Wildlife Compensation Program (2020)</span> with a more detailed review of the state of knowledge for Parsnip River watershed populations of Arctic grayling and bull trout provided below.</p>
+<p>Fish species recorded in the Parsnip River watershed are detailed in Table <a href="background.html#tab:fiss-species-table">2.1</a> <span class="citation">(MoE 2019a)</span>. In addition to flooding related to the formation of the Williston Reservoir, transmission lines, gas pipelines, rail, road networks, forestry, elevated water temperatures, interrupted connectivity, invasion from non-native species and insect infestations affecting forested areas pose threats to fisheries values in the Parsnip River watershed <span class="citation">(Hagen et al. 2015b; Stamford, Hagen, and Williamson 2017; Hagen and Weber 2019a; Comittee on the Status of Endangered Wildlife in Canada 2012)</span>. A brief summary of trends and knowledge status related to Arctic grayling, bull trout, kokanee, mountain whitefish and rainbow trout in Williston Watershed streams is provided in <span class="citation">Fish and Wildlife Compensation Program (2020)</span> with a more detailed review of the state of knowledge for Parsnip River watershed populations of Arctic grayling and bull trout provided below.</p>
 <p><br></p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="background.html#cb8-1" tabindex="-1"></a>fiss_species_table <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="fu">paste0</span>(<span class="fu">getwd</span>(), <span class="st">&#39;/data/inputs_extracted/fiss_species_table.csv&#39;</span>))</span>
 <span id="cb8-2"><a href="background.html#cb8-2" tabindex="-1"></a></span>
@@ -290,9 +318,9 @@ Figure 1.3: Summary discharge statistics (annual maximum, minimum, mean and stan
 <span id="cb8-14"><a href="background.html#cb8-14" tabindex="-1"></a><span class="st">                 &#39;</span>,</span>
 <span id="cb8-15"><a href="background.html#cb8-15" tabindex="-1"></a>                 <span class="at">scroll =</span> gitbook_on)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
-<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;border-bottom: 0;">
+<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
-<span id="tab:fiss-species-table">Table 1.1: </span>Fish species recorded in the Parsnip River, Carp Lake, and Crooked River watershed groups.
+<span id="tab:fiss-species-table">Table 2.1: </span>Fish species recorded in the Parsnip River, Carp Lake, and Crooked River watershed groups.
 </caption>
 <thead>
 <tr>
@@ -1487,7 +1515,7 @@ Yes
 <li>trophic relationships between Arctic grayling and bull trout</li>
 </ul>
 <p><br></p>
-<p>A review of available fisheries data for the Parsnip River watershed stratified by different habitat characteristics can provide insight into which habitats may provide the highest intrinsic value for fish species based on the number of fish captured in those habitats in past assessment work (Figures <a href="background.html#fig:fish-plot-grad">1.4</a> - <a href="background.html#fig:fish-plot-wshed">1.6</a>). It should be noted however that it should not be assumed that all habitat types have been sampled in a non-biased fashion or that particular sites selected do not have a disproportionate influence on the overall dataset composition (ie. fish salvage sites are often located adjacent to construction sites which are more commonly located near lower gradient stream reaches).</p>
+<p>A review of available fisheries data for the Parsnip River watershed stratified by different habitat characteristics can provide insight into which habitats may provide the highest intrinsic value for fish species based on the number of fish captured in those habitats in past assessment work (Figures <a href="background.html#fig:fish-plot-grad">2.4</a> - <a href="background.html#fig:fish-plot-wshed">2.6</a>). It should be noted however that it should not be assumed that all habitat types have been sampled in a non-biased fashion or that particular sites selected do not have a disproportionate influence on the overall dataset composition (ie. fish salvage sites are often located adjacent to construction sites which are more commonly located near lower gradient stream reaches).</p>
 <p><br></p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="background.html#cb9-1" tabindex="-1"></a><span class="co"># fiss_sum &lt;- readr::read_csv(file = paste0(getwd(), &#39;/data/extracted_inputs/fiss_sum.csv&#39;))</span></span>
 <span id="cb9-2"><a href="background.html#cb9-2" tabindex="-1"></a>fiss_sum_grad <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> <span class="fu">paste0</span>(<span class="fu">getwd</span>(), <span class="st">&#39;/data/inputs_extracted/fiss_sum_grad.csv&#39;</span>))</span>
@@ -1504,9 +1532,9 @@ Yes
 <span id="cb10-4"><a href="background.html#cb10-4" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> my_caption,</span>
 <span id="cb10-5"><a href="background.html#cb10-5" tabindex="-1"></a>                 <span class="at">scroll =</span> gitbook_on)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
-<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-fish-grad">Table 1.2: </span>Summary of historic salmonid observations vs. stream gradient category for the Parsnip River watershed group.
+<span id="tab:tab-fish-grad">Table 2.2: </span>Summary of historic salmonid observations vs. stream gradient category for the Parsnip River watershed group.
 </caption>
 <thead>
 <tr>
@@ -1797,9 +1825,9 @@ RB
 <span id="cb11-8"><a href="background.html#cb11-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Average Stream Gradient&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Occurrences (%)&quot;</span>)</span>
 <span id="cb11-9"><a href="background.html#cb11-9" tabindex="-1"></a>plot_grad</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:fish-plot-grad"></span>
-<img src="Peace2023_files/figure-html/fish-plot-grad-1.png" alt="Summary of historic salmonid observations vs. stream gradient category for the Parsnip River watershed group." width="100%" />
+<img src="fish_passage_peace_2023_reporting_files/figure-html/fish-plot-grad-1.png" alt="Summary of historic salmonid observations vs. stream gradient category for the Parsnip River watershed group." width="100%" />
 <p class="caption">
-Figure 1.4: Summary of historic salmonid observations vs. stream gradient category for the Parsnip River watershed group.
+Figure 2.4: Summary of historic salmonid observations vs. stream gradient category for the Parsnip River watershed group.
 </p>
 </div>
 <p><br></p>
@@ -1809,9 +1837,9 @@ Figure 1.4: Summary of historic salmonid observations vs. stream gradient categ
 <span id="cb12-4"><a href="background.html#cb12-4" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> my_caption,</span>
 <span id="cb12-5"><a href="background.html#cb12-5" tabindex="-1"></a>                 <span class="at">scroll =</span> gitbook_on)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
-<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-fish-width">Table 1.3: </span>Summary of historic salmonid observations vs. channel width category for the Parsnip River watershed group.
+<span id="tab:tab-fish-width">Table 2.3: </span>Summary of historic salmonid observations vs. channel width category for the Parsnip River watershed group.
 </caption>
 <thead>
 <tr>
@@ -2238,9 +2266,9 @@ RB
 <span id="cb13-8"><a href="background.html#cb13-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Channel Width&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Occurrences (%)&quot;</span>)</span>
 <span id="cb13-9"><a href="background.html#cb13-9" tabindex="-1"></a>plot_width</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:fish-plot-width"></span>
-<img src="Peace2023_files/figure-html/fish-plot-width-1.png" alt="Summary of historic salmonid observations vs. channel width category for the Parsnip River watershed group." width="100%" />
+<img src="fish_passage_peace_2023_reporting_files/figure-html/fish-plot-width-1.png" alt="Summary of historic salmonid observations vs. channel width category for the Parsnip River watershed group." width="100%" />
 <p class="caption">
-Figure 1.5: Summary of historic salmonid observations vs. channel width category for the Parsnip River watershed group.
+Figure 2.5: Summary of historic salmonid observations vs. channel width category for the Parsnip River watershed group.
 </p>
 </div>
 <p><br></p>
@@ -2249,9 +2277,9 @@ Figure 1.5: Summary of historic salmonid observations vs. channel width categor
 <span id="cb14-3"><a href="background.html#cb14-3" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> my_caption,</span>
 <span id="cb14-4"><a href="background.html#cb14-4" tabindex="-1"></a>                 <span class="at">scroll =</span> gitbook_on)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
-<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-fish-wshed">Table 1.4: </span>Summary of historic salmonid observations vs. watershed size category for the Parsnip River watershed group.
+<span id="tab:tab-fish-wshed">Table 2.4: </span>Summary of historic salmonid observations vs. watershed size category for the Parsnip River watershed group.
 </caption>
 <thead>
 <tr>
@@ -2627,9 +2655,9 @@ RB
 <span id="cb15-8"><a href="background.html#cb15-8" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x=</span><span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span>
 <span id="cb15-9"><a href="background.html#cb15-9" tabindex="-1"></a>plot_wshed</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:fish-plot-wshed"></span>
-<img src="Peace2023_files/figure-html/fish-plot-wshed-1.png" alt="Summary of historic salmonid observations vs. watershed size category for the Parsnip River watershed group." width="100%" />
+<img src="fish_passage_peace_2023_reporting_files/figure-html/fish-plot-wshed-1.png" alt="Summary of historic salmonid observations vs. watershed size category for the Parsnip River watershed group." width="100%" />
 <p class="caption">
-Figure 1.6: Summary of historic salmonid observations vs. watershed size category for the Parsnip River watershed group.
+Figure 2.6: Summary of historic salmonid observations vs. watershed size category for the Parsnip River watershed group.
 </p>
 </div>
 
@@ -2668,7 +2696,7 @@ gitbook.start({
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
-"theme": "night",
+"theme": "white",
 "family": "sans",
 "size": 2
 },
@@ -2684,7 +2712,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["Peace2022.pdf", "Peace.html"],
+"download": ["fish_passage_peace_2023_reporting.pdf", "fish_passage_peace_2023_reporting.html"],
 "search": {
 "engine": "fuse",
 "options": null

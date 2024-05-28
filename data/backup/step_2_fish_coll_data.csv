@@ -30,5 +30,5 @@ reference_number,gazetted_name,local_name,waterbody_id,reach_number,site_number,
 11,Fern Creek,125261_us_ef2,0,0,11,13,258,lightly turbid,electrofishing,1,1,191,18,2.4,open,250,60,,other,halltech HT2000,,,,,,,,,,,,Rainbow Trout,adult,,1,149,149,,
 12,Fern Creek,125261_us_ef3,0,0,12,13,258,lightly turbid,electrofishing,1,1,310,16,4.3,open,250,60,,other,halltech HT2000,,,,,,,,,,,,Sculpin (General),,,8,50,80,,Not salmonids so no life stage specified.
 12,Fern Creek,125261_us_ef3,0,0,12,13,258,lightly turbid,electrofishing,1,1,310,16,4.3,open,250,60,,other,halltech HT2000,,,,,,,,,,,,Rainbow Trout,fry,,16,30,54,,
-12,Fern Creek,125261_us_ef3,0,0,12,13,258,lightly turbid,electrofishing,1,1,310,16,4.3,open,250,60,,other,halltech HT2000,,,,,,,,,,,,Rainbow Trout,parr,,1,90,90,,
-12,Fern Creek,125261_us_ef3,0,0,12,13,258,lightly turbid,electrofishing,1,1,310,16,4.3,open,250,60,,other,halltech HT2000,,,,,,,,,,,,Rainbow Trout,juvenile,,2,105,134,,
+12,Fern Creek,125261_us_ef3,0,0,12,13,258,lightly turbid,electrofishing,1,1,310,16,4.3,open,250,60,,other,halltech HT2000,,,,,,,,,,,,Rainbow Trout,parr,,2,90,105,,
+12,Fern Creek,125261_us_ef3,0,0,12,13,258,lightly turbid,electrofishing,1,1,310,16,4.3,open,250,60,,other,halltech HT2000,,,,,,,,,,,,Rainbow Trout,juvenile,,1,134,134,,

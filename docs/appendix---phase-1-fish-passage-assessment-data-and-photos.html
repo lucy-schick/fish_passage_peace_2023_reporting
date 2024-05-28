@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Appendix - Phase 1 Fish Passage Assessment Data and Photos | Restoring Fish Passage in the Peace Region - 2023</title>
   <meta name="description" content="Restoring Fish Passage in the Peace Region" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Appendix - Phase 1 Fish Passage Assessment Data and Photos | Restoring Fish Passage in the Peace Region - 2023" />
   <meta property="og:type" content="book" />
@@ -52,6 +52,30 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.2.2/leaflet.js"></script>
+<script src="libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
+<script src="libs/leaflet-providers-plugin-2.2.2/leaflet-providers-plugin.js"></script>
+<link href="libs/leaflet-awesomemarkers-2.0.3/leaflet.awesome-markers.css" rel="stylesheet" />
+<script src="libs/leaflet-awesomemarkers-2.0.3/leaflet.awesome-markers.min.js"></script>
+<link href="libs/leaflet-markercluster-1.0.5/MarkerCluster.css" rel="stylesheet" />
+<link href="libs/leaflet-markercluster-1.0.5/MarkerCluster.Default.css" rel="stylesheet" />
+<script src="libs/leaflet-markercluster-1.0.5/leaflet.markercluster.js"></script>
+<script src="libs/leaflet-markercluster-1.0.5/leaflet.markercluster.freezable.js"></script>
+<script src="libs/leaflet-markercluster-1.0.5/leaflet.markercluster.layersupport.js"></script>
+<link href="libs/lfx-fullscreen-1.0.2/lfx-fullscreen-prod.css" rel="stylesheet" />
+<script src="libs/lfx-fullscreen-1.0.2/lfx-fullscreen-prod.js"></script>
+<link href="libs/leaflet-minimap-3.3.1/Control.MiniMap.min.css" rel="stylesheet" />
+<script src="libs/leaflet-minimap-3.3.1/Control.MiniMap.min.js"></script>
+<script src="libs/leaflet-minimap-3.3.1/Minimap-binding.js"></script>
 
 <script type="text/javascript">
 
@@ -83,7 +107,7 @@ document.addEventListener('DOMContentLoaded', toggle_R);
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -155,6 +179,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -186,25 +211,27 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Fish Passage in the Peace Region</a></li>
+<li><a href="./">Fish Passage in the Peace Region 2023</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Acknowledgement</a></li>
 <li class="chapter" data-level="" data-path="executive-summary.html"><a href="executive-summary.html"><i class="fa fa-check"></i>Executive Summary</a></li>
-<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
-<li class="chapter" data-level="1" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i><b>1</b> Background</a></li>
-<li class="chapter" data-level="2" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>2</b> Methods</a></li>
-<li class="chapter" data-level="3" data-path="recommendations.html"><a href="recommendations.html"><i class="fa fa-check"></i><b>3</b> Recommendations</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i><b>2</b> Background</a></li>
+<li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a></li>
+<li class="chapter" data-level="4" data-path="results-and-discussion.html"><a href="results-and-discussion.html"><i class="fa fa-check"></i><b>4</b> Results and Discussion</a></li>
+<li class="chapter" data-level="5" data-path="recommendations.html"><a href="recommendations.html"><i class="fa fa-check"></i><b>5</b> Recommendations</a></li>
 <li class="chapter" data-level="" data-path="appendix---phase-1-fish-passage-assessment-data-and-photos.html"><a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html"><i class="fa fa-check"></i>Appendix - Phase 1 Fish Passage Assessment Data and Photos</a></li>
 <li class="chapter" data-level="" data-path="tributary-to-mcleod-lake---198666---appendix.html"><a href="tributary-to-mcleod-lake---198666---appendix.html"><i class="fa fa-check"></i>Tributary to McLeod Lake - 198666 - Appendix</a></li>
 <li class="chapter" data-level="" data-path="mile-creek---198687---appendix.html"><a href="mile-creek---198687---appendix.html"><i class="fa fa-check"></i>42 Mile Creek - 198687 - Appendix</a></li>
-<li class="chapter" data-level="" data-path="tributary-to-altezega-creek---198694---appendix.html"><a href="tributary-to-altezega-creek---198694---appendix.html"><i class="fa fa-check"></i>Tributary to Altezega Creek - 198694 - Appendix</a></li>
+<li class="chapter" data-level="" data-path="tributary-to-altezega-creek---198723-198694---appendix.html"><a href="tributary-to-altezega-creek---198723-198694---appendix.html"><i class="fa fa-check"></i>Tributary to Altezega Creek - 198723 &amp; 198694 - Appendix</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="change-log.html"><a href="change-log.html"><i class="fa fa-check"></i>Change Log</a></li>
 <li class="chapter" data-level="" data-path="session-info.html"><a href="session-info.html"><i class="fa fa-check"></i>Session Info</a></li>
 <li class="chapter" data-level="" data-path="attachment-1---maps.html"><a href="attachment-1---maps.html"><i class="fa fa-check"></i><strong>Attachment 1 - Maps</strong></a></li>
-<li class="chapter" data-level="" data-path="attachment-2---habitat-assessment-and-fish-sampling-data.html"><a href="attachment-2---habitat-assessment-and-fish-sampling-data.html"><i class="fa fa-check"></i><strong>Attachment 2 - Habitat Assessment and Fish Sampling Data</strong></a></li>
+<li class="chapter" data-level="" data-path="attachment-3---phase-1-data-and-photos.html"><a href="attachment-3---phase-1-data-and-photos.html"><i class="fa fa-check"></i><strong>Attachment 3 - Phase 1 Data and Photos</strong></a></li>
 <li class="divider"></li>
-<li><a href="https://github.com/NewGraphEnvironment/fish_passage_peace_2022_reporting" target="blank">Scripts and Data</a></li>
+<li><a href="https://github.com/NewGraphEnvironment/fish_passage_peace_2023_reporting" target="blank">Scripts and Data</a></li>
 
 </ul>
 
@@ -225,7 +252,7 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="appendix---phase-1-fish-passage-assessment-data-and-photos" class="section level1 unnumbered hasAnchor">
 <h1>Appendix - Phase 1 Fish Passage Assessment Data and Photos<a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html#appendix---phase-1-fish-passage-assessment-data-and-photos" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -483,7 +510,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -741,7 +768,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -999,7 +1026,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -1257,7 +1284,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -1515,7 +1542,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -1773,7 +1800,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -2031,7 +2058,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -2289,7 +2316,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -2547,7 +2574,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -2805,7 +2832,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -3063,7 +3090,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -3321,7 +3348,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -3579,7 +3606,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -3837,7 +3864,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -4095,7 +4122,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -4353,7 +4380,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -4611,7 +4638,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -4869,7 +4896,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -5127,7 +5154,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -5385,7 +5412,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -5643,7 +5670,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -5901,7 +5928,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -6159,7 +6186,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -6417,7 +6444,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -6675,7 +6702,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -6933,7 +6960,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -7191,7 +7218,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -7449,7 +7476,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -7707,7 +7734,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -7965,7 +7992,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -8223,7 +8250,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -8481,7 +8508,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -8739,7 +8766,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -8997,7 +9024,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -9255,7 +9282,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -9513,7 +9540,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -9771,7 +9798,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -10029,7 +10056,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -10287,7 +10314,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -10545,7 +10572,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -10803,7 +10830,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -11061,7 +11088,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -11319,7 +11346,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -11577,7 +11604,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -11835,7 +11862,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -12093,7 +12120,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -12351,7 +12378,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -12609,7 +12636,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -12867,7 +12894,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -13125,7 +13152,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -13383,7 +13410,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -13641,7 +13668,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -13899,7 +13926,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -14157,7 +14184,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -14415,7 +14442,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -14673,7 +14700,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -14931,7 +14958,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -15189,7 +15216,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -15447,7 +15474,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -15705,7 +15732,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -15963,7 +15990,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -16221,7 +16248,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -16479,7 +16506,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -16737,7 +16764,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -16995,7 +17022,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -17253,7 +17280,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -17511,7 +17538,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -17769,7 +17796,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -18027,7 +18054,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -18285,7 +18312,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -18543,7 +18570,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -18801,7 +18828,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -19059,7 +19086,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -19317,7 +19344,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -19575,7 +19602,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -19833,7 +19860,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -20091,7 +20118,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -20349,7 +20376,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -20607,7 +20634,7 @@ Fix Span / Diameter
 </tr>
 </tfoot>
 </table>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -20946,10 +20973,10 @@ Fix Span / Diameter
 </ul></li>
 </ul>
 
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html#cb23-1" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>)</span>
-<span id="cb23-2"><a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html#cb23-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/packages.R&#39;</span>)</span>
-<span id="cb23-3"><a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html#cb23-3" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/tables.R&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html#cb24-1" tabindex="-1"></a>my_site <span class="ot">&lt;-</span> <span class="dv">198666</span></span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html#cb36-1" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>)</span>
+<span id="cb36-2"><a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html#cb36-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/packages.R&#39;</span>)</span>
+<span id="cb36-3"><a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html#cb36-3" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/tables.R&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html#cb37-1" tabindex="-1"></a>my_site <span class="ot">&lt;-</span> <span class="dv">198666</span></span></code></pre></div>
 </div>
             </section>
 
@@ -20983,7 +21010,7 @@ gitbook.start({
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
-"theme": "night",
+"theme": "white",
 "family": "sans",
 "size": 2
 },
@@ -20999,7 +21026,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["Peace2022.pdf", "Peace.html"],
+"download": ["fish_passage_peace_2023_reporting.pdf", "fish_passage_peace_2023_reporting.html"],
 "search": {
 "engine": "fuse",
 "options": null
