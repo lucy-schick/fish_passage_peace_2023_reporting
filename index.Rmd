@@ -30,7 +30,11 @@ output:
 nocite: |
 
 documentclass: book
-bibliography: [book.bib, packages.bib, references.bib]
+params:
+  repo_url: 'https://github.com/NewGraphEnvironment/fish_passage_peace_2023_reporting/'
+  report_url: 'https://newgraphenvironment.github.io/fish_passage_peace_2023_reporting'
+  update_form_pscis: TRUE
+bibliography: [references.bib, packages.bib]
 biblio-style: apalike
 link-citations: no
 github-repo: rstudio/bookdown-demo

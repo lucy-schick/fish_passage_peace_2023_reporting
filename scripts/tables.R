@@ -2,7 +2,6 @@
 repo_name <- 'fish_passage_peace_2023_reporting'
 
 # import data and build tables we for reporting
-
 pscis_list <- fpr::fpr_import_pscis_all()
 pscis_phase1 <- pscis_list %>% pluck('pscis_phase1')
 pscis_phase2 <- pscis_list %>% pluck('pscis_phase2') %>%
@@ -11,26 +10,29 @@ pscis_reassessments <- pscis_list %>% pluck('pscis_reassessments')
 pscis_all_prep <- pscis_list %>%
   bind_rows()
 
+# load form to sqlite ------------------------
+# reload the pscis form if the param in `index.Rmd` yml is set to TRUE
+if (params$update_form_pscis) {
+  form_pscis_raw <- fpr::fpr_sp_gpkg_backup(
+    path_gpkg = paste0("~/Projects/gis/sern_peace_fwcp_2023/data_field/2023/form_pscis_2023.gpkg"),
+    write_to_csv = FALSE,
+    write_to_rdata = FALSE,
+    return_object = TRUE
+  )
 
-# for now convert to pscis_all since we are not ready for the wshds yet
-
-# this is a workaround for the wshd area since it is now dropped from the crossings table
-# wshds <- sf::read_sf('data/fishpass_mapping/fishpass_mapping.gpkg', layer = 'hab_wshds')
-
-##lets add in the xref pscis id info - this is made from 01_prep_data/0140-extract-crossings-xref.R
-# xref_pscis_my_crossing_modelled <- readr::read_csv(
-#   file = paste0(getwd(),
-#                 '/data/inputs_extracted/xref_pscis_my_crossing_modelled.csv'))
-  # mutate(external_crossing_reference = as.numeric(external_crossing_reference)) %>%
-  # rename(my_crossing_reference = external_crossing_reference)
-
-
+  conn <- readwritesqlite::rws_connect("data/bcfishpass.sqlite")
+  # readwritesqlite::rws_drop_table("form_pscis", conn = conn)
+  readwritesqlite::rws_write(form_pscis_raw, exists = F, delete = TRUE,
+                             conn = conn, x_name = "form_pscis_raw")
+  readwritesqlite::rws_disconnect(conn)
+  # remove the object to avoid issues if something breaks
+  rm(form_pscis_raw)
+}
 
 # import data from sqlite -------------------------------------------------
-
-
 ##this is our new db made from 0282-extract-bcfishpass2-crossing-corrections.R and 0290
 conn <- readwritesqlite::rws_connect("data/bcfishpass.sqlite")
+
 readwritesqlite::rws_list_tables(conn)
 bcfishpass <- readwritesqlite::rws_read_table("bcfishpass", conn = conn)
 # bcfishpass_archive <- readwritesqlite::rws_read_table("bcfishpass_archive_2022-03-02-1403", conn = conn)
@@ -45,6 +47,8 @@ wshds <- readwritesqlite::rws_read_table("wshds", conn = conn) |>
   # mutate(aspect = as.character(aspect))
 pscis <- readwritesqlite::rws_read_table("pscis", conn = conn)
 photo_metadata <- readwritesqlite::rws_read_table("photo_metadata", conn = conn)
+form_pscis_raw <- readwritesqlite::rws_read_table("form_pscis_raw", conn = conn) |>
+  sf::st_drop_geometry()
 
 readwritesqlite::rws_disconnect(conn)
 
@@ -1258,10 +1262,99 @@ tab_map <- tab_map_prep %>%
 
 
 
+# MOTI ----------------
+
+# set up a table for the memos that contains the moti climate change data
+# make a tribble of the xref_moti_climate_template to make 2 columns in table
+# read in csv, then fpr_kable the data frame, run in rmd chunk, then copy and paste table using datapasta add in "paste as tribble"
+#xref_moti_climate <- read_csv(file = paste0(getwd(), '/data/inputs_extracted/xref_moti_climate_template.csv'))
+
+xref_moti_climate_names <- tibble::tribble(
+  ~spdsht,                                                                                                               ~report, ~description, ~id_join, ~id_side,
+  "pscis_crossing_id",                                                                                                   "pscis_crossing_id",         NA,     NA,     NA,
+  "my_crossing_reference",                                                                                               "my_crossing_reference",         NA,     NA,     NA,
+  "crew_members",                                                                                   "Crew Members Seperate with Spaces",         NA,     NA,     NA,
+  "moti_chris_culvert_id",                                                                                               "moti_chris_culvert_id",         NA,     NA,     NA,
+  "stream_name",                                                                                                         "stream_name",         NA,     NA,     NA,
+  "road_name",                                                                                                           "road_name",         NA,     NA,     NA,
+  "erosion_issues",                                                                                      "Erosion (scale 1 low - 5 high)",         NA,     9L,     1L,
+  "embankment_fill_issues",                                                                  "Embankment fill issues 1 (low) 2 (medium) 3 (high)",         NA,     2L,     1L,
+  "blockage_issues",                                                                      "Blockage Issues 1 (0-30%) 2 (>30-75%) 3 (>75%)",         NA,     3L,     1L,
+  "condition_rank",                                                                    "Condition Rank = embankment + blockage + erosion",         NA,     4L,     1L,
+  "condition_notes",                                                                "Describe details and rational for condition rankings",         NA,     NA,     NA,
+  "likelihood_flood_event_affecting_culvert",                                                     "Likelihood Flood Event Affecting Culvert (scale 1 low - 5 high)",         NA,     8L,     1L,
+  "consequence_flood_event_affecting_culvert",                                                    "Consequence Flood Event Affecting Culvert (scale 1 low - 5 high)",         NA,     5L,     1L,
+  "climate_change_flood_risk",                           "Climate Change Flood Risk (likelihood x consequence) 1-6 (low) 6-12 (medium) 10-25 (high)",         NA,     6L,     1L,
+  "vulnerability_rank",                                                                  "Vulnerability Rank = Condition Rank + Climate Rank",         NA,     7L,     1L,
+  "climate_notes",                                                             "Describe details and rational for climate risk rankings",         NA,     NA,     NA,
+  "traffic_volume",                                                                         "Traffic Volume 1 (low) 5 (medium) 10 (high)",         NA,     9L,     2L,
+  "community_access", "Community Access - Scale - 1 (high - multiple road access) 5 (medium - some road access) 10 (low - one road access)",         NA,     2L,     2L,
+  "cost",                                                                                       "Cost (scale: 1 high - 10 low)",         NA,     3L,     2L,
+  "constructability",                                                                      "Constructibility (scale: 1 difficult -10 easy)",         NA,     4L,     2L,
+  "fish_bearing",                                                             "Fish Bearing 10 (Yes) 0 (No) - see maps for fish points",         NA,     5L,     2L,
+  "environmental_impacts",                                                                       "Environmental Impacts (scale: 1 high -10 low)",         NA,     8L,     2L,
+  "priority_rank",  "Priority Rank = traffic volume + community access + cost + constructability + fish bearing + environmental impacts",         NA,     6L,     2L,
+  "overall_rank",                                                                   "Overall Rank = Vulnerability Rank + Priority Rank",         NA,     7L,     2L,
+  "priority_notes",                                                                 "Describe details and rational for priority rankings",         NA,     NA,     NA
+)
 
 
 
+# read in data from mergin form, contains all skeena data as well so need to filter out bulk sites
+moti_site_data <- form_pscis_raw %>%
+  select(any_of(xref_moti_climate_names %>% pull(spdsht)), contains('erosion'), contains('embankment')) %>%
+  # pull out sites that match pscis ids or my crossing references from skeena repo object
+  filter(pscis_crossing_id %in% (pscis_all %>% pull(pscis_crossing_id))|
+           !is.na(my_crossing_reference) &
+           my_crossing_reference %in% (pscis_all %>% pull(my_crossing_reference))) %>%
+  select(-contains('photo')) %>%
+  arrange(my_crossing_reference) |>
+  # filter out sites that don't have overall climate ranks, filter out duplicate sites that were not done by Mateo or AI (keep Tieasha's Perow site)
+  # some have climate data but no rank....
+  filter(!is.na(priority_rank))
 
+
+# # little tests - update 2024 - not sure the point of theseanymore
+# test <- moti_site_data %>%
+#   select(
+#     # date,
+#     # source,
+#     stream_name,
+#     contains('erosion'),
+#     contains('embankment'))
+#
+# # some pscis ids and crossing references were input wrong in mergin form, see which sites are missing by comparing to  pscis object
+# see_diff <- pscis_all %>%
+#   filter(!pscis_crossing_id %in% (moti_site_data %>% pull(pscis_crossing_id))&
+#            !my_crossing_reference %in% (moti_site_data %>% pull(my_crossing_reference)))
+
+
+# add the xref pscis id
+tab_moti_prep <- left_join(
+  moti_data_cleaned,
+  xref_pscis_my_crossing_modelled,
+  by = c('my_crossing_reference' = 'external_crossing_reference')
+) %>%
+  mutate(stream_crossing_id = case_when(
+    is.na(stream_crossing_id) ~ as.integer(pscis_crossing_id),
+    T ~ stream_crossing_id)) %>%
+  select(-pscis_crossing_id, pscis_crossing_id = stream_crossing_id) %>%
+  relocate(pscis_crossing_id) %>%
+  # have to add erosion to the condition rank, have to update every added rank field unfortunately (except priority rank)
+  # can remove this chunk in future when math is updated in mergin form template
+  mutate(condition_rank = erosion_issues + embankment_fill_issues + blockage_issues) %>%
+  mutate(vulnerability_rank = condition_rank + climate_change_flood_risk) %>%
+  mutate(overall_rank = vulnerability_rank + priority_rank)
+
+
+# make table for phase 1 sites to insert into report
+tab_moti_phase1 <- tab_moti_prep %>%
+  filter(my_crossing_reference %in% (pscis_phase1 %>% pull(my_crossing_reference))) %>%
+  purrr::set_names(nm = xref_moti_climate_names %>% pull(report))
+
+# make table for phase 2 sites to insert into report
+tab_moti_phase2 <- tab_moti_prep %>%
+  filter(pscis_crossing_id %in% (pscis_phase2 %>% pull(pscis_crossing_id)))
 
 
 

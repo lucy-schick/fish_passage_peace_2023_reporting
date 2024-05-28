@@ -144,7 +144,7 @@ tfpr_copy_over_photos <- function(filescopy, filespaste){
 news_to_appendix <- function(
     md_name = "NEWS.md",
     rmd_name = "2090-report-change-log.Rmd",
-    appendix_title = "# Report Change Log") {
+    appendix_title = "# Change Log") {
 
   # Read and modify the contents of the markdown file
   news_md <- readLines(md_name)
@@ -156,4 +156,62 @@ news_to_appendix <- function(
     c(paste0(appendix_title, " {-}"), "", news_md),
     rmd_name
   )
+}
+
+lfpr_table_moti <- function(dat = tab_moti_phase2,
+                            xref_table = xref_moti_climate_names,
+                            site = my_site,
+                            ...){
+  df <- dat %>% filter(pscis_crossing_id == site)
+  # build left side of table
+  tab_results_left <- xref_table %>%
+    filter(id_side == 1)
+
+  tab_pull_left <- df %>%
+    select(pull(tab_results_left, spdsht)) %>%
+    t() %>%
+    as.data.frame() %>%
+    tibble::rownames_to_column()
+
+  left <- left_join(tab_pull_left, xref_table, by = c('rowname' = 'spdsht'))
+
+  # build right side of table
+  tab_results_right <- xref_table %>%
+    filter(id_side == 2)
+
+  tab_pull_right <- df %>%
+    select(pull(tab_results_right, spdsht)) %>%
+    t() %>%
+    as.data.frame() %>%
+    tibble::rownames_to_column()
+
+  right <- left_join(tab_pull_right, xref_table, by = c('rowname' = 'spdsht'))
+
+  tab_joined <- left_join(
+    select(left, report, V1, id_join),
+    select(right, report, V1, id_join),
+    by = 'id_join'
+  ) %>%
+    select(-id_join) %>%
+    purrr::set_names(c('Condition and Climate Risk', 'Rank', 'Priority', 'Rank'))
+
+  tab_joined %>%
+    fpr_kable(caption_text = paste0('Summary of climate change risk assessment for PSCIS crossing ', site, '.'), scroll = F)
+
+}
+
+lfpr_table_moti_comments <- function(dat = tab_moti_phase2,
+                                     site = my_site,
+                                     ...){
+  tab_comments <- dat %>%
+    select(pscis_crossing_id, condition_notes, climate_notes, priority_notes) %>%
+    rename('Condition' = condition_notes,
+           'Climate' = climate_notes,
+           'Priority' = priority_notes) %>%
+    pivot_longer(cols = Condition:Priority, names_to = "Category", values_to = "Comments") %>%
+    filter(pscis_crossing_id == site) %>%
+    select(-pscis_crossing_id)
+
+  tab_comments %>%
+    fpr_kable(caption_text = paste0('Details and rational for climate risk rankings'), scroll = F)
 }
