@@ -215,3 +215,11 @@ lfpr_table_moti_comments <- function(dat = tab_moti_phase2,
   tab_comments %>%
     fpr_kable(caption_text = paste0('Details and rational for climate risk rankings'), scroll = F)
 }
+
+df_transpose <- function(df) {
+
+  df %>%
+    tidyr::pivot_longer(-1) %>%
+    tidyr::pivot_wider(names_from = 1, values_from = value)
+
+}
