@@ -838,8 +838,8 @@ hab_fish_indiv <- full_join(
   mutate(comments = as.character(comments)) %>%
   mutate(life_stage = case_when(  ##this section comes from the histogram below - we include here so we don't need to remake the df
     length_mm <= 55 ~ 'fry',
-    length_mm > 55 & length_mm <= 100 ~ 'parr',
-    length_mm > 100 & length_mm <= 140 ~ 'juvenile',
+    length_mm > 55 & length_mm <= 110 ~ 'parr',
+    length_mm > 110 & length_mm <= 140 ~ 'juvenile',
     length_mm > 140 ~ 'adult',
     T ~ NA_character_
     ),
@@ -889,6 +889,9 @@ plot_fish_hist <- ggplot(hab_fish_indiv %>% dplyr::filter(!species_code %in% c('
   cowplot::panel_border() +
   # theme_bw(base_size = 8)+
   scale_x_continuous(breaks = bins[seq(1, length(bins), by = 2)]) +
+  theme(
+    axis.text.x = element_text(size = 8),  # Adjust x-axis text size
+    axis.text.y = element_text(size = 8))+
   # scale_color_manual(values=c("grey90", "grey60", "grey30", "grey0"))+
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 # geom_histogram(aes(y=..density..), breaks = bins, alpha=1,
