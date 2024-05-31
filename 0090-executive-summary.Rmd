@@ -20,23 +20,27 @@ This project builds on Society for Ecosystem Restoration Northern BC (SERNbc) wo
 
 <br>
 
-Through 2023/2024 project activities numerous project partners were engaged and we were able to identify and conduct fish passage planning/restoration activities at multiple high priority sites.
+Through 2023/2024 project activities numerous project partners were engaged and we were able to identify and conduct fish passage planning/restoration activities at multiple priority sites:
 
--   In 2020-2022, we collaborated with McLeod Lake and Sinclar to replace crossing 125179 with a bridge. Partnership funding covered 75% of the costs. The site was visited in 2022, and data, along with orthoimagery acquired by drone, is available online.
+-   In addition to numerous small scale presentations and meetings, we conducted an online presentation through FWCP to 
+showcase the project on February 23, 2024 with over 70 people in attendance. A presentation to FWCP board of directors 
+detailing project progress, goals and budgets was also completed on February 6, 2024.
 
--   BCTS leveraged our prioritization of crossing 125345, located on a tributary to the Parsnip River, to help them secure funding for its removal during the 2023 deactivation of the Chuchinka-Colbourne FSR.
+-   To facilitate the planning and implementation of restoration activities a collaborative GIS environment has been established to be a space where project team members and collaborators can access, view and contribute to spatial datasets and the development of restoration/monitoring plans for the project.
 
--   BCTS leveraged our prioritization of crossing 125403 (tributary to the Parsnip River) to help them secure funding to remove the crossing during deactivation of the Hooda Lake Forest Service Road in 2023.
+-   BCTS was able to use our project documentation to provide justification for investments in road deactivation leading to the restoration of fish passage at numerous crossings in the Parsnip River watershed including two sites ranked as priorities as part of habitat confirmation assessments documented in the FWCP funded @irvine2020ParsnipRiver.
 
--   In 2023, Canfor plans to replace crossing 125231 (Tributary to Table River) at km21 on the Chuchinka-Table FSR with a bridge. An engineering design is complete, materials sourced, and a contract with Canfor is in place for installation preparations (engineering design, environmental management planning/permitting, and material acquisition). The estimated replacement cost is \$410,000, and Canfor committed \$205,000. To proceed in 2024, FWCP support is necessary to cover the remaining 50% (\$90,000) of project costs.
+-   In 2024, Canfor plans to replace crossing 125231 (Tributary to Table River) at km21 on the Chuchinka-Table FSR with a bridge. An engineering design is complete, materials sourced, and a contract with Canfor is in place for installation preparations (engineering design, environmental management planning/permitting, and material acquisition). The estimated replacement cost is \$410,000, and Canfor committed \$205,000. To proceed in 2024, FWCP support is necessary to cover the remaining 50% (\$90,000) of project costs. Fish sampling with PIT tagging of target species and acquisition of aerial imagery took place in 2023 as part of baseline monitoring for the site.
 
--   We are building McLeod Lake's capacity to engage in fisheries management and restoration activities within their territory through training, fieldwork, and inclusion in planning and communication processes.
+-   Fish sampling with PIT tagging of target species and acquisition of aerial imagery took place at Fern Creek located at km2.1 of the Chuchinka-Table FSR as part of baseline monitoring for the site tentatively scheduled to be replaced in 2025.
 
--   To diversify potential partners for implementation and funding, remediation planning and fieldwork were conducted at various sites in the Carp River, Crooked River, and Parsnip River watershed groups. This included initial surveys on numerous Ministry of Transportation and Infrastructure sites, incorporating recently adapted assessments with climate change risk assessment metrics
+-   McLeod Lake's capacity to engage in fisheries management and restoration activities within their territory is building through training, fieldwork, and inclusion in planning and communication processes.
+
+-   To diversify potential partners for implementation and funding, planning was conducted and field assessments were conducted at `r length(c(pscis_phase1$my_crossing_reference, pscis_reassessments$pscis_crossing_id))` sites in the Carp River, Crooked River, and Parsnip River watershed groups. This included initial surveys on numerous Ministry of Transportation and Infrastructure sites, incorporating recently adapted assessments which include climate change risk assessment metrics.
 
 <br>
 
-In addition to structure replacements and removals to restore connectivity - communications, research and monitoring are essential parts of any restoration initiative as they ensure that we identify the best and most efficient opportunities for fish passage restoration while incorporating adaptive management informed by traditional knowledge and real-time planning/monitoring data. Recommendations going forward include:
+Recommendations going forward include:
 
 -   Continue to engage partners to raise funds for remediations, identify sites for restoration, conduct remedial works and assess effectiveness of works.
 -   Continue to conduct detailed assessments where blockages are present and large amounts of habitat are potentially available within the Parsnip River and neighboring watershed groups. As timelines for remediations can be extensive, planning onerous and costs of remedial works significant, continuing assessments throughout the greater area will provide more options for remediation and engage additional funding partners (ex. Ministry of Transportation and Infrastructure, alternative forest licensees). Identifying areas of concern near the community of McLeod Lake is expected to further engage community members and most effectively promote restoration activities.
