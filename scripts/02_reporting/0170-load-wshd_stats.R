@@ -6,12 +6,12 @@ conn <- readwritesqlite::rws_connect("data/bcfishpass.sqlite")
 readwritesqlite::rws_list_tables(conn)
 bcfishpass_phase2_raw <- readwritesqlite::rws_read_table("bcfishpass", conn = conn)
 
-
+pscis2 <- fpr::fpr_import_pscis(workbook_name = 'pscis_phase2.xlsm')
 ###HAAAAAAAAACCCCCCCCCCCCCKKKKKKKKKKKK - we wnat to present results for 124231 so we need to add that to our list of sites
-sites_extra <- c(125231)
+sites_extra <- c(125231, 125261)
 
 bcfishpass_phase2 <- bcfishpass_phase2_raw |>
-  dplyr::filter(stream_crossing_id %in% c(pscis2 |> pull(pscis_crossing_id), sites_extra)) |>
+  dplyr::filter(stream_crossing_id %in% c(pscis2 |> dplyr::pull(pscis_crossing_id), sites_extra)) |>
   dplyr::filter(!is.na(stream_crossing_id)) |>
   # get the elevations
   fpr::fpr_sp_assign_sf_from_utm(col_easting = "utm_easting",
@@ -109,7 +109,19 @@ wshds_prep <- wshds_fwapgr
 
 
 # calculate stats for each watershed
-hab_wshds <- fpr::fpr_sp_wshd_stats(dat = wshds_prep)
+hab_wshds_raw <- fpr::fpr_sp_wshd_stats(dat = wshds_prep)
+
+# add our elev_min back in and put it
+hab_wshds <- left_join(
+  hab_wshds_raw |> mutate(stream_crossing_id = as.numeric(stream_crossing_id)),
+
+  bcfishpass_phase2 |>
+    st_drop_geometry() %>%
+    select(stream_crossing_id, elev_site),
+
+  by = c('stream_crossing_id')) |>
+  # put elev_site before elev_min
+  dplyr::relocate(elev_site, .before = elev_min)
 
 # make sure we have the correct crs
 unique(bcfishpass_phase2$utm_zone)
@@ -127,10 +139,10 @@ st_write(hab_wshds |>
          dsn = "data/inputs_extracted/wshds.kml")
 
 
-conn <- rws_connect("data/bcfishpass.sqlite")
-rws_list_tables(conn)
-rws_drop_table("wshds", conn = conn) ##now drop the table so you can replace it
-rws_write(hab_wshds, exists = F, delete = TRUE,
+conn <- readwritesqlite::rws_connect("data/bcfishpass.sqlite")
+readwritesqlite::rws_list_tables(conn)
+readwritesqlite::rws_drop_table("wshds", conn = conn) ##now drop the table so you can replace it
+readwritesqlite::rws_write(hab_wshds, exists = F, delete = TRUE,
           conn = conn, x_name = "wshds")
-rws_list_tables(conn)
-rws_disconnect(conn)
+readwritesqlite::rws_list_tables(conn)
+readwritesqlite::rws_disconnect(conn)
