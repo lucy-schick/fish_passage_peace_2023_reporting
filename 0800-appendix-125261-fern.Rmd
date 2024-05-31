@@ -242,7 +242,7 @@ knitr::include_graphics(my_photo1)
 <br>
 
 ```{r photo-125261-06-prep}
-my_photo2 = fpr::fpr_photo_pull_by_str(str_to_pull = '_bb1_')
+my_photo2 = fpr::fpr_photo_pull_by_str(str_to_pull = '_pt1_')
 
 my_caption2 = paste0('PIT taggging rainbow trout and burbot >60mm fork length at Fern Creek.')
 
