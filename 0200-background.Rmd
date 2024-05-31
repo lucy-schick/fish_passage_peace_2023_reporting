@@ -20,7 +20,7 @@ knitr::include_graphics("fig/peace_fish_passage_2023.jpeg")
 
 <br>
 
-## Tse'khene {-}
+## Tse'khene
 
 The Parsnip River watershed is located within the south-eastern portion of the 108,000 km^2^ traditional territory of the Tse'khene from the [McLeod Lake Indian Band](https://www.mlib.ca/about/History). The Tse'khene *"People of the Rocks"* are a south westerly extension of the Athabascan speaking people of northern Canada.  They were nomadic hunters whose language belongs to the Beaver-Sarcee-Tse'khene branch of Athapaskan [@HistoryWhoWeAre2023].  Extensive work is underway to preserve the language with resources such as First Voices available [online](https://www.firstvoices.com/tsekhene-mcleod) and in [app form](https://apps.apple.com/us/app/tsekhene-mcleod-lake/id1503929250) for iphone and ipad devices.
 
@@ -56,7 +56,7 @@ knitr::include_graphics("fig/hydrograph_07EE007.png")
 knitr::include_graphics("fig/hydrology_stats_07EE007.png")
 ```
 
-## Fisheries {-}
+## Fisheries
 Fish species recorded in the Parsnip River watershed are detailed in Table \@ref(tab:fiss-species-table) [@data_fish_obs]. In addition to flooding related to the formation of the Williston Reservoir, transmission lines, gas pipelines, rail, road networks, forestry, elevated water temperatures, interrupted connectivity, invasion from non-native species and insect infestations affecting forested areas pose threats to fisheries values in the Parsnip River watershed  [@hagen_2015_critical_habs; @stamford_etal2017FWCPArctic; @bull_trout_synthesis; @bt_cosewic]. A brief summary of trends and knowledge status related to Arctic grayling, bull trout, kokanee, mountain whitefish and rainbow trout in Williston Watershed streams is provided in @fishandwildlifecompensationprogram2020PeaceRegion with a more detailed review of the state of knowledge for Parsnip River watershed populations of Arctic grayling and bull trout provided below.
 
 `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
