@@ -1,30 +1,45 @@
 
 # Introduction
 
-The health and viability of freshwater fish populations can depend on access to tributary and off channel areas which provide refuge during high flows, opportunities for foraging, overwintering habitat, spawning habitat and summer rearing habitat [@bramblett_etal2002SeasonalUse; @swalesRoleOffChannelPonds1989; @diebel_etal2015EffectsRoad].  Culverts can present barriers to fish migration due to low water depth, increased water velocity, turbulence, a vertical drop at the culvert outlet and/or maintenance issues [@slaneyFishHabitatRehabilitation1997; @cote_etal2005Fishpassage]. As road crossing structures are commonly upgraded or removed there are numerous opportunities to restore connectivity by ensuring that fish passage considerations are incorporated into repair, replacement, relocation and deactivation designs. 
+The health and viability of freshwater fish populations can depend on access to tributary and off channel areas which
+provide refuge during high flows, opportunities for foraging, overwintering habitat, spawning habitat and summer rearing
+habitat [@bramblett_etal2002SeasonalUse; @swalesRoleOffChannelPonds1989; @diebel_etal2015EffectsRoad].  Culverts can
+present barriers to fish migration due to low water depth, increased water velocity, turbulence, a vertical drop at the
+culvert outlet and/or maintenance issues [@slaneyFishHabitatRehabilitation1997; @cote_etal2005Fishpassage]. As road
+crossing structures are commonly upgraded or removed there are numerous opportunities to restore connectivity by
+ensuring that fish passage considerations are incorporated into repair, replacement, relocation and deactivation
+designs.
 
 <br>
 
-The Society for Ecosystem Restoration in Northern BC (SERNbc) is working together with the McLeod Lake Indian Band, the Peace Region Fish and Wildlife Compensation Program (FWCP), the Provincial Fish Passage Technical Working Group (FPTWG), road/rail tenure holders and other FWCP stakeholders/partners to prioritize, plan and fund the restoration of fish passage at road crossing structure barriers within the Parsnip River,
-Carp River and Crooked River watershed groups. 
+The Society for Ecosystem Restoration in Northern BC (SERNbc) is working together with the McLeod Lake Indian Band, the
+Peace Region Fish and Wildlife Compensation Program (FWCP), the Provincial Fish Passage Technical Working Group (FPTWG),
+road/rail tenure holders and other stakeholders/partners to prioritize, plan and fund the restoration of fish
+passage at road crossing structure barriers within the Parsnip River, Carp River and Crooked River watershed groups.
 
 <br>
 
-This project builds on Society for Ecosystem Restoration Northern BC (SERNbc) work in [2019 - 2020](https://newgraphenvironment.github.io/Parsnip_Fish_Passage/) [@irvine2020ParsnipRiver], [2021 - 2022](https://newgraphenvironment.github.io/fish_passage_parsnip_2021_reporting/)[@irvine2022PEAF22F3577DCARestoring] and [2022 - 2023](https://newgraphenvironment.github.io/fish_passage_peace_2022_reporting/) [@irvine_winterscheidt2023RestoringFish]. 
+This project builds on Society for Ecosystem Restoration Northern BC (SERNbc) work in 
+[2019 - 2020](https://newgraphenvironment.github.io/Parsnip_Fish_Passage/) [@irvine2020ParsnipRiver], [2021 - 2022](https://newgraphenvironment.github.io/fish_passage_parsnip_2021_reporting/)[@irvine2022PEAF22F3577DCARestoring] and [2022 - 2023](https://newgraphenvironment.github.io/fish_passage_peace_2022_reporting/) [@irvine_winterscheidt2023RestoringFish].
 
 <br>
 
-Through this year's project activities (2022/2023) we engaged numerous project partners and were able to identify and catalyze fish passage restoration activities at multiple high priority sites. At PSCIS crossing 125179 - a tributary to Missinka River, culverts were replaced with a clear-span bridge.  Additionally, numerous sites were assessed in the field and two crossings on the Chuchinka-Table FSR were prioritized for replacement in 2024 - 2025 with engineering designs commissioned and construction materials purchased.
+Through this year's project activities (2023/2024) we engaged numerous project partners and were able to identify, complete and
+catalyze fish passage restoration activities at multiple priority sites. 
 
 <br>
 
-Through the ongoing development of open source analysis and data presentation tools (including pdf and web-hosted dashboard tools) we are identifying new restoration opportunities, clarifying restoration benefits, communicating with the broader community and implementing on the ground works. 
+Through the ongoing development of open source analysis, data presentation and project collaboration tools we are 
+identifying new restoration opportunities, clarifying restoration benefits, communicating with the broader community and 
+implementing on the ground works. 
 
 <br>
 
 `r if(identical(gitbook_on, FALSE))knitr::asis_output("This report is available as pdf and as an online [interactive report](https://newgraphenvironment.github.io/fish_passage_peace_2023_reporting/) at https://newgraphenvironment.github.io/fish_passage_peace_2023_reporting/. We recommend viewing online as the web-hosted version contains more features and is more easily navigable. Please reference the website for the latest version number and download the most up to date pdf from https://github.com/NewGraphEnvironment/fish_passage_peace_2023_reporting/raw/main/docs/Peace2023.pdf")` 
 
-`r if(identical(gitbook_on, FALSE)){knitr::asis_output("<br>")}`
+<!-- `r if(identical(gitbook_on, FALSE)){knitr::asis_output("<br>")}` -->
 
-This document can be considered a living document.  Version numbers are logged for each release with modifications, enhancements and other changes tracked [here](https://github.com/NewGraphEnvironment/fish_passage_peace_2023_reporting/blob/main/NEWS.md) with issues and proposed/planned enhancements tracked [here](https://github.com/NewGraphEnvironment/fish_passage_peace_2023_reporting/issues). 
+This document can be considered a living document.  Version numbers are logged for each release with modifications, 
+enhancements and other changes tracked [here](https://github.com/NewGraphEnvironment/fish_passage_peace_2023_reporting/blob/main/NEWS.md) 
+with issues and proposed/planned enhancements tracked [here](https://github.com/NewGraphEnvironment/fish_passage_peace_2023_reporting/issues). 
 
