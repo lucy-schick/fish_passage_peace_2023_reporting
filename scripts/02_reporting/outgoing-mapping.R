@@ -23,7 +23,7 @@ sf::read_sf("./data/habitat_confirmation_tracks.gpx", layer = "tracks") %>%
 ##here is the study area watersheds
 wshd_study_areas <- fpr_db_query(
   query = "SELECT * FROM whse_basemapping.fwa_watershed_groups_poly a
-                               WHERE a.watershed_group_code IN ('PARS','CARP','CRKD')"
+                               WHERE a.watershed_group_code IN ('PARS','CARP','CRKD', 'NATR')"
 )
 
 wshd_study_areas %>%
