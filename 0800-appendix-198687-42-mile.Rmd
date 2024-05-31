@@ -1,10 +1,3 @@
----
-output: html_document
-editor_options: 
-  chunk_output_type: console
-  markdown: 
-    wrap: 72
----
 
 ```{r setup-198687, eval = F}
 knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE)
@@ -21,15 +14,20 @@ my_site <- 198687
 
 ## Site Location {.unnumbered}
 
-PSCIS crossing `r as.character(my_site)` is located on
-`r fpr::fpr_my_pscis_info()`. This site is located on `r fpr_my_pscis_info(col_pull = road_name)`, approximately `r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km
-upstream from the confluence with the Crooked River.
+PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()` approximately 23km south of the 
+community of McLeod Lake. This site is located on `r fpr_my_pscis_info(col_pull = road_name)`, approximately 
+`r round(fpr::fpr_my_bcfishpass(col_pull = downstream_route_measure)*0.001, 1)`km upstream from the confluence with the 
+Crooked River.
 
 <br>
 
 ## Background {.unnumbered}
 
-Upstream of crossing `r as.character(my_site)`, `r fpr::fpr_my_fish_sp()` have previously been recorded [@norris2022].
+At crossing `r as.character(my_site)`, `r fpr::fpr_my_pscis_info()` is a `r fpr::fpr_my_bcfishpass() %>% english::ordinal()` 
+order stream with a watershed area upstream of the crossing of approximately `r fpr::fpr_my_wshd()`km^2^. The elevation of 
+the watershed ranges from a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to `r fpr::fpr_my_wshd(col = 'elev_site')`m 
+at the crossing (Table \@ref(tab:tab-wshd-198687)). Upstream of crossing `r as.character(my_site)`, `r fpr::fpr_my_fish_sp()` 
+have previously been recorded [@norris2024smnorrisbcfishobs].
 
 <br>
 
@@ -37,6 +35,14 @@ A summary of habitat modelling outputs is presented in Table
 \@ref(tab:tab-culvert-bcfp-198687). A map of the watershed is provided in
 map attachment
 [`r fpr::fpr_my_bcfishpass(col_pull = dbm_mof_50k_grid)`](`r fpr::fpr_my_mapsheet(wshd = "parsnip", archive_date = "2022-05-27")`).
+
+```{r tab-wshd-198687, eval = T}
+fpr::fpr_table_wshd_sum(site_id = my_site) %>% 
+  fpr::fpr_kable(caption_text = paste0('Summary of derived upstream watershed statistics for PSCIS crossing ', my_site, '.'),
+           footnote_text = 'Elev P60 = Elevation at which 60% of the watershed area is above',
+           scroll = F)
+
+```
 
 <br>
 
@@ -49,18 +55,25 @@ fpr::fpr_table_bcfp(scroll = F)
 ## Stream Characteristics at Crossing {.unnumbered}
 
 At the time of the survey, PSCIS crossing `r as.character(my_site)` was
-un-embedded, non-backwatered and ranked as a
-`r fpr::fpr_my_pscis_info(col_pull = barrier_result) %>% stringr::str_to_lower()` to upstream fish passage according to the provincial protocol
-[@moe2011] (Table \@ref(tab:tab-culvert-198687)). There
-was high flow through the culvert at the time of survey. A deep
-outlet pool (2m) and a large outlet drop (2m) indicate that the
-culvert may be undersized. Water temperature was
+backwatered and embedded - ranking as a
+`r fpr::fpr_my_pscis_info(col_pull = barrier_result) %>% stringr::str_to_lower()` - according to the provincial protocol
+[@moe2011] (Table \@ref(tab:tab-culvert-198687)).  Water temperature was
 `r fpr::fpr_my_habitat_info(loc = "ds", col_pull = 'temperature_c')`$^\circ$C,
 pH was `r fpr::fpr_my_habitat_info(loc = "ds", col_pull = 'p_h')` and
-conductivity was
-`r fpr::fpr_my_habitat_info(loc = "ds", col_pull = 'conductivity_m_s_cm')`uS/cm.
+conductivity was `r fpr::fpr_my_habitat_info(loc = "ds", col_pull = 'conductivity_m_s_cm')`uS/cm.
+
+<br>
+
+Although the crossing appeared to be passable at the time of assessment it was noted that recent work had been 
+completed to dredge out the stream channel upstream and downstream of the highway. This indicated that the structure
+currently in place was not appropriate for the site and that replacement of the crossing could be beneficial from a 
+highway maintenance perspective as well as for reducing impacts on the potentially higher value habitat located
+immediately adjacent to the road (extensive gravels suitable for spawning). For this reason, a habitat confirmation 
+assessment was completed to gatehr data on the value of the habitat upstream and downstream of the crossing.
+
 
 `r if(identical(gitbook_on, FALSE)){knitr::asis_output("\\pagebreak")}`
+
 <br>
 
 ```{r tab-culvert-198687, eval = T}
@@ -79,17 +92,18 @@ hab_site %>% filter(site == my_site & location == 'us') %>% pull(comments)
 
 `r fpr_my_survey_dist(loc = 'ds')`
 `r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-198687-01) - \\@ref(fig:photo-198687-02)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-198687-d01))."))`
-`r fpr_my_habitat_paragraph(loc = 'ds')` There was an abundance of large woody debris that created deep pools, diverted water flow, and created natural steps. The
-habitat was rated as `r fpr::fpr_my_priority_info(loc = 'ds')` value for
-salmonid rearing.
+`r fpr_my_habitat_paragraph(loc = 'ds')` Throughout the area surveyed there were signs of beaver activity and patches of 
+gravel present suitable for rainbow trout spawning. The habitat was rated as `r fpr::fpr_my_priority_info(loc = 'ds')` value for
+salmonid rearing and spawning.
 
 ## Stream Characteristics Upstream {.unnumbered}
 
 `r fpr_my_survey_dist(loc = 'us')`
 `r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-198687-03) - \\@ref(fig:photo-198687-06)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-198687-d02))."))`
-`r fpr_my_habitat_paragraph(loc = 'us')` This stream has the potential to be fish bearing but the gradient is steep. The bank full depth is very high, with a measured average of 0.8m. There was an abundance of large woody debris that provided functionality to the stream habitat by diverting flow and providing cover. The habitat was rated as
-`r fpr::fpr_my_priority_info(loc = 'us')` value as an important
-migration corridor containing suitable rearing habitat.
+`r fpr_my_habitat_paragraph(loc = 'us')` Survey notes indicate patches of gravel suitable for rainbow trout spawning,
+few deep pools suitable for overwintering and generallly moderate flow volume. Fry were spotted near culvert and ~450m upstream
+of the highway. It was noted that the stream flowed subsurface at a point approximately 550m upstream of culvert. The habitat was rated as
+`r fpr::fpr_my_priority_info(loc = 'us')` value as an important migration corridor containing suitable rearing and spawning habitat.
 
 <br>
 
@@ -99,23 +113,33 @@ Should restoration/maintenance activities proceed, replacement of PSCIS
 crossing `r as.character(my_site)` with a bridge
 (`r fpr::fpr_my_pscis_info(col_pull = recommended_diameter_or_span_meters)`m
 span) is recommended. The cost of the work is estimated at
-\$`r format(fpr::fpr_my_cost_estimate(), big.mark = ',')` for a cost
-benefit of `r fpr::fpr_my_cost_estimate(col_pull = cost_net)` linear
-m/\$1000 and `r fpr::fpr_my_cost_estimate(col_pull = cost_area_net)`
-m^2^/\$1000.
+\$`r format(fpr::fpr_my_cost_estimate(), big.mark = ',')`.
 
 <br>
 
 ## Conclusion {.unnumbered}
 
-There was
-`r fpr::fpr_my_priority_info(col_pull= upstream_habitat_length_km)`km of
+There was `r fpr::fpr_my_priority_info(col_pull= upstream_habitat_length_km)`km of
 habitat modelled upstream of crossing `r as.character(my_site)` with
 areas surveyed rated as
 `r fpr::fpr_my_priority_info(sit = my_site, loc = 'us', col_pull = hab_value)`
-value for salmonid rearing and spawning. `r as.character(my_site)` was ranked as a
-`r fpr::fpr_my_priority_info(col_pull = priority)` priority for proceeding to design for replacement. Electrofishing upstream and downstream of the culvert is recommended to provide insight into fish community
-composition and density which may justify a higher priority for site remediation.
+value for salmonid rearing and spawning. 
+
+<br>
+
+Although the crossing appeared to be passable at the time of assessment it was noted that recent work had been 
+completed to dredge out the stream channel upstream and downstream of the highway. This indicated that the structure
+currently in place was not appropriate for the site and that replacement of the crossing could be beneficial from a 
+highway maintenance perspective as well as for reducing impacts on the potentially higher value habitat located
+immediately adjacent to the road (extensive gravels suitable for spawning). For this reason, a habitat confirmation 
+assessment was completed to gatehr data on the value of the habitat upstream and downstream of the crossing.
+
+<br>
+
+PSCIS crossing `r as.character(my_site)` on `r fpr::fpr_my_pscis_info()` was ranked as a
+`r fpr::fpr_my_priority_info(col_pull = priority)` priority for proceeding to design for replacement. The project team
+plans to follow up with the Ministry of Transportation and Infrastructure to discuss the potential for replacement of the
+structure and to provide the necessary data to support the replacement if it is deemed helpful.
 
 `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
 

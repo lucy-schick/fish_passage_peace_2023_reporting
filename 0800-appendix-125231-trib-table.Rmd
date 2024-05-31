@@ -9,7 +9,7 @@ source('scripts/tables.R')
 my_site <- 125231
 ```
 
-# Tributary to the Table River - 125231 - Appendix {#Table_125231}
+# Tributary to the Table River - 125231 - Appendix {-}
 
 ## Site Location {.unnumbered}
 
@@ -102,7 +102,7 @@ knitr::include_graphics(my_photo, dpi = NA)
 A total six sites were sampled in the vicinity of crossing 125231 with three sites located upstream and three sites located downstream of the Chuckinka-Table FSR. Electrofishing results are summarised in Tables \@ref(tab:tab-fish-site-125231) - \@ref(tab:tab-fish-dens-125231) and Figure \@ref(fig:plot-fish-box-125231). A total of `r tab_fish_summary %>% filter(site_id == paste0(my_site, '_us')) %>% group_by(site_id) %>% janitor::adorn_totals() %>% filter(site_id == 'Total') %>% pull(count_fish)` rainbow trout were captured upstream, and `r tab_fish_summary %>% filter(site_id == paste0(my_site, '_ds')) %>% group_by(site_id) %>% janitor::adorn_totals() %>% filter(site_id == 'Total') %>% pull(count_fish)` rainbow trout were captured downstream `r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-125231-01) - \\@ref(fig:photo-125231-04)).")}else(knitr::asis_output("(Figures \\@ref(fig:photo-125231-d01) - \\@ref(fig:photo-125231-d02)."))` All fish captured with a fork length greater than 60mm were tagged with Passive Integrated Transponders (PIT tags) with data stored [here](`r paste0(params$repo_url, "blob/main/data/habitat_confirmations.xls")`).
 
 
-# Conslusion
+## Conclusion
 
 As PSCIS crossing 197493 located on the CN Railway approximately 200m downstream of the Chuckinka-Table FSR where
 replacement of PSCIS crossing `r my_site` is planned, is a fully embedded culvert considered pasable at the time of assessments in

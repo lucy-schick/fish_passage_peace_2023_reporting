@@ -2,6 +2,7 @@
 
 # **Attachment 3 - Phase 1 Data and Photos** {-}
 
-`r knitr::knit(text = mapply(fpr::fpr_table_cv_detailed_print,  tab_sum = tab_summary, comments = tab_summary_comments, photos = tab_photo_url))`
+Data and photos for all Phase 1 (fish passage assessments) are provided in [Attachment 3 - https://github.com/NewGraphEnvironment/fish_passage_peace_2023_reporting/raw/main/docs/Attachment_3.pdf](https://github.com/NewGraphEnvironment/fish_passage_peace_2023_reporting/raw/main/docs/Attachment_3.pdf)
+
 
 

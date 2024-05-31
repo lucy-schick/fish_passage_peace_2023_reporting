@@ -28,9 +28,9 @@ crossing is present on the mainstem of Altezega Creek where crossed by the Hart 
 
 ## Background {.unnumbered}
 
-Upstream of the crossings `r fpr::fpr_my_fish_sp(sit = my_site2)` have previously been recorded while within Altezega
-Creek - `r `fpr::fpr_my_fish_sp(sit = 198664)` have been recorded upstream of the highway crossing with burbot
-captured near the highway in 2008 [@norris2024smnorrisbcfishobs].
+Upstream of the crossings no fish have previously been recorded however, within Altezega
+Creek - `r fpr::fpr_my_fish_sp(sit = 198664)` have been recorded upstream of the highway crossing with burbot
+captured near the highway in 2008 [@norris2024smnorrisbcfishobs; @moe2024KnownBC].
 
 <br>
 
@@ -131,14 +131,15 @@ m^2^/\$1000.
 
 ## Conclusion {.unnumbered}
 
-There was
-`r fpr::fpr_my_priority_info(sit = my_site2, col_pull= upstream_habitat_length_km)`km of
-habitat modelled upstream of crossing `r as.character(my_site2)` with
-areas surveyed rated as
-`r fpr::fpr_my_priority_info(sit = my_site2, loc = 'us', col_pull = hab_value)`
-value for salmonid rearing and spawning. `r as.character(my_site)` was ranked as a
-`r fpr::fpr_my_priority_info(col_pull = priority)` priority for proceeding to design for replacement as the crossing at the time of the survey had no outlet drop and was 75% backwatered. Crossing 
-`r my_site2` on `r fpr_my_pscis_info(sit  = my_site2, col_pull =road_name)` ranked as a `r fpr::fpr_my_priority_info(sit = my_site2, col_pull = priority)` priority for proceeding to design for replacement. Electrofishing upstream and downstream of the culvert is recommended to provide insight into fish community composition and density which may justify a higher or lower priority for site remediation.
+There was an estimated `r fpr::fpr_my_priority_info(sit = my_site2, col_pull= upstream_habitat_length_km)`km of habitat modelled upstream of 
+crossing `r as.character(my_site2)` with areas surveyed rated as `r fpr::fpr_my_priority_info(sit = my_site2, loc = 'us', col_pull = hab_value)`
+value for salmonid rearing and spawning. `r as.character(my_site)` was ranked as a 
+`r fpr::fpr_my_priority_info(col_pull = priority)` priority for proceeding to design for replacement as the crossing at 
+the time of the survey had no outlet drop and was 75% backwatered. Crossing `r my_site2` on 
+`r fpr_my_pscis_info(sit  = my_site2, col_pull =road_name)` ranked as 
+a `r fpr::fpr_my_priority_info(sit = my_site2, col_pull = priority)` priority for proceeding to design for replacement. 
+Electrofishing upstream and downstream of the culvert is recommended to provide insight into fish community composition 
+and density which may justify a higher or lower priority for site remediation.
 
 `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
 
