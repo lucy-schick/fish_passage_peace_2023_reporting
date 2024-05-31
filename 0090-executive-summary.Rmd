@@ -1,14 +1,14 @@
 # Executive Summary {.unnumbered}
 
-The health and viability of freshwater fish populations can depend on access to tributary and off channel areas which provide refuge during high flows, opportunities for foraging, overwintering habitat, spawning habitat and summer rearing habitat. As road crossing structures are commonly upgraded or removed there are numerous opportunities to restore connectivity by ensuring that fish passage considerations are incorporated into repair, replacement, relocation and deactivation designs.
+The health and viability of freshwater fish populations can depend on access to tributary and off-channel areas which provide refuge during high flows, opportunities for foraging, overwintering habitat, spawning habitat, and summer rearing habitat. Upgrading or removing road crossing structures presents numerous opportunities to restore connectivity by incorporating fish passage considerations into repair, replacement, relocation, and deactivation designs.
 
 <br>
 
-The Society for Ecosystem Restoration in Northern BC (SERNbc) is working together with the McLeod Lake Indian Band, the Peace Region Fish and Wildlife Compensation Program (FWCP), the Provincial Fish Passage Technical Working Group (FPTWG), road/rail tenure holders and other FWCP stakeholders/partners to prioritize, plan and fund the restoration of fish passage at road crossing structure barriers within the Parsnip River, Carp River and Crooked River watershed groups.
+The Society for Ecosystem Restoration in Northern BC (SERNbc) is collaborating with the McLeod Lake Indian Band, the Peace Region Fish and Wildlife Compensation Program (FWCP), the Provincial Fish Passage Technical Working Group (FPTWG), road/rail tenure holders, and other FWCP stakeholders/partners to prioritize, plan, and fund the restoration of fish passage at road crossing structure barriers within the Parsnip River, Carp River, and Crooked River watershed groups.
 
 <br>
 
-The project engages FWCP partners and stakeholders to clearly communicate fish passage issues in FWCP Peace Region watersheds while collaboratively planning and executing the steps necessary to realize fish passage restorations. Work completed and ongoing aligns with the Fish and Wildlife Compensation Program Rivers, Lakes and Reservoirs Action Plan [@fishandwildlifecompensationprogram2020PeaceRegion] sub objective 6 of addressing fish passage issues in streams to enhance productivity of priority species. Project activities undertaken address the following actions:
+The project engages FWCP partners and stakeholders to clearly communicate fish passage issues in FWCP Peace Region watersheds while collaboratively planning and executing the steps necessary to achieve fish passage restorations. The work completed and ongoing aligns with the Fish and Wildlife Compensation Program Rivers, Lakes and Reservoirs Action Plan [@fishandwildlifecompensationprogram2020PeaceRegion] sub-objective 6 of addressing fish passage issues in streams to enhance the productivity of priority species. Project activities undertaken address the following actions:
 
 -   PEA.RLR.S06.RI.20 - Conducting engagement to prioritize options for fish passage improvement-P1
 -   PEA.RLR.S06.RI.19 - Conducting research to prioritize fish passage actions-P1
@@ -16,32 +16,25 @@ The project engages FWCP partners and stakeholders to clearly communicate fish p
 
 <br>
 
-This project builds on Society for Ecosystem Restoration Northern BC (SERNbc) work in [2019 - 2020](https://newgraphenvironment.github.io/Parsnip_Fish_Passage/) [@irvine2020ParsnipRiver], [2021 - 2022](https://newgraphenvironment.github.io/fish_passage_parsnip_2021_reporting/)[@irvine2022PEAF22F3577DCARestoring] and [2022 - 2023](https://newgraphenvironment.github.io/fish_passage_peace_2022_reporting/) [@irvine_winterscheidt2023RestoringFish].
+This project builds on the work of the Society for Ecosystem Restoration Northern BC (SERNbc) in [2019 - 2020](https://newgraphenvironment.github.io/Parsnip_Fish_Passage/) [@irvine2020ParsnipRiver], [2021 - 2022](https://newgraphenvironment.github.io/fish_passage_parsnip_2021_reporting/)[@irvine2022PEAF22F3577DCARestoring], and [2022 - 2023](https://newgraphenvironment.github.io/fish_passage_peace_2022_reporting/) [@irvine_winterscheidt2023RestoringFish].
 
 <br>
 
-Through 2023/2024 project activities numerous project partners were engaged and we were able to identify and conduct fish passage planning/restoration activities at multiple priority sites:
+Through 2023/2024 project activities, numerous project partners were engaged, and we identified and conducted fish passage planning/restoration activities at multiple priority sites:
 
--   In addition to numerous small scale presentations and meetings, we conducted an online presentation through FWCP to 
-showcase the project on February 23, 2024 with over 70 people in attendance. A presentation to FWCP board of directors 
-detailing project progress, goals and budgets was also completed on February 6, 2024.
-
--   To facilitate the planning and implementation of restoration activities a collaborative GIS environment has been established to be a space where project team members and collaborators can access, view and contribute to spatial datasets and the development of restoration/monitoring plans for the project.
-
--   BCTS was able to use our project documentation to provide justification for investments in road deactivation leading to the restoration of fish passage at numerous crossings in the Parsnip River watershed including two sites ranked as priorities as part of habitat confirmation assessments documented in the FWCP funded @irvine2020ParsnipRiver.
-
--   In 2024, Canfor plans to replace crossing 125231 (Tributary to Table River) at km21 on the Chuchinka-Table FSR with a bridge. An engineering design is complete, materials sourced, and a contract with Canfor is in place for installation preparations (engineering design, environmental management planning/permitting, and material acquisition). The estimated replacement cost is \$410,000, and Canfor committed \$205,000. To proceed in 2024, FWCP support is necessary to cover the remaining 50% (\$90,000) of project costs. Fish sampling with PIT tagging of target species and acquisition of aerial imagery took place in 2023 as part of baseline monitoring for the site.
-
--   Fish sampling with PIT tagging of target species and acquisition of aerial imagery took place at Fern Creek located at km2.1 of the Chuchinka-Table FSR as part of baseline monitoring for the site tentatively scheduled to be replaced in 2025.
-
+-   In addition to numerous small-scale presentations and meetings, we conducted an online presentation through FWCP to showcase the project on February 23, 2024, with over 70 people in attendance. A presentation to the FWCP board of directors detailing project progress, goals, and budgets was also completed on February 6, 2024.
+-   To facilitate the planning and implementation of restoration activities, a collaborative GIS environment has been established as a space where project team members and collaborators can access, view, and contribute to spatial datasets and the development of restoration/monitoring plans for the project.
+-   BCTS used our project documentation to justify investments in road deactivation, leading to the restoration of fish passage at numerous crossings in the Parsnip River watershed, including two priority sites documented in the FWCP-funded [@irvine2020ParsnipRiver].
+-   In 2024, Canfor plans to replace crossing 125231 (Tributary to Table River) at km21 on the Chuchinka-Table FSR with a bridge. An engineering design is complete, materials are sourced, and a contract with Canfor is in place for installation preparations (engineering design, environmental management planning/permitting, and material acquisition). The estimated replacement cost is $410,000, with Canfor committing $205,000. To proceed in 2024, FWCP support is necessary to cover the remaining 50% ($90,000) of project costs. Fish sampling with PIT tagging of target species and the acquisition of aerial imagery took place in 2023 as part of baseline monitoring for the site.
+-   Fish sampling with PIT tagging of target species and the acquisition of aerial imagery took place at Fern Creek located at km2.1 of the Chuchinka-Table FSR as part of baseline monitoring for the site, tentatively scheduled to be replaced in 2025.
 -   McLeod Lake's capacity to engage in fisheries management and restoration activities within their territory is building through training, fieldwork, and inclusion in planning and communication processes.
-
--   To diversify potential partners for implementation and funding, planning was conducted and field assessments were conducted at `r length(c(pscis_phase1$my_crossing_reference, pscis_reassessments$pscis_crossing_id))` sites in the Carp River, Crooked River, and Parsnip River watershed groups. This included initial surveys on numerous Ministry of Transportation and Infrastructure sites, incorporating recently adapted assessments which include climate change risk assessment metrics.
+-   To diversify potential partners for implementation and funding, planning and field assessments were conducted at `r length(c(pscis_phase1$my_crossing_reference, pscis_reassessments$pscis_crossing_id))` sites in the Carp River, Crooked River, and Parsnip River watershed groups. This included initial surveys on numerous Ministry of Transportation and Infrastructure sites, incorporating recently adapted assessments that include climate change risk assessment metrics.
 
 <br>
 
 Recommendations going forward include:
 
--   Continue to engage partners to raise funds for remediations, identify sites for restoration, conduct remedial works and assess effectiveness of works.
--   Continue to conduct detailed assessments where blockages are present and large amounts of habitat are potentially available within the Parsnip River and neighboring watershed groups. As timelines for remediations can be extensive, planning onerous and costs of remedial works significant, continuing assessments throughout the greater area will provide more options for remediation and engage additional funding partners (ex. Ministry of Transportation and Infrastructure, alternative forest licensees). Identifying areas of concern near the community of McLeod Lake is expected to further engage community members and most effectively promote restoration activities.
--   Conduct effectiveness monitoring where sites have been remediated, where sites have been prioritized and where remediations are planned. Electrofishing surveys including tagging of target species with PIT tags are recommended to understand the extent of connectivity impairments, track fish movement/health over time and inform adaptive management. Detailed habitat assessments and acquisition of temperature data can be considered along with photo documentation of stream morphology near crossings.
+-   Continue to engage partners to raise funds for remediations, identify sites for restoration, conduct remedial works, and assess the effectiveness of works.
+-   Continue to conduct detailed assessments where blockages are present and large amounts of habitat are potentially available within the Parsnip River and neighboring watershed groups. As timelines for remediations can be extensive, planning onerous, and the costs of remedial works significant, continuing assessments throughout the greater area will provide more options for remediation and engage additional funding partners (e.g., Ministry of Transportation and Infrastructure, alternative forest licensees). Identifying areas of concern near the community of McLeod Lake is expected to further engage community members and most effectively promote restoration activities.
+-   Conduct effectiveness monitoring where sites have been remediated, prioritized, and where remediations are planned. Electrofishing surveys, including tagging of target species with PIT tags, are recommended to understand the extent of connectivity impairments, track fish movement/health over time, and inform adaptive management. Detailed habitat assessments and acquisition of temperature data can be considered along with photo documentation of stream morphology near crossings.
+
