@@ -52,8 +52,6 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-1.3.1/leaflet.js"></script>
@@ -231,7 +229,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="change-log.html"><a href="change-log.html"><i class="fa fa-check"></i>Change Log</a></li>
 <li class="chapter" data-level="" data-path="session-info.html"><a href="session-info.html"><i class="fa fa-check"></i>Session Info</a></li>
 <li class="chapter" data-level="" data-path="attachment-1---maps.html"><a href="attachment-1---maps.html"><i class="fa fa-check"></i><strong>Attachment 1 - Maps</strong></a></li>
-<li class="chapter" data-level="" data-path="attachment-3---phase-1-data-and-photos.html"><a href="attachment-3---phase-1-data-and-photos.html"><i class="fa fa-check"></i><strong>Attachment 3 - Phase 1 Data and Photos</strong></a></li>
+<li class="chapter" data-level="" data-path="attachment-2---habitat-assessment-and-fish-sampling-data.html"><a href="attachment-2---habitat-assessment-and-fish-sampling-data.html"><i class="fa fa-check"></i><strong>Attachment 2 - Habitat Assessment and Fish Sampling Data</strong></a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/NewGraphEnvironment/fish_passage_peace_2023_reporting" target="blank">Scripts and Data</a></li>
 
@@ -256,7 +254,7 @@ div.csl-indent {
 <h1>Session Info<a href="session-info.html#session-info" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div class="sourceCode" id="cb154"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb154-1"><a href="session-info.html#cb154-1" tabindex="-1"></a><span class="co"># looks like our use of the pak package has broken this due to links to packages linked in DESCRIPTION files such as cpp11 and AsioHeaders. So we will try the good old fashioned sessionInfo function instead</span></span>
 <span id="cb154-2"><a href="session-info.html#cb154-2" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div>
-<pre><code>─ Session info ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+<pre><code>─ Session info ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
  version  R version 4.4.0 (2024-04-24)
  os       macOS Monterey 12.7.4
@@ -270,7 +268,7 @@ div.csl-indent {
  rstudio  2024.04.1+748 Chocolate Cosmos (desktop)
  pandoc   3.1.11 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/aarch64/ (via rmarkdown)
 
-─ Packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─ Packages ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
  package           * version    date (UTC) lib source
  askpass             1.2.0      2023-09-03 [1] CRAN (R 4.4.0)
  base64enc           0.1-3      2015-07-28 [1] CRAN (R 4.4.0)
@@ -328,6 +326,7 @@ div.csl-indent {
  glue                1.7.0      2024-01-09 [1] CRAN (R 4.4.0)
  googleway           2.7.8      2023-08-22 [1] CRAN (R 4.4.0)
  gtable              0.3.5      2024-04-22 [1] CRAN (R 4.4.0)
+ here                1.0.1      2020-12-13 [1] CRAN (R 4.4.0)
  highr               0.11       2024-05-26 [1] CRAN (R 4.4.0)
  hms                 1.1.3      2023-03-21 [1] CRAN (R 4.4.0)
  htmltools           0.5.8.1    2024-04-04 [1] CRAN (R 4.4.0)
@@ -370,12 +369,10 @@ div.csl-indent {
  png                 0.1-8      2022-11-29 [1] CRAN (R 4.4.0)
  poisspatial       * 0.1.0.9000 2024-05-14 [1] Github (poissonconsulting/poisspatial@39f7e18)
  poisutils           0.0.0.9010 2024-05-14 [1] Github (poissonconsulting/poisutils@8310dc4)
- processx            3.8.4      2024-03-16 [1] CRAN (R 4.4.0)
  profvis             0.3.8      2023-05-02 [1] CRAN (R 4.4.0)
  progressr           0.14.0     2023-08-10 [1] CRAN (R 4.4.0)
  promises            1.3.0      2024-04-05 [1] CRAN (R 4.4.0)
  proxy               0.4-27     2022-06-09 [1] CRAN (R 4.4.0)
- ps                  1.7.6      2024-01-18 [1] CRAN (R 4.4.0)
  purrr             * 1.0.2      2023-08-10 [1] CRAN (R 4.4.0)
  qpdf                1.3.3      2024-03-25 [1] CRAN (R 4.4.0)
  R6                  2.5.1      2021-08-19 [1] CRAN (R 4.4.0)
@@ -393,12 +390,12 @@ div.csl-indent {
  rmarkdown         * 2.27       2024-05-17 [1] CRAN (R 4.4.0)
  roxygen2            7.3.1      2024-01-22 [1] CRAN (R 4.4.0)
  RPostgres         * 1.4.7      2024-05-27 [1] CRAN (R 4.4.0)
+ rprojroot           2.0.4      2023-11-05 [1] CRAN (R 4.4.0)
  RSQLite             2.3.6      2024-03-31 [1] CRAN (R 4.4.0)
  rstudioapi          0.16.0     2024-03-24 [1] CRAN (R 4.4.0)
  s2                  1.1.6      2023-12-19 [1] CRAN (R 4.4.0)
  sass                0.4.9      2024-03-15 [1] CRAN (R 4.4.0)
  scales              1.3.0      2023-11-28 [1] CRAN (R 4.4.0)
- servr               0.30       2024-03-23 [1] CRAN (R 4.4.0)
  sessioninfo         1.2.2      2021-12-06 [1] CRAN (R 4.4.0)
  sf                * 1.0-16     2024-03-24 [1] CRAN (R 4.4.0)
  shiny               1.8.1.1    2024-04-02 [1] CRAN (R 4.4.0)
@@ -426,7 +423,6 @@ div.csl-indent {
  vctrs               0.6.5      2023-12-01 [1] CRAN (R 4.4.0)
  viridisLite         0.4.2      2023-05-02 [1] CRAN (R 4.4.0)
  vroom               1.6.5      2023-12-05 [1] CRAN (R 4.4.0)
- websocket           1.4.1      2021-08-18 [1] CRAN (R 4.4.0)
  withr               3.0.0      2024-01-16 [1] CRAN (R 4.4.0)
  wk                  0.9.1      2023-11-29 [1] CRAN (R 4.4.0)
  xfun                0.44       2024-05-15 [1] CRAN (R 4.4.0)
@@ -437,7 +433,7 @@ div.csl-indent {
 
  [1] /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library
 
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
 
 </div>
             </section>
