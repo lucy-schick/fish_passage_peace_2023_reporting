@@ -35,6 +35,8 @@ pkgs_cran <- c(
   "geojsonio",
   "fs",
   "fishbc"
+  # "crosstalk",
+  # "DT"
 )
 
 pkgs_gh <- c(
@@ -52,9 +54,9 @@ pkgs_all <- c(pkgs_cran,
 
 
 # install or upgrade all the packages with pak
-lapply(pkgs_all,
-       pak::pkg_install,
-       ask = FALSE)
+# lapply(pkgs_all,
+#        pak::pkg_install,
+#        ask = FALSE)
 
 # load all the packages
 
