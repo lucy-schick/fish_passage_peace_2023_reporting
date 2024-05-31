@@ -33,7 +33,9 @@ documentclass: book
 params:
   repo_url: 'https://github.com/NewGraphEnvironment/fish_passage_peace_2023_reporting/'
   report_url: 'https://newgraphenvironment.github.io/fish_passage_peace_2023_reporting'
+  gis_project_name: 'sern_skeena_fwcp_2023'
   update_form_pscis: TRUE
+bibliography: "`r rbbt::bbt_write_bib('references.bib', overwrite = TRUE)`"
 biblio-style: apalike
 link-citations: no
 github-repo: rstudio/bookdown-demo
@@ -44,6 +46,8 @@ description: "Restoring Fish Passage in the Peace Region"
 
 ```{r switch-gitbook-html, echo=FALSE}
 gitbook_on <- TRUE
+# this switch is used to update metadata for collaborative gis projects. prob won't change much but we can update if we want
+gis_update <- FALSE
 # gitbook_on <- FALSE  ##we just need turn  this on and off to switch between gitbook and pdf via paged.js
 
 ```
@@ -70,6 +74,7 @@ font_set <- 9
 
 ```{r pkg-tables}
 source('scripts/packages.R')
+source('scripts/functions.R')
 source('scripts/tables.R')
 
 ```
