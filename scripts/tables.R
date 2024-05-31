@@ -1280,6 +1280,8 @@ tab_map <- tab_map_prep %>%
 
 # MOTI ----------------
 
+xref_moti_climate <- read_csv(file = 'data/inputs_raw/xref_moti_climate.csv')
+
 # set up a table for the memos that contains the moti climate change data
 # make a tribble of the xref_moti_climate_template to make 2 columns in table
 # read in csv, then fpr_kable the data frame, run in rmd chunk, then copy and paste table using datapasta add in "paste as tribble"
