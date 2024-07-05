@@ -119,9 +119,10 @@ map %>%
   hideGroup(c("Phase 2"))
 ```
 
-## Identify and Communicate Fish Passage Issues
+## Communicate Connectivity Issues
 
-We conducted online presentation was conducted through FWCP to showcase the project on February 23, 2024 with over 70 people in attendance. A presentation to FWCP board of directors detailing project progress, goals and budgets was also completed on February 6, 2024.
+We conducted an online presentation through FWCP to showcase the project on February 23, 2024 with over 70 people in 
+attendance. A presentation to FWCP Peace board detailing project progress, goals and budgets was also completed on February 6, 2024.
 
 SERNbc and McLeod Lake have been actively engaging with the following groups through numerous meetings, emails and phone
 calls to build awareness for the initiative, solicit input, prioritize sites, raise partnership funding and plan/implement 
@@ -446,7 +447,7 @@ Field assessments were conducted between `r format(min(pscis_phase1$date), forma
 <br>
 
 ## Habitat Confirmation Assessments
-During 2022 field assessments, habitat confirmation assessments were conducted at `r hab_site_priorities %>% nrow()` sites in the Parsnip River, Carp River and Crooked River watershed groups.  A total of approximately `r habitat_confirmations_priorities %>% pull(length_surveyed) %>% sum(na.rm = T) %>% round(-3)/1000`km of stream was assessed. Georeferenced field maps are presented in Attachment 1.
+During 2023 field assessments, habitat confirmation assessments were conducted at `r hab_site_priorities %>% nrow()` sites in the Parsnip River, Carp River and Crooked River watershed groups.  A total of approximately `r habitat_confirmations_priorities %>% pull(length_surveyed) %>% sum(na.rm = T) %>% round(-3)/1000`km of stream was assessed. Georeferenced field maps are presented in Attachment 1.
 
 <br>
 
@@ -656,7 +657,7 @@ plot_fish_box_all
 
 ```{r, echo=FALSE, results='asis'}
 if(identical(gitbook_on, FALSE)){
-  knitr::asis_output("Due to the large amount of data present, preliminary climate change risk assessment data is presented in the [interactive report](https://newgraphenvironment.github.io/fish_passage_peace_2023_reporting/) at https://newgraphenvironment.github.io/fish_passage_peace_2023_reporting/. Phase 2 sites are in Table \\@ref(tab:tab-moti-climate-phase2).")
+  knitr::asis_output("Due to the large amount of data present, preliminary climate change risk assessment data is presented in the [interactive report](https://newgraphenvironment.github.io/fish_passage_peace_2023_reporting/) at https://newgraphenvironment.github.io/fish_passage_peace_2023_reporting/.")
 } else {
   knitr::asis_output("Preliminary climate change risk assessment data is presented below. Phase 1 sites are presented in Table \\@ref(tab:tab-moti-climate-phase1), and Phase 2 sites are in Table \\@ref(tab:tab-moti-climate-phase2).  Data can be considered preliminary and a starting point for quantification of risk 
                      factors through future adaptive management.")
@@ -764,8 +765,8 @@ these teams to incorporate their findings into our fish passage restoration plan
 
 #### BCHydro Fish Passage Program
 The BC Hydro Fish Passage Program is currently working with First Nations, regulators and stakeholders in the region to 
-develop strategies to offset impacts of fish entertainment related to the Site C dam expansion project. We met with
-West Moberly-DWB Limited Partnership to discuss how our prgrams can collaborate to identify potential sites for remediation.
+develop strategies to offset impacts of fish entertainment related to the Peace Canyon and WAC Bennett dams. We met with
+West Moberly-DWB Limited Partnership to discuss how our programs can collaborate to identify potential sites for remediation.
 
 
 #### Climate Change

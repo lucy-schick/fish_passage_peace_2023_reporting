@@ -1,7 +1,7 @@
 # Background
 
 The study area includes the FWCP Peace Region with a focus to date on traditional territories of the Tse'khene First Nations.
-In 2023 filed assessments were completed with the Parsnip River, Carp River and Crooked River watershed groups (Figure \@ref(fig:overview-map)).  
+In 2023, field assessments were completed with the Parsnip River, Carp River and Crooked River watershed groups (Figure \@ref(fig:overview-map)).  
 
 <br>
 
@@ -111,11 +111,35 @@ Since impoundment of the Williston Reservoir, it appears that physical habitat a
 
 <br>
 
-A detailed review of dusk'ihje life history can be referenced in @stamford_etal2017FWCPArctic. Migration of mature adult dusk'ihje (Arctic grayling) occurs in the spring with arrival at known spawning locations coinciding with water temperatures of 4$^\circ$C.  Spawning in the Parsnip watershed appears to occur between late-May and late-June within sites located primarily within the lower reaches of the Anzac and Table rivers as well as within the Parsnip River mainstem. Side-channel and multiple-channel locations containing small gravels appear to be selected for spawning. Currently, the primary distribution of Williston Arctic grayling appears to be among fourth order and larger streams [@williamson_2004; @stamford_etal2017FWCPArctic]. @stewartFishLifeHistory2007 report that Arctic grayling spawn in large and small tributaries to rivers and lakes, intermittent streams, within mainstem rivers as well as lakes, most commonly at tributary mouths.   Although past study results indicate that 0+ grayling appeared to overwinter in lower reaches of larger tributaries (i.e. Table, Anzac rivers) as well as the Parsnip River and that few age-1+ grayling have been sampled in tributaries, habitat use in small tributaries and the extent they are connected with the mainstem habitats of all core areas is not well understood. Between 1995 and 2019, Arctic grayling population monitoring has been conducted in the Table River in nine out of 25 years (8 years for the Anzac) using snorkel surveys.  Results from 2018 are 2019 are intended to contribute to the assessment of the conservation status of the species in the Parsnip Core area [@hagenTrendAbundanceArctic2018].  In 2019, preliminary telemetry results indicate that both Arctic grayling and bull trout rely on the Parsnip River mainstem for overwinter residencies. Arctic grayling move into the tributaries beginning in April, and become widespread across the watershed by June. 
+A detailed review of dusk'ihje life history can be referenced in @stamford_etal2017FWCPArctic. Migration of mature adult
+dusk'ihje (Arctic grayling) occurs in the spring with arrival at known spawning locations coinciding with water
+temperatures of 4$^\circ$C.  Spawning in the Parsnip watershed appears to occur between late-May and late-June within
+sites located primarily within the lower reaches of the Anzac and Table rivers as well as within the Parsnip River
+mainstem. Side-channel and multiple-channel locations containing small gravels appear to be selected for spawning.
+Currently, the primary distribution of Williston Arctic grayling appears to be among fourth order and larger streams
+[@williamson_2004; @stamford_etal2017FWCPArctic]. @stewartFishLifeHistory2007 report that Arctic grayling spawn in large
+and small tributaries to rivers and lakes, intermittent streams, within mainstem rivers as well as lakes, most commonly
+at tributary mouths.   Although past study results indicate that 0+ grayling appeared to overwinter in lower reaches of
+larger tributaries (i.e. Table, Anzac rivers) as well as the Parsnip River and that few age-1+ grayling have been
+sampled in tributaries, habitat use in small tributaries and the extent they are connected with the mainstem habitats of
+all core areas is not well understood. Between 1995 and 2019, Arctic grayling population monitoring has been conducted
+in the Table River in nine out of 25 years (8 years for the Anzac) using snorkel surveys.  Results from 2018 and 2019
+are intended to contribute to the assessment of the conservation status of the species in the Parsnip Core area
+[@hagenTrendAbundanceArctic2018].  In 2019, preliminary telemetry results indicate that both Arctic grayling and bull
+trout rely on the Parsnip River mainstem for overwinter residencies. Arctic grayling move into the tributaries beginning
+in April, and become widespread across the watershed by June.
 
 <br>
 
-Year 3 of a 5 year study on Parsnip River watershed abundance and trend are discussed in @hagen_stamford2021ArcticGrayling where they report that the most productive habitats for Arctic grayling summer rearing are within the Missinka, Hominka, Anzac and Table Rivers.  Although estimated abundance is lower than in the Anzac and Table Rivers, productive summer rearing habitats for adult Arctic grayling in the upper Parsnip River watershed are distributed between 36-29 km of the Missinka River and from 48-32 km of the Hominka River. In the Anzac River, a 30-km stretch from a chute obstruction at 47 km to 16 km is assumed to provide productive summer rearing habitats for adult as it is characterized by a high abundance of Arctic grayling. Although the spatial distribution of high Arctic grayling abundance in the Table River has not been determined through reconnaissance surveys it has been observed to span at least a 20-km zone from the waterfall migration barrier at 37 km to 18 km.  
+A 5 year study on Parsnip River watershed dusk'ihje abundance and trend are discussed in
+@hagen_stamford2023ParsnipArctic where they report that the most productive habitats for Arctic grayling summer rearing
+are within the Anzac River and Table River.  Although estimated abundance is lower than in the Anzac and Table,
+productive summer rearing habitats for adult Arctic grayling in the upper Parsnip River watershed are distributed
+between 36-25 km of the Missinka River and from 48-32 km of the Hominka River. @hagen_stamford2021ArcticGrayling report
+that within the Anzac River, a 30-km stretch from a chute obstruction at 47 km to 16 km is assumed to provide productive
+summer rearing habitats for adults as it is characterized by a high abundance of Arctic grayling. Although the spatial
+distribution of high Arctic grayling abundance in the Table River has not been determined through reconnaissance surveys
+it has been observed to span at least a 20-km zone from the waterfall migration barrier at 37 km to 18 km.
 
 <br>
 
