@@ -52,6 +52,8 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-1.3.1/leaflet.js"></script>
@@ -226,7 +228,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="mile-creek---198687---appendix.html"><a href="mile-creek---198687---appendix.html"><i class="fa fa-check"></i>42 Mile Creek - 198687 - Appendix</a></li>
 <li class="chapter" data-level="" data-path="tributary-to-altezega-creek---198723-198694---appendix.html"><a href="tributary-to-altezega-creek---198723-198694---appendix.html"><i class="fa fa-check"></i>Tributary to Altezega Creek - 198723 &amp; 198694 - Appendix</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
-<li class="chapter" data-level="" data-path="change-log.html"><a href="change-log.html"><i class="fa fa-check"></i>Change Log</a></li>
+<li class="chapter" data-level="" data-path="changelog.html"><a href="changelog.html"><i class="fa fa-check"></i>Changelog</a></li>
 <li class="chapter" data-level="" data-path="session-info.html"><a href="session-info.html"><i class="fa fa-check"></i>Session Info</a></li>
 <li class="chapter" data-level="" data-path="attachment-1---maps.html"><a href="attachment-1---maps.html"><i class="fa fa-check"></i><strong>Attachment 1 - Maps</strong></a></li>
 <li class="chapter" data-level="" data-path="attachment-2---habitat-assessment-and-fish-sampling-data.html"><a href="attachment-2---habitat-assessment-and-fish-sampling-data.html"><i class="fa fa-check"></i><strong>Attachment 2 - Habitat Assessment and Fish Sampling Data</strong></a></li>
@@ -253,7 +255,7 @@ div.csl-indent {
 <div id="background" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">2</span> Background<a href="background.html#background" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>The study area includes the FWCP Peace Region with a focus to date on traditional territories of the Tse’khene First Nations.
-In 2023 filed assessments were completed with the Parsnip River, Carp River and Crooked River watershed groups (Figure <a href="background.html#fig:overview-map">2.1</a>).</p>
+In 2023, field assessments were completed with the Parsnip River, Carp River and Crooked River watershed groups (Figure <a href="background.html#fig:overview-map">2.1</a>).</p>
 <p><br></p>
 <p>In 2019/2020, following a literature review, analysis of fish habitat modelling data, the Provincial Stream Crossing Inventory System (PSCIS) and a community scoping exercise within the McLeod Lake Indian Band habitat confirmation assessments were conducted at 17 sites throughout the Parsnip River watershed with 10 crossings rated as high priorities for rehabilitation and three crossings rated as moderate priorities for restoration. An engineering design for site 125179 on a tributary to the Missinka River was also completed through the 2019/2020 project. In 2021/2022, project activities reconvened through FWCP directed project PEA-F22-F-3577-DCA. Partners were engaged, funding was raised, planning was conducted and reporting was completed to initiate restoration activities of high priority crossings. Materials were purchased and permitting was put in place to prep for replacement of the twin culverts on the Missinka River tributary with a clear-span bridge.</p>
 <p><br></p>
@@ -1504,9 +1506,33 @@ Yes
 <p><br></p>
 <p>Since impoundment of the Williston Reservoir, it appears that physical habitat and ecological changes have been the most significant factors limiting Arctic grayling productivity. Although these changes are not well understood they have likely resulted in the inundation of key low gradient juvenile rearing and overwintering habitats, isolation of previously connected populations and increases in abundance of predators such as bull trout <span class="citation">(Shrimpton, Roberts, and Clarke 2012; Hagen, Pillipow, and Gantner 2018)</span>. Rapid increases in industrial activity and angler access in the Parsnip River watershed pose significant risks to Arctic Grayling productivity with these threats primarily linked to forestry and pipeline initiatives <span class="citation">(Hagen and Stamford 2021)</span>.</p>
 <p><br></p>
-<p>A detailed review of dusk’ihje life history can be referenced in <span class="citation">Stamford, Hagen, and Williamson (2017)</span>. Migration of mature adult dusk’ihje (Arctic grayling) occurs in the spring with arrival at known spawning locations coinciding with water temperatures of 4<span class="math inline">\(^\circ\)</span>C. Spawning in the Parsnip watershed appears to occur between late-May and late-June within sites located primarily within the lower reaches of the Anzac and Table rivers as well as within the Parsnip River mainstem. Side-channel and multiple-channel locations containing small gravels appear to be selected for spawning. Currently, the primary distribution of Williston Arctic grayling appears to be among fourth order and larger streams <span class="citation">(Williamson and Zimmerman 2005; Stamford, Hagen, and Williamson 2017)</span>. <span class="citation">Stewart et al. (2007)</span> report that Arctic grayling spawn in large and small tributaries to rivers and lakes, intermittent streams, within mainstem rivers as well as lakes, most commonly at tributary mouths. Although past study results indicate that 0+ grayling appeared to overwinter in lower reaches of larger tributaries (i.e. Table, Anzac rivers) as well as the Parsnip River and that few age-1+ grayling have been sampled in tributaries, habitat use in small tributaries and the extent they are connected with the mainstem habitats of all core areas is not well understood. Between 1995 and 2019, Arctic grayling population monitoring has been conducted in the Table River in nine out of 25 years (8 years for the Anzac) using snorkel surveys. Results from 2018 are 2019 are intended to contribute to the assessment of the conservation status of the species in the Parsnip Core area <span class="citation">(Hagen, Pillipow, and Gantner 2018)</span>. In 2019, preliminary telemetry results indicate that both Arctic grayling and bull trout rely on the Parsnip River mainstem for overwinter residencies. Arctic grayling move into the tributaries beginning in April, and become widespread across the watershed by June.</p>
+<p>A detailed review of dusk’ihje life history can be referenced in <span class="citation">Stamford, Hagen, and Williamson (2017)</span>. Migration of mature adult
+dusk’ihje (Arctic grayling) occurs in the spring with arrival at known spawning locations coinciding with water
+temperatures of 4<span class="math inline">\(^\circ\)</span>C. Spawning in the Parsnip watershed appears to occur between late-May and late-June within
+sites located primarily within the lower reaches of the Anzac and Table rivers as well as within the Parsnip River
+mainstem. Side-channel and multiple-channel locations containing small gravels appear to be selected for spawning.
+Currently, the primary distribution of Williston Arctic grayling appears to be among fourth order and larger streams
+<span class="citation">(Williamson and Zimmerman 2005; Stamford, Hagen, and Williamson 2017)</span>. <span class="citation">Stewart et al. (2007)</span> report that Arctic grayling spawn in large
+and small tributaries to rivers and lakes, intermittent streams, within mainstem rivers as well as lakes, most commonly
+at tributary mouths. Although past study results indicate that 0+ grayling appeared to overwinter in lower reaches of
+larger tributaries (i.e. Table, Anzac rivers) as well as the Parsnip River and that few age-1+ grayling have been
+sampled in tributaries, habitat use in small tributaries and the extent they are connected with the mainstem habitats of
+all core areas is not well understood. Between 1995 and 2019, Arctic grayling population monitoring has been conducted
+in the Table River in nine out of 25 years (8 years for the Anzac) using snorkel surveys. Results from 2018 and 2019
+are intended to contribute to the assessment of the conservation status of the species in the Parsnip Core area
+<span class="citation">(Hagen, Pillipow, and Gantner 2018)</span>. In 2019, preliminary telemetry results indicate that both Arctic grayling and bull
+trout rely on the Parsnip River mainstem for overwinter residencies. Arctic grayling move into the tributaries beginning
+in April, and become widespread across the watershed by June.</p>
 <p><br></p>
-<p>Year 3 of a 5 year study on Parsnip River watershed abundance and trend are discussed in <span class="citation">Hagen and Stamford (2021)</span> where they report that the most productive habitats for Arctic grayling summer rearing are within the Missinka, Hominka, Anzac and Table Rivers. Although estimated abundance is lower than in the Anzac and Table Rivers, productive summer rearing habitats for adult Arctic grayling in the upper Parsnip River watershed are distributed between 36-29 km of the Missinka River and from 48-32 km of the Hominka River. In the Anzac River, a 30-km stretch from a chute obstruction at 47 km to 16 km is assumed to provide productive summer rearing habitats for adult as it is characterized by a high abundance of Arctic grayling. Although the spatial distribution of high Arctic grayling abundance in the Table River has not been determined through reconnaissance surveys it has been observed to span at least a 20-km zone from the waterfall migration barrier at 37 km to 18 km.</p>
+<p>A 5 year study on Parsnip River watershed dusk’ihje abundance and trend are discussed in
+<span class="citation">Hagen and Stamford (2023)</span> where they report that the most productive habitats for Arctic grayling summer rearing
+are within the Anzac River and Table River. Although estimated abundance is lower than in the Anzac and Table,
+productive summer rearing habitats for adult Arctic grayling in the upper Parsnip River watershed are distributed
+between 36-25 km of the Missinka River and from 48-32 km of the Hominka River. <span class="citation">Hagen and Stamford (2021)</span> report
+that within the Anzac River, a 30-km stretch from a chute obstruction at 47 km to 16 km is assumed to provide productive
+summer rearing habitats for adults as it is characterized by a high abundance of Arctic grayling. Although the spatial
+distribution of high Arctic grayling abundance in the Table River has not been determined through reconnaissance surveys
+it has been observed to span at least a 20-km zone from the waterfall migration barrier at 37 km to 18 km.</p>
 <p><br></p>
 <p>Spatial ecology studies in the Parsnip between 2018 and 2021 has been reported on by <span class="citation">Martins et al. (2022)</span> with results related to:</p>
 <ul>

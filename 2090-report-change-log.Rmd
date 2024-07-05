@@ -1,5 +1,9 @@
-# Change Log {-}
+# Changelog {-}
 
-### 0.0.1 (2023-11-24) {-}
+### fish_passage_peace_2023_reportingv0.0.2 (2024-07-05) {-}
+- updates as per feedback from FWCP
+- add static import functions
 
-  * Initial report build
+
+### fish_passage_peace_2023_reporting v0.0.1 (2024-05-31) {-}
+- Initial draft report release

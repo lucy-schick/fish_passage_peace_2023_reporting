@@ -152,7 +152,7 @@
 }
 
 /* reset page numbering for main content */
-.main .level1:first-child h1 {
+.main h1:nth-of-type(2){
   counter-reset: page 1;
 }
 
