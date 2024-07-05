@@ -1241,7 +1241,7 @@ tab_hab_map <- left_join(
   # mutate(photo_link = paste0('<a href =',
   #                            'https://github.com/NewGraphEnvironment/fish_passage_skeena_2021_reporting/tree/master/data/photos/', pscis_crossing_id,
   #                            '/crossing_all.JPG', '>', 'photo link', '</a>')) %>%
-  mutate(photo_link = paste0('<a href =', 'https://raw.githubusercontent.com/NewGraphEnvironment/fish_passage_peace_2022_reporting/master/data/photos/', pscis_crossing_id, '/crossing_all.JPG ',
+  mutate(photo_link = paste0('<a href =', 'https://raw.githubusercontent.com/NewGraphEnvironment/fish_passage_peace_2023_reporting/main/data/photos/', pscis_crossing_id, '/crossing_all.JPG ',
                              'target="_blank">Culvert Photos</a>'))
 
 
@@ -1270,7 +1270,7 @@ tab_map <- tab_map_prep %>%
   mutate(priority_phase1 = case_when(priority_phase1 == 'mod' ~ 'moderate',
                                      TRUE ~ priority_phase1)) %>%
   mutate(data_link = paste0('<a href =', 'sum/cv/', pscis_crossing_id, '.html ', 'target="_blank">Culvert Data</a>')) %>%
-  mutate(photo_link = paste0('<a href =', 'https://raw.githubusercontent.com/NewGraphEnvironment/', repo_name, '/master/data/photos/', my_crossing_reference, '/crossing_all.JPG ',
+  mutate(photo_link = paste0('<a href =', 'https://raw.githubusercontent.com/NewGraphEnvironment/', repo_name, '/main/data/photos/', my_crossing_reference, '/crossing_all.JPG ',
                              'target="_blank">Culvert Photos</a>')) %>%
   mutate(model_link = paste0('<a href =', 'sum/bcfp/', pscis_crossing_id, '.html ', 'target="_blank">Model Data</a>')) %>%
   dplyr::distinct(site_id, .keep_all = TRUE) #just for now
@@ -1278,9 +1278,9 @@ tab_map <- tab_map_prep %>%
 
 
 
-# MOTI ----------------
+# MOTI Climate Change ----------------
 
-xref_moti_climate <- read_csv(file = 'data/inputs_raw/xref_moti_climate.csv')
+# xref_moti_climate <- read_csv(file = 'data/inputs_raw/xref_moti_climate.csv')
 
 # set up a table for the memos that contains the moti climate change data
 # make a tribble of the xref_moti_climate_template to make 2 columns in table
