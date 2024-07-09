@@ -497,7 +497,7 @@ fpr::fpr_table_cv_summary(dat = pscis_phase2) %>%
 ```{r cost-est-phase-2, eval=TRUE}
 tab_cost_est_phase2_report %>%
   fpr::fpr_kable(caption_text = 'Cost benefit analysis for Phase 2 assessments. Steelhead rearing model used (total length of stream segments <7.5% gradient)',
-                 scroll = gitbook_on)
+                 scroll = FALSE)
 
 ```
 
@@ -509,7 +509,7 @@ tab_hab_summary %>%
   # dplyr::filter(Location %ilike% 'upstream') %>% 
   # select(-Location) %>% 
   rename(`PSCIS ID` = Site, `Length surveyed upstream (m)` = `Length Surveyed (m)`) %>%
-  fpr::fpr_kable(caption_text = 'Summary of Phase 2 habitat confirmation details.', scroll = gitbook_on)
+  fpr::fpr_kable(caption_text = 'Summary of Phase 2 habitat confirmation details.', scroll = FALSE)
 
 
 ```
