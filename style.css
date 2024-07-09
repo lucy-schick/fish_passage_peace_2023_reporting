@@ -24,3 +24,7 @@ pre code {
 .book .book-summary {
     background: #EFECEE;
 }
+
+.book .book-body .page-wrapper .page-inner {
+  max-width: 1000px !important;
+}
