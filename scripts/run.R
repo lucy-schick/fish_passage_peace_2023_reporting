@@ -15,8 +15,12 @@ preview_chapter('0800-appendix-198666-trib-to-mcleod.Rmd')
 rmarkdown::render('scripts/02_reporting/photos_import.Rmd', output_dir = "scripts/02_reporting/docs")
 source('scripts/02_reporting/0180-photos-extract-metadata.R')
 
+
+# define if we want to update the bib
+update_bib <- FALSE
+
 {
-  # update util file functions from staticeimports
+  # update util file functions from staticimports
   staticimports::import()
   source('scripts/staticimports.R')
   my_news_to_appendix()
@@ -29,12 +33,15 @@ source('scripts/02_reporting/0180-photos-extract-metadata.R')
   ##move the files
   mapply(file.rename, from = files_to_move, to = files_destination)
 
-  rmarkdown::render_site(output_format = 'bookdown::gitbook',
-                         encoding = 'UTF-8')
+  # rmarkdown::render_site(output_format = 'bookdown::gitbook',
+  #                        encoding = 'UTF-8')
+
+  bookdown::render_book("index.Rmd", params = list(update_bib = update_bib))
 
   ##move the files from the hold file back to the main file
   mapply(file.rename, from = files_destination, to = files_to_move)
 }
+
 
 #################################################################################################
 ##go to the index.Rmd and change gitbook_on <- FALSE
@@ -50,8 +57,9 @@ filename_html <- 'fish_passage_peace_2023_reporting'
   file.rename('0600-appendix.Rmd', 'hold/0600-appendix.Rmd')
 
   ##   then make our printable pdf
-  rmarkdown::render_site(output_format = 'pagedown::html_paged',
-                         encoding = 'UTF-8')
+  bookdown::render_book("index.Rmd",
+                        output_format = 'pagedown::html_paged',
+                        params = list(update_bib = update_bib))
 
   #move the phase 1 appendix back to main directory
   file.rename('hold/0600-appendix.Rmd', '0600-appendix.Rmd')
@@ -91,7 +99,9 @@ mapply(file.rename, from = files_to_move, to = files_destination)
 
 
 ##   then make our printable pdf
-rmarkdown::render_site(output_format = 'pagedown::html_paged', encoding = 'UTF-8')
+bookdown::render_book("index.Rmd",
+                      output_format = 'pagedown::html_paged',
+                      params = list(update_bib = update_bib))
 
 ##  move it to the docs folder so that it can be in the same place as the report
 # file.rename('Elk2021.html', 'docs/Attachment_3_Phase_1_Data_and_Photos.html')
