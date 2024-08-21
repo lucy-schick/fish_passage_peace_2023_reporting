@@ -33,8 +33,6 @@ update_bib <- FALSE
   ##move the files
   mapply(file.rename, from = files_to_move, to = files_destination)
 
-  # rmarkdown::render_site(output_format = 'bookdown::gitbook',
-  #                        encoding = 'UTF-8')
 
   bookdown::render_book("index.Rmd", params = list(update_bib = update_bib))
 
