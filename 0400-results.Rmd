@@ -477,7 +477,7 @@ table_phase2_overview <- function(dat, caption_text = '', font = font_set, scrol
 
 tab_overview %>% 
   select(-Tenure) %>%
-  table_phase2_overview(caption_text = 'Overview of habitat confirmation sites. Steelhead rearing model used for habitat estimates (total length of stream segments <7.5% gradient)', 
+  table_phase2_overview(caption_text = 'Overview of habitat confirmation sites. Bull trout rearing model used for habitat estimates (see references for minimum width and maximum gradient used in model)', 
                         scroll = gitbook_on)
 
 ```
