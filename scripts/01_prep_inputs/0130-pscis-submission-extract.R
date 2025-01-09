@@ -207,6 +207,29 @@ file.copy(from = 'data/pscis_reassessments.xlsm',
           to = paste0(targetdir, 'pscis_reassessments.xlsm'),
           overwrite = T)
 
+name_pdf <- 'fish_passage_peace_2023_reporting.pdf' #see the output.yml
+url_github <- 'https://github.com/NewGraphEnvironment/'
+url_gitpages <- 'https://newgraphenvironment.github.io/'
+
+#make a little readme for the pdf for upload to ecocat and other details
+writeLines(
+  paste(
+    "Online interactive report is located at: ",
+    paste0(url_gitpages, name_repo),
+    "",
+    "A versioned pdf of the report can be downloaded from: ",
+    paste0(url_github, name_repo, "/raw/main/docs/", name_pdf),
+    "",
+    "Raw data is available here: ",
+    paste0(url_github, name_repo, "/tree/main/data"),
+    "",
+    "All scripts to produce online interactive reporting and pdf are located at: ",
+    paste0(url_github, name_repo),
+    sep = "\n"
+  ),
+  fs::path(targetdir, 'readme.txt')
+)
+
 #macros don't seem to work in one drive so copy the submission folder to a directory on my machine using windows command line shown below
 
 #create directory:
