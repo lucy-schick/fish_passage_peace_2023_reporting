@@ -35,8 +35,10 @@ documentclass: book
 params:
   repo_url: 'https://github.com/NewGraphEnvironment/fish_passage_peace_2023_reporting/'
   report_url: 'https://newgraphenvironment.github.io/fish_passage_peace_2023_reporting'
-  gis_project_name: 'sern_skeena_fwcp_2023'
+  gis_project_name: 'sern_peace_fwcp_2023'
   update_form_pscis: FALSE
+  update_form_monitoring: FALSE
+  update_form_fiss_site: FALSE
   update_bib: TRUE
 bibliography: "`r if (params$update_bib) { rbbt::bbt_write_bib('references.bib', overwrite = TRUE); 'references.bib' } else 'references.bib'`"
 biblio-style: apalike
