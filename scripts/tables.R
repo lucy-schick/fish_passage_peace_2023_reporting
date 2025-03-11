@@ -98,7 +98,7 @@ pscis_all_sf_prep <- pscis_all %>%
 tfpr_get_elev <- function(dat){
   poisspatial::ps_elevation_google(dat,
                                    # renamed the GOOG_API_KEY to poisson default of "GOOGLE_MAPS_ELEVATION_API_KEY"
-                                   # key = Sys.getenv('GOOG_API_KEY'),
+                                   key = Sys.getenv('GOOG_API_KEY'),
                                    Z = 'elev') %>%
     mutate(elev = round(elev, 0))
 }
