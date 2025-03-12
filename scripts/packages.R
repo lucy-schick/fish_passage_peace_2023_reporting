@@ -44,6 +44,7 @@ pkgs_gh <- c(
   # "poissonconsulting/poisutils",
   "newgraphenvironment/fpr",
   "newgraphenvironment/rfp",
+  "newgraphenvironment/ngr",
   'poissonconsulting/poisspatial',
   "haozhu233/kableExtra",
   "gadenbuie/shrtcts"

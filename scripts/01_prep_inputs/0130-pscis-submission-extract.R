@@ -7,7 +7,7 @@ source('scripts/functions.R')
 
 name_repo <- 'fish_passage_peace_2023_reporting'
 # stub_to <- 'C:/Users/matwi/OneDrive'
-stub_to <- '/Users/airvine/Library/CloudStorage/OneDrive-Personal'
+stub_to <- '/Users/lucyschick/Library/CloudStorage/OneDrive-Personal'
 
 # Phase 1 submission -----------
 
@@ -15,7 +15,7 @@ stub_to <- '/Users/airvine/Library/CloudStorage/OneDrive-Personal'
 # path <- paste0(stub_to, '/Projects/repo/', name_repo,
 #                '/data/photos/sorted/')
 
-path <- '/Users/airvine/Library/CloudStorage/OneDrive-Personal/Projects/2023_data/peace/photos/'
+path <- '/Users/lucyschick/Library/CloudStorage/OneDrive-Personal/Projects/archive/2023_data/peace/photos/'
 ##use the pscis spreadsheet to make the folders to copy the photos to
 d <- fpr::fpr_import_pscis(workbook_name = 'pscis_phase1.xlsm')
 
@@ -157,13 +157,11 @@ d <- fpr::fpr_import_pscis(workbook_name = 'pscis_reassessments.xlsm')
 
 folderstocopy<- d$pscis_crossing_id %>% as.character()
 
-path <- paste0(getwd(), '/data/photos/')
+path <- '/Users/lucyschick/Library/CloudStorage/OneDrive-Personal/Projects/archive/2023_data/peace/photos/'
 
 path_to_photos <- paste0(path, folderstocopy)
 
-# here we transfer just the photos with labels over into the PSCIS directory where we will upload from to the gov interface
-targetdir = paste0(stub_to, '/Projects/PSCIS/reassessments_submissions/PSCIS_peace_2023_reassessments/')
-dir.create(targetdir)
+targetdir <- ("/Users/lucyschick/Library/CloudStorage/OneDrive-Personal/Projects/submissions/PSCIS/2023/peace/PSCIS_peace_2023_reassessments/")
 
 folderstocreate<- paste0(targetdir, folderstocopy)
 
@@ -197,10 +195,10 @@ photo_sort_tracking %>%
   readr::write_csv(file = paste0(getwd(), '/data/photos/photo_sort_tracking_reassessments.csv'))
 
 filestopaste_list <- filestocopy_list %>%
-  map(fpr_photo_change_name)
+  map(tfpr_photo_change_name)
 
 ##!!!!!!!!!!!!!!!copy over the photos!!!!!!!!!!!!!!!!!!!!!!!
-mapply(fpr_copy_over_photos,
+mapply(tfpr_copy_over_photos,
        filescopy =  filestocopy_list,
        filespaste = filestopaste_list)
 
@@ -208,6 +206,29 @@ mapply(fpr_copy_over_photos,
 file.copy(from = 'data/pscis_reassessments.xlsm',
           to = paste0(targetdir, 'pscis_reassessments.xlsm'),
           overwrite = T)
+
+name_pdf <- 'fish_passage_peace_2023_reporting.pdf' #see the output.yml
+url_github <- 'https://github.com/NewGraphEnvironment/'
+url_gitpages <- 'https://newgraphenvironment.github.io/'
+
+#make a little readme for the pdf for upload to ecocat and other details
+writeLines(
+  paste(
+    "Online interactive report is located at: ",
+    paste0(url_gitpages, name_repo),
+    "",
+    "A versioned pdf of the report can be downloaded from: ",
+    paste0(url_github, name_repo, "/raw/main/docs/", name_pdf),
+    "",
+    "Raw data is available here: ",
+    paste0(url_github, name_repo, "/tree/main/data"),
+    "",
+    "All scripts to produce online interactive reporting and pdf are located at: ",
+    paste0(url_github, name_repo),
+    sep = "\n"
+  ),
+  fs::path(targetdir, 'readme.txt')
+)
 
 #macros don't seem to work in one drive so copy the submission folder to a directory on my machine using windows command line shown below
 

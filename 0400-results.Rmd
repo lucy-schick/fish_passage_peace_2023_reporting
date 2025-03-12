@@ -440,7 +440,7 @@ Field assessments were conducted between `r format(min(pscis_phase1$date), forma
 
  tab_cost_est_phase1 %>%
   select(`PSCIS ID`:`Cost Est ( $K)`) %>% 
-   fpr::fpr_kable(caption_text = 'Upstream habitat estimates and cost benefit analysis for Phase 1 assessments conducted on sites not yet inventoried in PSCIS. Steelhead network model (total length stream network <20% gradient).',
+   fpr::fpr_kable(caption_text = 'Upstream habitat estimates and cost benefit analysis for Phase 1 assessments conducted on sites not yet inventoried in PSCIS. Bull trout network model (total length stream network less than 25% gradient).',
                   scroll = gitbook_on)
 ```
 
@@ -496,7 +496,7 @@ fpr::fpr_table_cv_summary(dat = pscis_phase2) %>%
 
 ```{r cost-est-phase-2, eval=TRUE}
 tab_cost_est_phase2_report %>%
-  fpr::fpr_kable(caption_text = 'Cost benefit analysis for Phase 2 assessments. Steelhead rearing model used (total length of stream segments <7.5% gradient)',
+  fpr::fpr_kable(caption_text = 'Cost benefit analysis for Phase 2 assessments. Bull trout rearing model used (total length of stream segments <7.5% gradient)',
                  scroll = FALSE)
 
 ```
