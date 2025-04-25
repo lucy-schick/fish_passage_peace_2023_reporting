@@ -14,22 +14,25 @@ my_site <- 125261
 ## Site Location {.unnumbered}
 
 PSCIS crossing 125261 is located on Fern Creek near the 2.1km mark of the Chuchinka-Table FSR approximately 300m upstream
-from the confluence with the Parsnip River. Canfor Corporation are the primary forest licensee at this location with the Ministry of Forests as the road tenure holders.The site was originally prioritized for replacement through this project in 2022 - 2023, following a habitat confirmation assessment which can be found [here](https://www.newgraphenvironment.com/fish_passage_peace_2022_reporting/) [@irvine_wintersheidt2023SkeenaWatershed].
+from the confluence with the Parsnip River. Canfor Corporation are forest licensees within the watershed with the Ministry of Forests as the road tenure holder. 
 
 <br>
 
 ## Background {.unnumbered}
 
+The site was originally prioritized for replacement through this project in 2022 - 2023, following a habitat confirmation assessment which can be found [here](https://www.newgraphenvironment.com/fish_passage_peace_2022_reporting/) [@irvine_wintersheidt2023SkeenaWatershed]. Originally drafted to record 2023/2024 field activities, this memo has been updated in 2025 with ongoing revisions tracked [here](https://github.com/NewGraphEnvironment/fish_passage_peace_2023_reporting/issues/71).
+
+<br>
+
 At crossing `r as.character(my_site)`, `r fpr::fpr_my_pscis_info()` is a `r fpr::fpr_my_bcfishpass() %>% english::ordinal()` order stream with a watershed area upstream of the crossing of approximately `r fpr::fpr_my_wshd()`km^2^. The elevation of the watershed ranges from a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to `r fpr::fpr_my_wshd(col = 'elev_site')`m near the crossing (Table \@ref(tab:tab-wshd-125261)).  Fish species confirmed upstream of the FSR include burbot, rainbow trout, bull trout, sucker, reside shiner, dace and chub [@norris2024smnorrisbcfishobs; @moe2024KnownBC]. A total of `r fpr::fpr_my_bcfishpass(col_pull = total_lakereservoir_ha)`ha of lake and `r fpr::fpr_my_bcfishpass(col_pull = total_wetland_ha)`ha of wetland are modelled upstream. This includes Fern Lakes, a collection of three lakes that have a combined area of approximately 138ha. The outlet of the first lake in the chain is 3.3km upstream of the FSR.  
 
 <br>
 
-It appears that there have been fish passage retoration efforts at this corossing in the past as metal bafles have been 
-installed within the structure.  As the pipe is undersized for the crossing, it has downcut an outlet drop and flow velocities 
-within the structure are too high for the baffles to retain substrate and function effectively. Although larger fish are 
+Metal baffles - historically installed within the structure - indicate that there have been fish passage restoration efforts at this crossing in the past.  The pipe appears undersized for the crossing, indicated by downcutting at the outlet and high flow velocities 
+within the structure.  Flows appear to be too high for the baffles to retain substrate and function effectively. Although larger fish are 
 likely able to ascend through the crossing (depending on size of the fish, swimming ability and flow levels at the time 
-of upstream migration) the crossing isi still considered a barrier to fish passage and likely blocks migration of all
-juvenile life stages at all time of year. Crossing characteristics are described in detail [here](https://www.newgraphenvironment.com/fish_passage_peace_2022_reporting/).
+of upstream migration) the crossing is still considered a barrier to fish passage and likely blocks migration of all
+juvenile life stages at all flows. Crossing characteristics are described in detail [here](https://www.newgraphenvironment.com/fish_passage_peace_2022_reporting/).
 
 <br>
 
@@ -39,9 +42,7 @@ A summary of habitat modelling outputs is presented in Table \@ref(tab:tab-culve
 
 <br>
 
-At the time of writing, Canfor was going through the planning process to replace crossing 125261 with a bridge with
-drafts of an engineering design completed from funding provided internally from Canfor. The cost of replacement was  
-estimated at \$430,000 however this figure can be considered preliminary and subject to change.
+Canfor procured preliminary engineering designs for a replacement clear-span bridge structure for crossing 125261 through internal Canfor funding. The preliminary design can be viewed and downloaded from [here](https://github.com/NewGraphEnvironment/fish_passage_peace_2023_reporting/blob/main/data/inputs_raw/125261_fern_design.pdf).  The cost of replacement was estimated at \$430,000 however this figure can be considered preliminary and subject to change.
 
 ```{r tab-wshd-125261, eval = T}
 fpr::fpr_table_wshd_sum(site_id = my_site) |> 
