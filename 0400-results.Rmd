@@ -570,7 +570,7 @@ bcfishpass_phase2_plot_prep <- bcfishpass %>%
 ```
 
 
-## Designs
+## Engineering Design
 In 2024, Canfor will replace crossing 125231 (Tributary to Table River) at km21 on the Chuchinka-Table FSR with a
 bridge. An engineering design was completed in 2023 with some of the materials purchased for the replacement funded
 through this project. More detail on the site is presented in the appendix of this report titled
