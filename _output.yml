@@ -1,5 +1,5 @@
 bookdown::gitbook:
-  toc_depth: 1
+  toc_depth: 2
   css: style.css
   config:
     toc:
@@ -7,8 +7,10 @@ bookdown::gitbook:
         <li><a href="./">Fish Passage in the Peace Region 2023</a></li>
       after: |
         <li><a href="https://github.com/NewGraphEnvironment/fish_passage_peace_2023_reporting" target="blank">Scripts and Data</a></li>
+      collapse: section
     download: ["fish_passage_peace_2023_reporting.pdf", "fish_passage_peace_2023_reporting.html"]
     fontsettings:
+      theme: white
       family: sans
 pagedown::html_paged:
   front_cover: "fig/logo_newgraph/BLACK/PNG/nge-full_black.png"
