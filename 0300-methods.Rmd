@@ -263,12 +263,6 @@ tab_cost_rd_mult_report |>
   fpr::fpr_kable(caption_text = 'Cost multiplier table based on road class and surface type.', scroll = F)
 ```
 
-## Designs 
-Engineering designs were conducted by consultants hired by forest licensees with tenure over the roads and/or timber 
-harvest planned on the roads where work was conducted.  Completed designs are loaded to the PSCIS data portal.
-
-<br>
-
 
 ## Habitat Confirmation Assessments 
 
@@ -281,6 +275,12 @@ During habitat confirmations, to standardize data collected and facilitate submi
 <br>
 
 Fish sampling was conducted on a subset of sites when biological data was considered to add significant value to the physical habitat assessment information. When possible, electrofishing was utilized within discrete site units both upstream and downstream of the subject crossing with electrofisher settings, water quality parameters (i.e. conductivity, temperature and ph), start location, length of site and wetted widths (average of a minimum of three) recorded.  For each fish captured, fork length and species was recorded, with results included within the fish data submission spreadsheet.  Fish information and habitat data will be submitted to the province under scientific fish collection permit PG23-813101.
+
+
+## Engineering Design 
+Engineering designs were conducted by consultants hired by forest licensees with tenure over the roads and/or timber 
+harvest planned on the roads where work was conducted.  Completed designs are loaded to the PSCIS data portal.
+
 
 ## Remediations  
 Structure replacement was conducted by contractors hired by Sinclar (forest licensee).  As-built drawings were completed and loaded to the PSCIS data portal.
