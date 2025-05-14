@@ -69,13 +69,14 @@ filename_html <- 'fish_passage_peace_2023_reporting'
     timeout = 180
   )
 
-  # reduce the size
-  tools::compactPDF(paste0(getwd(), "/docs/", filename_html, ".pdf"),
-                    gs_quality = 'screen',
-                    ##this was on the windows machine
-                    # gs_cmd = "C:/Program Files/gs/gs9.56.1/bin/gswin64.exe"
-                    gs_cmd = "opt/homebrew/bin/gs"
-  )
+  # PDF is only 19.2mb so don't compact, this retains the good image quality.
+  # # reduce the size
+  # tools::compactPDF(paste0(getwd(), "/docs/", filename_html, ".pdf"),
+  #                   gs_quality = 'screen',
+  #                   ##this was on the windows machine
+  #                   # gs_cmd = "C:/Program Files/gs/gs9.56.1/bin/gswin64.exe"
+  #                   gs_cmd = "opt/homebrew/bin/gs"
+  # )
 
   # get rid of the html as its too big and not needed
   file.remove(paste0(getwd(), '/', filename_html, '.html'))
