@@ -248,7 +248,7 @@ fpr::fpr_plot_fish_box(dat = fish_abund_2024)
 ```{r photo-125261-01-prep, eval=T}
 my_photo1 = fpr::fpr_photo_pull_by_str(str_to_pull = 'ds_ef2_typical1')
 
-my_caption1 = paste0('Habitat electrofished downstream of PSCIS crossing', my_site, '.')
+my_caption1 = paste0('Habitat electrofished downstream of PSCIS crossing ', my_site, ' in 2024.')
 
 
 ```
@@ -262,7 +262,7 @@ knitr::include_graphics(my_photo1)
 ```{r photo-125261-02-prep}
 my_photo2 = fpr::fpr_photo_pull_by_str(str_to_pull = '_us_ef3_bottom')
 
-my_caption2 = paste0('Habitat electrofished upstream of PSCIS crossing', my_site, '.')
+my_caption2 = paste0('Habitat electrofished upstream of PSCIS crossing ', my_site, ' in 2024.')
 ```
 
 ```{r photo-125261-02, fig.cap= my_caption2, out.width = photo_width, eval=gitbook_on}
@@ -296,7 +296,7 @@ knitr::include_graphics(my_photo1)
 ```{r photo-125261-04-prep}
 my_photo2 = fpr::fpr_photo_pull_by_str(str_to_pull = '_bb1_')
 
-my_caption2 = paste0('Burbot captured downstream of PSCIS crossing ', my_site, 'in 2023.')
+my_caption2 = paste0('Burbot captured downstream of PSCIS crossing ', my_site, ' in 2023.')
 
 ```
 
@@ -331,7 +331,7 @@ knitr::include_graphics(my_photo1)
 ```{r photo-125261-06-prep}
 my_photo2 = fpr::fpr_photo_pull_by_str(str_to_pull = '_pt1_')
 
-my_caption2 = paste0('PIT taggging rainbow trout and burbot with a fork length >60mm at Fern Creek in 2023.')
+my_caption2 = paste0('PIT tagging rainbow trout and burbot with a fork length >60mm at Fern Creek in 2023.')
 
 ```
 
