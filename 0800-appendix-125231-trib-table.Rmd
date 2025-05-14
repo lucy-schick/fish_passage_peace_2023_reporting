@@ -64,7 +64,7 @@ fpr::fpr_table_bcfp(scroll = F)
 
 <br>
 
-## Effectiveness Monitoring 
+## Effectiveness Monitoring {.unnumbered}
 
 In September 2024, effectiveness monitoring was conducted at the site, with results summarised in Table \@ref(tab:tab-monitoring-125231). Overall, assessments indicate that the structure was well-designed to fit the stream channel, with minimal rock placement within the natural channel and un-constricted flows. The structure appeared stable with no maintenance required at the time of reporting. Recommnedations to be implemented at future remediation sites include the planting of nursery grown and salvaged vegetation within the construction footprint where riparian vegetation was removed to accommodate construction.
 Photos showing a comparison of the culvert assessment conducted in 2020 versus the completed bridge construction in 2024 are presented `r knitr::asis_output("in [the 2020 report](https://www.newgraphenvironment.com/Parsnip_Fish_Passage/03_Parsnip_report_125231.html) and in Figure \\@ref(fig:photo-125231-05).")`
@@ -178,7 +178,7 @@ A PIT tag reader was loaned to DWB during the 2024 pre-construction salvage so t
 In 2024, electrofishing was conducted at two sites downstream and one site upstream of the Chuckinka-Table FSR. No fish captured had a PIT tag, therefore no fish from 2023 were recaptured. Electrofishing results are summarised in Tables \@ref(tab:tab-fish-site-125231-2024) - \@ref(tab:tab-fish-dens-125231-2024) and Figure \@ref(fig:plot-fish-box-125231-2024). A total of `r tab_fish_summary_2024 %>% filter(site_id == paste0(my_site, '_us')) %>% group_by(site_id) %>% janitor::adorn_totals() %>% filter(site_id == 'Total') %>% pull(count_fish)` rainbow trout were captured upstream, and `r tab_fish_summary_2024 %>% filter(site_id == paste0(my_site, '_ds')) %>% group_by(site_id) %>% janitor::adorn_totals() %>% filter(site_id == 'Total') %>% pull(count_fish)` rainbow trout were captured downstream `r if(gitbook_on){knitr::asis_output("(Figure \\@ref(fig:photo-125231-04)).")}else(knitr::asis_output("(Figure \\@ref(fig:photo-125231-d02))"))` All fish captured with a fork length greater than 60mm were tagged with Passive Integrated Transponders (PIT tags) with data stored [here](`r paste0(params$repo_url, "blob/main/data/2024_fish_data_tags_joined.csv")`).
 
 
-## Conclusion
+## Conclusion {.unnumbered}
 
 PSCIS crossing `r my_site` on the Chuchinka-Table FSR offered a relatively rare opportunity in the Table River watershed to remediate fish passage on a forest service road, due to the downstream PSCIS crossing 197493 being fully embedded and passable in both 2019 and 2022, and passage was not also impeded by a CN Railway structure. Although the stream is smaller in size, it is located within an area designated as a fisheries sensitive watershed with habitat
 presence suitable for bull trout (Western Arctic population) which has been assessed by the Committee on the Status 

@@ -57,7 +57,7 @@ fpr::fpr_table_bcfp(scroll = F)
 ```
 
 
-## Aerial Imagery
+## Aerial Imagery {.unnumbered}
 A survey was conducted with a remotely piloted aircraft with resulting images stitched into an orthomosaic
 `r if(gitbook_on){knitr::asis_output(" presented in Figures \\@ref(fig:ortho-caption-125261) - \\@ref(fig:model-caption-125261).")} else knitr::asis_output("presented [here](https://www.mapsmadeeasy.com/maps/public/1237da97892043aaabca5bed64336ef9) and [here](https://www.mapsmadeeasy.com/maps/public_3D/1237da97892043aaabca5bed64336ef9/).")`
 
@@ -100,7 +100,7 @@ A total six sites were sampled in the vicinity of crossing 125261 with three sit
 included primarily rainbow trout with some sculpin.  Downstream species assemblage was more diverse including rainbow trout, sculpin,
 burbot and suckers `r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-125261-01) - \\@ref(fig:photo-125261-04)).")}else(knitr::asis_output("(Figures \\@ref(fig:photo-125261-d01) - \\@ref(fig:photo-125261-d02)."))` Length and weight was collected for all fish captured.  Rainbow trout and burbot measured with a fork length greater than 60mm were also tagged with Passive Integrated Transponders (PIT tags) `r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-125261-05) - \\@ref(fig:photo-125261-06)).")}else(knitr::asis_output("(Figures \\@ref(fig:photo-125261-d01) - \\@ref(fig:photo-125261-d03)."))` Data collected can be accessed [here](`r paste0(params$repo_url, "blob/main/data/habitat_confirmations.xls")`).
 
-## Conclusion
+## Conclusion {.unnumbered}
 Replacement of PSCIS crossing `r my_site` on Fern Creek is a priority for this overall project as this is a large system likely
 containing no other anthropogenic obstructions to fish passage. The presence of burbot in the system is of particular
 interest as this fish provides good food values and in general, compared to numerous other species (ex. steelhead and
