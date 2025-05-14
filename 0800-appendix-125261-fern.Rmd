@@ -124,28 +124,16 @@ tab_fish_summary_2024 |>
 
 
 ## Conclusion {.unnumbered}
-Replacement of PSCIS crossing `r my_site` on Fern Creek is a priority for this overall project as this is a large system likely
-containing no other anthropogenic obstructions to fish passage. The presence of burbot in the system is of particular
-interest as this fish provides good food values and in general, compared to numerous other species (ex. steelhead and
-coho), burbot are documented as less capable swimmers considering time-to-fatigue versus swim speed
-[@katopodis_gervais2016Fishswimming]. The presence of burbot downstream of the crossing and absence in sample sites
-above could indicate that the crossing is preventing some migration of this species however sample areas were small and
-the habitat presence/preference may have been more a determinant of presence than the passability of the crossing.
+
+Replacement of PSCIS crossing `r my_site` on Fern Creek is a high priority in this project, as it is a large system likely containing no other anthropogenic obstructions to fish passage. The presence of burbot in the system is of particular interest, as this fish provides good food values and, in general, is considered a weaker swimmer compared to numerous other species (ex. steelhead and coho) based on time-to-fatigue versus swim speed metrics [@katopodis_gervais2016Fishswimming]. The presence of burbot downstream of the crossing and absence in upstream sample sites could indicate that the crossing is limiting upstream movement for this species; however, sample areas were small and habitat availability/quality may also explain the observed distribution.
 
 <br>
 
-Recapture of fish PIT tagged during 2023 fieldwork will build our understanding of fish movement and health at the site
-with information collected useful for monitoring the effectiveness of crossing replacement. Additionally, aerial imagery
-and 3D models can be used to monitor changes in stream morphology and effectiveness of environmental management plans as
-well as site rehabilitation efforts following construction. The work is tentatively scheduled for 2025 with engineering 
-design led by Canfor.
+In 2024, no PIT tags were detected in the fish captured, indicating that none of the individuals tagged in 2023 were recaptured. Continued fish sampling and PIT tagging will help build understanding of fish movement and health at the site, contributing to long-term effectiveness monitoring. Additionally, aerial imagery and 3D models can be used to track changes in stream morphology and assess the effectiveness of environmental management plans and site rehabilitation following construction.
 
-Due to uncertainties related to timber extraction in the greater Table River watershed (see section on [Challenges and
-Uncertainties](#challenges-opportunities), Canfor has expressed uncertainty around replacement of the structure in 2025.
-Restoration of fish passage at Fern Creek is a priority for this overall project and we will explore options for
-replacement of the structure including (among others) acquisition of addition funds from other sources to fund more than
-50% of the project costs.
+<br>
 
+Replacement of the crossing was tentatively scheduled for 2025; however, due to uncertainties related to timber extraction in the greater Table River watershed, Canfor has expressed uncertainty around the timeline for replacement. Despite this, they have procured preliminary engineering designs for a replacement clear-span bridge structure. Restoration of fish passage at Fern Creek remains a priority for this project, and options to move forward — including securing additional funding from other sources — will continue to be explored.
 
 <br>
 
