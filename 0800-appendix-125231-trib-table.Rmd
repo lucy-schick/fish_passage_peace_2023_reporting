@@ -66,8 +66,8 @@ fpr::fpr_table_bcfp(scroll = F)
 
 ## Effectiveness Monitoring {.unnumbered}
 
-In September 2024, effectiveness monitoring was conducted at the site, with results summarised in Table \@ref(tab:tab-monitoring-125231). Overall, assessments indicate that the structure was well-designed to fit the stream channel, with minimal rock placement within the natural channel and un-constricted flows. The structure appeared stable with no maintenance required at the time of reporting. Recommnedations to be implemented at future remediation sites include the planting of nursery grown and salvaged vegetation within the construction footprint where riparian vegetation was removed to accommodate construction.
-Photos showing a comparison of the culvert assessment conducted in 2020 versus the completed bridge construction in 2024 are presented `r knitr::asis_output("in [the 2020 report](https://www.newgraphenvironment.com/Parsnip_Fish_Passage/03_Parsnip_report_125231.html) and in Figure \\@ref(fig:photo-125231-05).")`
+In September 2024, effectiveness monitoring was conducted at the site, with results summarised in Table \@ref(tab:tab-monitoring-125231). Overall, assessments indicate that the structure was well-designed to fit the stream channel, with minimal rock placement within the natural channel and un-constricted flows. The structure appeared stable with no maintenance required at the time of reporting. Recommendations to be implemented at future remediation sites include the planting of nursery grown and salvaged vegetation within the construction footprint where riparian vegetation was removed to accommodate construction.
+Photos showing a comparison of the culvert assessment conducted in 2020 versus the completed bridge construction in 2024 are presented in [the 2020 report](https://www.newgraphenvironment.com/Parsnip_Fish_Passage/03_Parsnip_report_125231.html) and in Figure \@ref(fig:photo-125231-05). 
 
 <br>
 
@@ -350,6 +350,6 @@ my_photo1 = fpr::fpr_photo_pull_by_str(str_to_pull = 'crossing_all_2024')
 my_caption1 = paste0('Photos of crossing ', my_site, ' in 2024.')
 ```
 
-```{r photo-125231-05, fig.cap= my_caption1, out.width = photo_width, eval=gitbook_on}
+```{r photo-125231-05, fig.cap= my_caption1, out.width = photo_width}
 knitr::include_graphics(my_photo1)
 ```
