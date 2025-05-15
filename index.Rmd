@@ -22,7 +22,7 @@ author: |
 
 date: |
  |
- | Version 0.1.0 `r format(Sys.Date(), "%Y-%m-%d")`
+ | Version 0.1.1 `r format(Sys.Date(), "%Y-%m-%d")`
 toc-title: Table of Contents
 site: bookdown::bookdown_site
 output: 
@@ -53,7 +53,7 @@ description: "Restoring Fish Passage in the Peace Region"
 gitbook_on <- TRUE
 # this switch is used to update metadata for collaborative gis projects. prob won't change much but we can update if we want
 gis_update <- FALSE
-# gitbook_on <- FALSE  ##we just need turn  this on and off to switch between gitbook and pdf via paged.js
+gitbook_on <- FALSE  ##we just need turn  this on and off to switch between gitbook and pdf via paged.js
 
 ```
 

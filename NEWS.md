@@ -1,3 +1,8 @@
+# fish_passage_peace_2023_reporting v0.1.1 (2025-05-16)
+
+- update PSCIS crossing 125261 on Fern Creek near the 2.1km mark of the Chuchinka-Table FSR with fish data and details of
+canfor delays due to logging uncertainty
+
 # fish_passage_peace_2023_reporting v0.1.0 (2025-04-25)
 
 - update 125231 trib to table (km21 of Chuchinka-Table FSR) with fish sampling, effectiveness monitoring
