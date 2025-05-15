@@ -20,7 +20,7 @@ from the confluence with the Parsnip River. Canfor Corporation are forest licens
 
 ## Background {.unnumbered}
 
-The site was originally prioritized for replacement through this project in 2022 - 2023, following a habitat confirmation assessment which can be found [here](https://www.newgraphenvironment.com/fish_passage_peace_2022_reporting/) [@irvine_wintersheidt2023SkeenaWatershed]. Originally drafted to record 2023/2024 field activities, this memo has been updated in 2025 with ongoing revisions tracked [here](https://github.com/NewGraphEnvironment/fish_passage_peace_2023_reporting/issues/71).
+The site was originally prioritized for replacement through this project in 2022 – 2023, following a habitat confirmation assessment documented in the [2022 report](https://www.newgraphenvironment.com/fish_passage_peace_2022_reporting/) [@irvine_wintersheidt2023SkeenaWatershed]. Follow-up work in 2023 included fish sampling, Passive Integrated Transponders (PIT) tagging, and aerial surveys, included in this memo. The site was revisited in the summer of 2024 to conduct additional fish sampling and PIT tagging, and to see whether any individuals tagged during the 2023 field season were recaptured. Originally drafted to document 2022 – 2023 field activities, this memo was updated in 2025 to include PIT tagging and fish sampling results from 2024, with ongoing revisions tracked [here](https://github.com/NewGraphEnvironment/fish_passage_peace_2023_reporting/issues/71).
 
 <br>
 
@@ -32,17 +32,17 @@ Metal baffles - historically installed within the structure - indicate that ther
 within the structure.  Flows appear to be too high for the baffles to retain substrate and function effectively. Although larger fish are 
 likely able to ascend through the crossing (depending on size of the fish, swimming ability and flow levels at the time 
 of upstream migration) the crossing is still considered a barrier to fish passage and likely blocks migration of all
-juvenile life stages at all flows. Crossing characteristics are described in detail [here](https://www.newgraphenvironment.com/fish_passage_peace_2022_reporting/).
-
-<br>
-
-
-A summary of habitat modelling outputs is presented in Table \@ref(tab:tab-culvert-bcfp-125261). A map of the watershed is provided in map attachment [`r fpr::fpr_my_bcfishpass(col_pull = dbm_mof_50k_grid)`](`r fpr::fpr_my_mapsheet(wshd = "parsnip", archive_date = "2022-05-27")`).
-
+juvenile life stages at all flows. Crossing characteristics are described in detail in the [2022 report](https://www.newgraphenvironment.com/fish_passage_peace_2022_reporting/) [@irvine_wintersheidt2023SkeenaWatershed].
 
 <br>
 
 Canfor procured preliminary engineering designs for a replacement clear-span bridge structure for crossing 125261 through internal Canfor funding. The preliminary design can be viewed and downloaded from [here](https://github.com/NewGraphEnvironment/fish_passage_peace_2023_reporting/blob/main/data/inputs_raw/125261_fern_design.pdf).  The cost of replacement was estimated at \$430,000 however this figure can be considered preliminary and subject to change.
+
+<br>
+
+A summary of habitat modelling outputs is presented in Table \@ref(tab:tab-culvert-bcfp-125261). A map of the watershed is provided in map attachment [`r fpr::fpr_my_bcfishpass(col_pull = dbm_mof_50k_grid)`](`r fpr::fpr_my_mapsheet(wshd = "parsnip", archive_date = "2022-05-27")`). 
+
+<br>
 
 ```{r tab-wshd-125261, eval = T}
 fpr::fpr_table_wshd_sum(site_id = my_site) |> 
@@ -57,8 +57,8 @@ fpr::fpr_table_bcfp(scroll = F)
 ```
 
 
-## Aerial Imagery
-A survey was conducted with a remotely piloted aircraft with resulting images stitched into an orthomosaic
+## Aerial Imagery {.unnumbered}
+During the 2023 site visit, an survey was conducted with a remotely piloted aircraft with resulting images stitched into an orthomosaic
 `r if(gitbook_on){knitr::asis_output(" presented in Figures \\@ref(fig:ortho-caption-125261) - \\@ref(fig:model-caption-125261).")} else knitr::asis_output("presented [here](https://www.mapsmadeeasy.com/maps/public/1237da97892043aaabca5bed64336ef9) and [here](https://www.mapsmadeeasy.com/maps/public_3D/1237da97892043aaabca5bed64336ef9/).")`
 
 
@@ -96,52 +96,84 @@ knitr::include_graphics(my_photo, dpi = NA)
 ```
 
 ## Fish Sampling {-}
-A total six sites were sampled in the vicinity of crossing 125261 with three sites located upstream and three sites located downstream of the Chuckinka-Table FSR. Electrofishing results are summarised in Tables \@ref(tab:tab-fish-site-125261) - \@ref(tab:tab-fish-dens-125261) and Figure \@ref(fig:plot-fish-box-125261). A total of `r tab_fish_summary %>% filter(site_id == paste0(my_site, '_us')) %>% group_by(site_id) %>% janitor::adorn_totals() %>% filter(site_id == 'Total') %>% pull(count_fish)` fish  were captured upstream, and `r tab_fish_summary %>% filter(site_id == paste0(my_site, '_ds')) %>% group_by(site_id) %>% janitor::adorn_totals() %>% filter(site_id == 'Total') %>% pull(count_fish)` fish were captured downstream.  Fish species upstream
-included primarily rainbow trout with some sculpin.  Downstream species assemblage was more diverse including rainbow trout, sculpin,
-burbot and suckers `r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-125261-01) - \\@ref(fig:photo-125261-04)).")}else(knitr::asis_output("(Figures \\@ref(fig:photo-125261-d01) - \\@ref(fig:photo-125261-d02)."))` Length and weight was collected for all fish captured.  Rainbow trout and burbot measured with a fork length greater than 60mm were also tagged with Passive Integrated Transponders (PIT tags) `r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-125261-05) - \\@ref(fig:photo-125261-06)).")}else(knitr::asis_output("(Figures \\@ref(fig:photo-125261-d01) - \\@ref(fig:photo-125261-d03)."))` Data collected can be accessed [here](`r paste0(params$repo_url, "blob/main/data/habitat_confirmations.xls")`).
 
-## Conclusion
-Replacement of PSCIS crossing `r my_site` on Fern Creek is a priority for this overall project as this is a large system likely
-containing no other anthropogenic obstructions to fish passage. The presence of burbot in the system is of particular
-interest as this fish provides good food values and in general, compared to numerous other species (ex. steelhead and
-coho), burbot are documented as less capable swimmers considering time-to-fatigue versus swim speed
-[@katopodis_gervais2016Fishswimming]. The presence of burbot downstream of the crossing and absence in sample sites
-above could indicate that the crossing is preventing some migration of this species however sample areas were small and
-the habitat presence/preference may have been more a determinant of presence than the passability of the crossing.
+In 2023, a total of six sites were sampled in the vicinity of crossing 125261, with three sites located downstream and three sites located upstream of the Chuckinka–Table FSR. Electrofishing results are summarised in Tables \@ref(tab:tab-fish-site-125261) – \@ref(tab:tab-fish-dens-125261) and Figure \@ref(fig:plot-fish-box-125261). A total of `r tab_fish_summary %>% filter(site_id == paste0(my_site, '_ds')) %>% group_by(site_id) %>% janitor::adorn_totals() %>% filter(site_id == 'Total') %>% pull(count_fish)` fish were captured downstream, and `r tab_fish_summary %>% filter(site_id == paste0(my_site, '_us')) %>% group_by(site_id) %>% janitor::adorn_totals() %>% filter(site_id == 'Total') %>% pull(count_fish)` were captured upstream. The downstream species assemblage was more diverse, including rainbow trout, sculpin, burbot, and suckers. Upstream fish included primarily rainbow trout with some sculpin `r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-125261-01) – \\@ref(fig:photo-125261-04))")}else{knitr::asis_output("(Figures \\@ref(fig:photo-125261-d01) – \\@ref(fig:photo-125261-d02))")}`. Length and weight were collected for all fish captured. Rainbow trout and burbot with a fork length greater than 60mm were tagged with PIT tags `r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-125261-05) – \\@ref(fig:photo-125261-06))")}else{knitr::asis_output("(Figures \\@ref(fig:photo-125261-d01) – \\@ref(fig:photo-125261-d03))")}`. Data collected can be accessed [here](`r paste0(params$repo_url, "blob/main/data/habitat_confirmations.xls")`).
 
 <br>
 
-Recapture of fish PIT tagged during 2023 fieldwork will build our understanding of fish movement and health at the site
-with information collected useful for monitoring the effectiveness of crossing replacement. Additionally, aerial imagery
-and 3D models can be used to monitor changes in stream morphology and effectiveness of environmental management plans as
-well as site rehabilitation efforts following construction. The work is tentatively scheduled for 2025 with engineering 
-design led by Canfor.
+In 2024, electrofishing was conducted at two sites downstream and two sites upstream of the Chuckinka–Table FSR, covering approximately the same stream sections sampled in 2023. No PIT tags were detected in the fish captured, indicating that none of the individuals tagged in 2023 were recaptured. Electrofishing results are summarised in Tables \@ref(tab:tab-fish-site-125261-2024) – \@ref(tab:tab-fish-dens-125261-2024) and Figure \@ref(fig:plot-fish-box-125261-2024). A total of `r tab_fish_summary_2024 %>% filter(site_id == paste0(my_site, '_ds')) %>% group_by(site_id) %>% janitor::adorn_totals() %>% filter(site_id == 'Total') %>% pull(count_fish)` fish were captured downstream, including rainbow trout and sculpin, and `r tab_fish_summary_2024 %>% filter(site_id == paste0(my_site, '_us')) %>% group_by(site_id) %>% janitor::adorn_totals() %>% filter(site_id == 'Total') %>% pull(count_fish)` were captured upstream, also consisting of rainbow trout and sculpin `r if(gitbook_on){knitr::asis_output("(Figures \\@ref(fig:photo-125261-07) - \\@ref(fig:photo-125261-08))")}else{knitr::asis_output("(Figure \\@ref(fig:photo-125261-d04))")}`. All fish captured with a fork length greater than 60mm were tagged with PIT tags, with data stored [here](`r paste0(params$repo_url, "blob/main/data/2024_fish_data_tags_joined.csv")`).
 
 
 
+```{r eval=F}
+# species captured downstream
+tab_fish_summary_2024 |> 
+  dplyr::filter(site_id == paste0(my_site, '_ds')) |> 
+  dplyr::group_by(site_id) |> 
+  dplyr::distinct(species) |> 
+  dplyr::pull(species)
+
+# species captured upstream
+tab_fish_summary_2024 |> 
+  dplyr::filter(site_id == paste0(my_site, '_us')) |> 
+  dplyr::group_by(site_id) |> 
+  dplyr::distinct(species) |> 
+  dplyr::pull(species)
+
+```
+
+
+## Conclusion {.unnumbered}
+
+Replacement of PSCIS crossing `r my_site` on Fern Creek is a high priority in this project, as it is a large system likely containing no other anthropogenic obstructions to fish passage. The presence of burbot in the system is of particular interest, as this fish provides good food values and, in general, is considered a weaker swimmer compared to numerous other species (ex. steelhead and coho) based on time-to-fatigue versus swim speed metrics [@katopodis_gervais2016Fishswimming]. The presence of burbot downstream of the crossing and absence in upstream sample sites could indicate that the crossing is limiting upstream movement for this species; however, sample areas were small and habitat availability/quality may also explain the observed distribution.
+
+<br>
+
+In 2024, no PIT tags were detected in the fish captured, indicating that none of the individuals tagged in 2023 were recaptured. Continued fish sampling and PIT tagging will help build understanding of fish movement and health at the site, contributing to long-term effectiveness monitoring. Additionally, aerial imagery and 3D models can be used to track changes in stream morphology and assess the effectiveness of environmental management plans and site rehabilitation following construction.
+
+<br>
+
+Replacement of the crossing was tentatively scheduled for 2025; however, due to uncertainties related to timber extraction in the greater Table River watershed, Canfor has expressed uncertainty around the timeline for replacement. Despite this, they have procured preliminary engineering designs for a replacement clear-span bridge structure. Restoration of fish passage at Fern Creek remains a priority for this project, and options to move forward — including securing additional funding from other sources — will continue to be explored.
+
+<br>
 
 ```{r tab-fish-site-125261, eval=T}
+# Run manually so we can add date into the table caption. 
+# fpr_table_fish_site()
 
-# Due to uncertainties related to timber extraction in the greater Table River watershed (see section on [Challenges and
-# Uncertainties](#challenges-opportunities), Canfor has expressed uncertainty around replacement of the structure in 2025.
-# Restoration of fish passage at Fern Creek is a priority for this overall project and we will explore options for
-# replacement of the structure including (among others) acquisition of addition funds from other sources to fund more than
-# 50% of the project costs.
-fpr_table_fish_site()
-
+tab_fish_sites_sum %>%
+    tidyr::separate(site, into = c('site_id', 'location', 'ef'), remove = F) %>%
+    dplyr::filter(site_id == my_site) %>%
+    dplyr::select(site, passes, ef_length_m, ef_width_m, area_m2, enclosure) %>%
+    fpr_kable(caption_text = paste0('Fish sampling site summary for PSCIS crossing ', my_site, ' in 2023.'), scroll = F)
 ```
 
 <br>
 
 ```{r tab-fish-dens-125261, eval=T}
-fpr_table_fish_density()
+# Run manually so we can add date into the table caption. 
+# fpr_table_fish_density()
+
+fish_abund %>%
+    dplyr::filter(site == my_site) %>%
+    dplyr::select(
+      local_name,
+      species_code,
+      life_stage,
+      catch,
+      density_100m2,
+      nfc_pass) %>%
+    fpr_kable(caption_text = paste0('Fish sampling density results summary for PSCIS crossing ', my_site, ' in 2023.'),
+              footnote_text = 'nfc_pass FALSE means fish were captured in final pass indicating more fish of this species/lifestage may have remained in site.
+              Mark-recaptured required to reduce uncertainties.',
+              scroll = F)
 
 ```
 
 `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
 
 ```{r plot-fish-box-125261, fig.cap= my_caption, eval=T}
-my_caption <- paste0('Densites of fish (fish/100m2) captured upstream and downstream of PSCIS crossing ', my_site, '.')
+my_caption <- paste0('Densites of fish (fish/100m2) captured upstream and downstream of PSCIS crossing ', my_site, ' in 2023.')
 
 
 fish_abund |> 
@@ -161,10 +193,50 @@ fish_abund |>
 
 ```
 
+<br>
+
+```{r tab-fish-site-125261-2024, eval=T}
+
+tab_fish_sites_sum_2024 %>% 
+  tidyr::separate(site, into = c("site_id", "location", 
+        "ef"), remove = F) |>
+  dplyr::filter(site_id == my_site) |>
+  dplyr::select(site, passes, ef_length_m, ef_width_m, 
+            area_m2, enclosure) |>
+  fpr::fpr_kable(caption_text = paste0("Fish sampling site summary for ", 
+        my_site, " in 2024."), scroll = F)
+
+```
+
+<br>
+
+```{r tab-fish-dens-125261-2024, eval=T}
+
+fish_abund_2024|>
+  dplyr::filter(site == my_site) |>
+  dplyr::select(local_name, species_code, life_stage, catch, density_100m2, nfc_pass) |>
+  fpr::fpr_kable(caption_text = paste0("Fish sampling density results summary for ", 
+            my_site, " in 2024."), 
+            footnote_text = "nfc_pass FALSE means fish were captured in final pass indicating more fish of this species/lifestage may have remained in site.\n              Mark-recaptured required to reduce uncertainties.", 
+            scroll = F)
+
+```
+
+`r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
+
+```{r plot-fish-box-125261-2024, fig.cap= my_caption, eval=T}
+
+my_caption <- paste0('Densites of fish (fish/100m2) captured upstream and downstream of PSCIS crossing ', my_site, ' in 2024.')
+
+fpr::fpr_plot_fish_box(dat = fish_abund_2024) 
+```
+
+<br>
+
 ```{r photo-125261-01-prep, eval=T}
 my_photo1 = fpr::fpr_photo_pull_by_str(str_to_pull = 'ds_ef2_typical1')
 
-my_caption1 = paste0('Habitat electrofished downstream of PSCIS crossing', my_site, '.')
+my_caption1 = paste0('Habitat electrofished downstream of PSCIS crossing ', my_site, ' in 2024.')
 
 
 ```
@@ -178,7 +250,7 @@ knitr::include_graphics(my_photo1)
 ```{r photo-125261-02-prep}
 my_photo2 = fpr::fpr_photo_pull_by_str(str_to_pull = '_us_ef3_bottom')
 
-my_caption2 = paste0('Habitat electrofished upstream of PSCIS crossing', my_site, '.')
+my_caption2 = paste0('Habitat electrofished upstream of PSCIS crossing ', my_site, ' in 2024.')
 ```
 
 ```{r photo-125261-02, fig.cap= my_caption2, out.width = photo_width, eval=gitbook_on}
@@ -200,7 +272,7 @@ knitr::include_graphics(my_photo2)
 ```{r photo-125261-03-prep}
 my_photo1 = fpr::fpr_photo_pull_by_str(str_to_pull = '_rb1_')
 
-my_caption1 = paste0('Rainbow trout captured downstream of PSCIS crossing ', my_site, '.')
+my_caption1 = paste0('Rainbow trout captured downstream of PSCIS crossing ', my_site, ' in 2023.')
 ```
 
 ```{r photo-125261-03, fig.cap= my_caption1, out.width = photo_width, eval=gitbook_on}
@@ -212,13 +284,15 @@ knitr::include_graphics(my_photo1)
 ```{r photo-125261-04-prep}
 my_photo2 = fpr::fpr_photo_pull_by_str(str_to_pull = '_bb1_')
 
-my_caption2 = paste0('Burbot captured downstream of PSCIS crossing ', my_site, '.')
+my_caption2 = paste0('Burbot captured downstream of PSCIS crossing ', my_site, ' in 2023.')
 
 ```
 
 ```{r photo-125261-04, fig.cap= my_caption2, out.width = photo_width, eval=gitbook_on}
 knitr::include_graphics(my_photo2)
 ```
+
+<br>
 
 ```{r photo-125261-d02, fig.cap = my_caption, fig.show="hold", out.width= c("49.5%","1%","49.5%"), eval=identical(gitbook_on, FALSE)}
 
@@ -233,7 +307,7 @@ knitr::include_graphics(my_photo2)
 ```{r photo-125261-05-prep}
 my_photo1 = fpr::fpr_photo_pull_by_str(str_to_pull = '_lw_')
 
-my_caption1 = paste0('Collecting length and weight of all fish captured at Fern Creek.')
+my_caption1 = paste0('Collecting length and weight of all fish captured at Fern Creek in 2023.')
 ```
 
 ```{r photo-125261-05, fig.cap= my_caption1, out.width = photo_width, eval=gitbook_on}
@@ -245,11 +319,45 @@ knitr::include_graphics(my_photo1)
 ```{r photo-125261-06-prep}
 my_photo2 = fpr::fpr_photo_pull_by_str(str_to_pull = '_pt1_')
 
-my_caption2 = paste0('PIT taggging rainbow trout and burbot >60mm fork length at Fern Creek.')
+my_caption2 = paste0('PIT tagging rainbow trout and burbot with a fork length >60mm at Fern Creek in 2023.')
 
 ```
 
 ```{r photo-125261-06, fig.cap= my_caption2, out.width = photo_width, eval=gitbook_on}
+knitr::include_graphics(my_photo2)
+```
+
+```{r photo-125261-d04, fig.cap = my_caption, fig.show="hold", out.width= c("49.5%","1%","49.5%"), eval=identical(gitbook_on, FALSE)}
+
+my_caption <- paste0('Left: ', my_caption1, ' Right: ', my_caption2)
+
+knitr::include_graphics(my_photo1)
+knitr::include_graphics("fig/pixel.png")
+knitr::include_graphics(my_photo2)
+```
+
+<br>
+
+```{r photo-125261-07-prep}
+my_photo1 = fpr::fpr_photo_pull_by_str(str_to_pull = 'fish1_2024')
+
+my_caption1 = paste0('Rainbow trout captured downstream of PSCIS crossing ', my_site, ' in 2024.')
+```
+
+```{r photo-125261-07, fig.cap= my_caption1, out.width = photo_width, eval=gitbook_on}
+knitr::include_graphics(my_photo1)
+```
+
+<br>
+
+```{r photo-125261-08-prep}
+my_photo2 = fpr::fpr_photo_pull_by_str(str_to_pull = 'fish2_2024')
+
+my_caption2 = paste0('Rainbow trout captured upstream of PSCIS crossing ', my_site, ' in 2024.')
+
+```
+
+```{r photo-125261-08, fig.cap= my_caption2, out.width = photo_width, eval=gitbook_on}
 knitr::include_graphics(my_photo2)
 ```
 
