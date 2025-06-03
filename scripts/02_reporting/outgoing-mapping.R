@@ -1,11 +1,10 @@
 source('scripts/packages.R')
 source('scripts/tables.R')
 
-fpr_make_geopackage(dat = hab_fish_collect)
-#still need to do - see https://github.com/NewGraphEnvironment/fish_passage_peace_2023_reporting/issues/53
-# fpr_make_geopackage(dat = hab_features)
-fpr_make_geopackage(dat = hab_site_priorities)
-fpr_make_geopackage(dat = phase1_priorities)
+fpr::fpr_make_geopackage(utm_zone = 10, dat = hab_fish_collect)
+fpr::fpr_make_geopackage(utm_zone = 10, dat = hab_features)
+fpr::fpr_make_geopackage(utm_zone = 10, dat = hab_site_priorities)
+fpr::fpr_make_geopackage(utm_zone = 10, dat = phase1_priorities)
 
 ##we do this manually since the
 # phase1_priorities %>%
@@ -61,3 +60,23 @@ write_geojson <- function(layers){
 
 layers_to_burn %>%
   map(write_geojson)
+
+
+# reburned in June 2025 using new function `rfp::rfp_gpkg_to_geojson`
+
+# We use geojsons to make the mapping convenient as they update automagically in QGIS without a restart and b/c
+# when in wsg84 they display by default on github and other web platforms.
+
+# we send this GeoJSON to Simon and he uses them to update the pdf maps
+
+dir_repo_gpkg <- fs::path("data/fishpass_mapping/")
+
+rfp::rfp_gpkg_to_geojson(
+  dir_in = dir_repo_gpkg,
+  dir_out = dir_repo_gpkg,
+  file_name_in = "fishpass_mapping"
+)
+
+
+
+

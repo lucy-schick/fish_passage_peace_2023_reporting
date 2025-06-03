@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "hab_features",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "reference_number": 15, "local_name": "198687_us", "feature_type": "dewatering", "feature_height_m": 0, "feature_length_m": 50, "feature_height_length_method": "ground estimate", "utm_zone": 10, "utm_easting": 511414, "utm_northing": 6072590, "fiss_obstacle_name": null }, "geometry": { "type": "Point", "coordinates": [ -122.822448924581451, 54.800355509080525 ] } }
+]
+}

@@ -460,8 +460,14 @@ hab_fish_collect_prep1 <- habitat_confirmations %>%
   dplyr::filter(!is.na(site_number)) %>%
   select(-gazetted_name:-site_number)
 
+
+# Pull the features from the fish data submission spreadsheet because that contains the features that actually got submitted
+# which is usually less than what we actually recorded. Many of the features are not actually needed and just clutter the map.
+path_fish_data_submission <-  fs::path(fs::path_expand("~/Projects/repo/fish_passage_peace_2023_reporting/data/permit_submission/PG23-813101_data.xls"))
+fish_data_submission <- fpr_import_hab_con(path = path_fish_data_submission, col_filter_na = TRUE, row_empty_remove = TRUE, backup = F)
+
 hab_features <- left_join(
-  habitat_confirmations %>%
+  fish_data_submission %>%
     purrr::pluck("step_4_stream_site_data") %>%
     select(reference_number,local_name, feature_type:utm_northing) %>%
     dplyr::filter(!is.na(feature_type)),
